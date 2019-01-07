@@ -1,19 +1,49 @@
-node_modules/
-dist/
-tmp/
-out-tsc/
-coverage/
-.angular/
-.nx/
-*.log
-npm-debug.log*
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+/.angular
+
+# node_modules
+/node_modules
+
+# profiling files
+chrome-profiler-events*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+!.history/manifest.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+/.cx-reports
+/.xray
+/.sonar
+
+# System Files
 .DS_Store
 Thumbs.db
-.idea/
-.vscode/*
-!.vscode/extensions.json
-.env
-.env.*
-!.env.example
-.cx-reports/
-.scannerwork/
