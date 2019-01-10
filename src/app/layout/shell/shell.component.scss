@@ -1,0 +1,36 @@
+// Unencapsulated. See the component comment.
+.mbz-shell__org {
+  font-size: 13px;
+  opacity: .85;
+  margin-right: 12px;
+  padding: 2px 10px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 12px;
+}
+
+mbz-shell {
+  ::ng-deep .cn-page-shell__nav-badge {
+    background: var(--mbz-approval);
+    color: #fff;
+  }
+
+  ::ng-deep .cn-page-shell--nav-collapsed .cn-page-shell__nav-link {
+    // Canopy hides the badge when collapsed; approvers wanted the count regardless (MBZ-1290).
+    position: relative;
+
+    .cn-page-shell__nav-badge {
+      display: block;
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      font-size: 10px;
+      line-height: 14px;
+      padding: 0 4px;
+    }
+  }
+
+  ::ng-deep .cn-page-shell__signout.mat-button {
+    font-size: 13px;
+    text-transform: none;
+  }
+}

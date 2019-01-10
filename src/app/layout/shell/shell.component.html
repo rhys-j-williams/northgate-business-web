@@ -1,0 +1,10 @@
+<cn-page-shell appName="Meridian Business"
+               [environmentLabel]="environmentLabel"
+               [nav]="nav"
+               [userName]="(user$ | async)?.displayName"
+               [showThemeToggle]="false"
+               maxContentWidth="1440px"
+               (signOut)="signOut()">
+  <span cnShellToolbar class="mbz-shell__org" *ngIf="user$ | async as user">{{ user.organisationName }}</span>
+  <router-outlet></router-outlet>
+</cn-page-shell>
