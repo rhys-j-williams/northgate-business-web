@@ -1,0 +1,268 @@
+// Meridian Business global stylesheet.
+//
+// History: this started life as styles.css in 2019 with the Material indigo-pink prebuilt theme.
+// Canopy 2.x replaced the theme in 2020 (MBZ-620). The `::ng-deep` and `.mat-*` overrides below
+// accumulated because Canopy did not expose what the business screens needed and nobody wanted to
+// wait for a CNPY ticket. Every Canopy bump since has broken at least one of them; see README
+// "Canopy and Material" before touching. MBZ-1733 tracks tidying up. It will not happen.
+
+// MBZ-3320: the 3.5.0 package's `styles` entry forwards a path that does not exist in the
+// published tarball, so we go through `themes` directly. Fixed upstream in 3.6, we never moved.
+@use '@meridian/canopy-ui/themes' as canopy;
+@use 'variables' as mbz;
+
+@include canopy.theme();
+
+:root {
+  --mbz-debit: #{mbz.$mbz-debit};
+  --mbz-credit: #{mbz.$mbz-credit};
+  --mbz-approval: #{mbz.$mbz-approval};
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--cn-font-family);
+  font-size: 14px;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Shell. Business is denser than Online; the branch staff work on 1366x768 laptops.
+// ---------------------------------------------------------------------------------------------
+
+.cn-page-shell__content {
+  max-width: mbz.$mbz-shell-max-width;
+  padding: 16px 24px 40px;
+}
+
+.cn-page-shell__topbar {
+  // Business brand colour, distinct from Online. Canopy has no per-application brand token.
+  background: #12354f !important;
+}
+
+.cn-page-shell__nav {
+  width: mbz.$mbz-sidebar-width;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Material overrides. These reach into Material classes directly. They are the reason the app
+// cannot take a Material major without a visual regression pass (MBZ-1733).
+// ---------------------------------------------------------------------------------------------
+
+.mat-table {
+  width: 100%;
+  font-size: 13px;
+
+  .mat-header-cell {
+    font-weight: 600;
+    color: var(--cn-color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 11px;
+  }
+
+  .mat-row {
+    height: mbz.$mbz-table-row-height;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    padding: 0 12px;
+  }
+
+  .mat-column-amount,
+  .mat-column-amountMinor,
+  .mat-column-balance,
+  .mat-column-balanceMinor,
+  .mat-column-totalMinor,
+  .mat-column-netMinor {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .mat-row:hover .mat-cell {
+    background: rgba(18, 53, 79, .04);
+  }
+}
+
+.mat-paginator {
+  background: transparent;
+  font-size: 12px;
+}
+
+.mat-tab-group.mbz-tabs {
+  .mat-tab-label {
+    min-width: 120px;
+    height: 40px;
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .mat-ink-bar {
+    height: 3px;
+    background-color: #12354f;
+  }
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 10px 0 10px;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin: 0;
+  padding-bottom: 18px;
+}
+
+.mat-dialog-container {
+  padding: 20px 24px;
+}
+
+.mat-menu-panel.mbz-row-menu {
+  min-width: 200px;
+
+  .mat-menu-item {
+    height: 36px;
+    line-height: 36px;
+    font-size: 13px;
+  }
+}
+
+.mat-snack-bar-container.cn-toast {
+  // Canopy's toast is centred; business users asked for bottom right so it does not cover the
+  // approvals action bar. MBZ-1104. Breaks whenever Canopy renames the class.
+  margin: 0 24px 24px auto;
+}
+
+.mat-tooltip {
+  font-size: 12px;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Canopy internals. cn-* class names are not part of the Canopy public API.
+// ---------------------------------------------------------------------------------------------
+
+cn-data-table {
+  .cn-data-table__table .mat-row {
+    height: mbz.$mbz-table-row-height;
+  }
+
+  .cn-data-table__cell--currency {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .cn-data-table__status--pending-approval {
+    color: var(--mbz-approval);
+  }
+}
+
+cn-page-header {
+  .cn-page-header__title {
+    font-size: 22px;
+  }
+
+  .cn-page-header__lede {
+    max-width: none;
+  }
+}
+
+cn-account-card .cn-account-card__card.mat-card {
+  border-radius: 4px;
+  border-left-width: 3px;
+}
+
+cn-badge .cn-badge {
+  text-transform: none;
+}
+
+// The filter chip row wraps under 1200px and pushes the table down. Force one line and scroll.
+cn-filter-chips .mat-chip-list-wrapper {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+// ---------------------------------------------------------------------------------------------
+// Utilities that predate Canopy's. Still used in the older templates.
+// ---------------------------------------------------------------------------------------------
+
+.mbz-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 16px 0;
+}
+
+.mbz-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.mbz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.mbz-kv {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  row-gap: 6px;
+  column-gap: 16px;
+  margin: 0;
+
+  dt {
+    color: var(--cn-color-text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.mbz-muted {
+  color: var(--cn-color-text-muted);
+}
+
+.mbz-mono {
+  font-family: var(--cn-font-family-mono);
+}
+
+.mbz-debit {
+  color: var(--mbz-debit);
+}
+
+.mbz-credit {
+  color: var(--mbz-credit);
+}
+
+.mbz-visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+// Print. Reports and the NACHA validation summary get printed more than you would think.
+@media print {
+  .cn-page-shell__topbar,
+  .cn-page-shell__nav,
+  .mbz-actions,
+  .mat-paginator {
+    display: none !important;
+  }
+
+  .cn-page-shell__content {
+    max-width: none;
+    padding: 0;
+  }
+}

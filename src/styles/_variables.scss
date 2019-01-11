@@ -1,0 +1,8 @@
+// Business specific tokens layered over Canopy. Canopy 3.5 does not expose a business palette;
+// CNPY-1502 asked for one in 2021, still open. So these are ours and they drift.
+$mbz-debit: #8a1f11;
+$mbz-credit: #1e6b3a;
+$mbz-approval: #7a4d00;
+$mbz-shell-max-width: 1440px;
+$mbz-table-row-height: 40px;
+$mbz-sidebar-width: 240px;
