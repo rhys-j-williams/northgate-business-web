@@ -1,0 +1,27 @@
+<cn-page-header [title]="organisation?.name || 'Accounts'" [lede]="organisation ? 'Tax ID ending ' + organisation.taxIdLastFour + ' · enrolled ' + (organisation.enrolledAt | mbzDate:'long') : null" eyebrow="Accounts">
+</cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true">
+  <p class="mbz-muted">{{ error }}</p>
+</cn-card>
+
+<ng-container *ngIf="!loading && !error">
+  <mbz-balance-summary [accounts]="accounts" [totalAvailableMinor]="totalAvailableMinor"></mbz-balance-summary>
+
+  <section class="mbz-account-group" *ngFor="let group of groups">
+    <h2 class="mbz-account-group__title">{{ group.label }} <span class="mbz-muted">({{ group.accounts.length }})</span></h2>
+    <div class="mbz-grid">
+      <cn-account-card *ngFor="let account of group.accounts"
+                       [account]="toSummary(account)"
+                       [clickable]="true"
+                       [compact]="group.label === 'Closed'"
+                       [allowHideBalance]="false"
+                       (selected)="open($event)">
+      </cn-account-card>
+    </div>
+  </section>
+
+  <mbz-empty-state *ngIf="accounts.length === 0" title="No accounts" body="This organisation has no accounts enrolled for online access."></mbz-empty-state>
+</ng-container>
