@@ -1,0 +1,83 @@
+// ViewEncapsulation.None. Everything here is global; prefixes are the only thing keeping it apart.
+.mbz-transaction-list {
+  position: relative;
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &--loading .mbz-transaction-table {
+    opacity: .6;
+  }
+}
+
+.mbz-transaction-table {
+  &.mat-table {
+    background: var(--cn-color-surface);
+    border: 1px solid var(--cn-color-border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  // Sticky header needs an opaque background or the rows scroll through it.
+  .mat-header-row .mat-header-cell {
+    background: var(--cn-color-surface-alt);
+  }
+
+  .mat-sort-header-arrow {
+    color: var(--cn-color-text-muted);
+  }
+
+  &__row {
+    cursor: pointer;
+
+    &--pending .mat-cell {
+      font-style: italic;
+      color: var(--cn-color-text-muted);
+    }
+
+    &--expanded .mat-cell {
+      border-bottom-color: transparent;
+    }
+  }
+
+  &__detail-row {
+    height: 0 !important;
+
+    .mat-cell {
+      padding: 0 12px;
+      border-bottom-width: 0;
+    }
+  }
+
+  &__expanded {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px 0 16px 24px;
+    border-bottom: 1px solid var(--cn-color-border);
+  }
+
+  &__description {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 360px;
+  }
+
+  &__merchant {
+    display: block;
+    font-size: 11px;
+  }
+}
+
+// The dialog panel class set from the component. Material puts the padding on the container,
+// which we override globally, so this only sets width behaviour.
+.mbz-transaction-dialog .mat-dialog-container {
+  max-height: 85vh;
+}

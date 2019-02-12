@@ -1,0 +1,51 @@
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+
+<ng-container *ngIf="!loading && account">
+  <cn-page-header [title]="account.nickname"
+                  [lede]="(account.type | mbzStatusLabel) + ' · ' + (account.accountNumber | mbzMaskAccount)"
+                  [breadcrumbs]="[{ label: 'Accounts', link: '/accounts' }, { label: account.nickname }]"
+                  backLink="/accounts">
+  </cn-page-header>
+
+  <div class="mbz-grid">
+    <cn-card [flat]="true">
+      <dl class="mbz-kv">
+        <dt>Current balance</dt>
+        <dd><mbz-money-cell [minor]="account.currentBalanceMinor" [accounting]="false"></mbz-money-cell></dd>
+        <dt>{{ availableLabel }}</dt>
+        <dd><mbz-money-cell [minor]="account.availableBalanceMinor" [accounting]="false"></mbz-money-cell></dd>
+        <dt *ngIf="account.creditLimitMinor !== undefined">Credit limit</dt>
+        <dd *ngIf="account.creditLimitMinor !== undefined">{{ account.creditLimitMinor | mbzMoney }}</dd>
+        <dt>Status</dt>
+        <dd><mbz-status-badge [status]="account.status"></mbz-status-badge></dd>
+      </dl>
+    </cn-card>
+    <cn-card [flat]="true">
+      <dl class="mbz-kv">
+        <dt>Routing number</dt>
+        <dd class="mbz-mono">{{ account.routingNumber }}</dd>
+        <dt>Account number</dt>
+        <dd class="mbz-mono">{{ account.accountNumber | mbzMaskAccount }}</dd>
+        <dt>Opened</dt>
+        <dd>{{ account.openedAt | mbzDate:'long' }}</dd>
+        <dt *ngIf="account.interestRateBasisPoints">Rate</dt>
+        <dd *ngIf="account.interestRateBasisPoints">{{ account.interestRateBasisPoints / 100 | number:'1.2-2' }}%</dd>
+      </dl>
+    </cn-card>
+  </div>
+
+  <cn-tabs class="mbz-tabs" [selectedIndex]="selectedTab" (selectedChange)="selectedTab = $event" ariaLabel="Account sections">
+    <ng-template cnTab label="Activity">
+      <mbz-transaction-filter [query]="query" (queryChange)="onQueryChange($event)"></mbz-transaction-filter>
+      <div class="mbz-actions">
+        <cn-button variant="secondary" size="small" icon="cn:download" [loading]="exporting" (pressed)="exportCsv()">Export CSV</cn-button>
+      </div>
+      <mbz-transaction-list [query]="query"></mbz-transaction-list>
+    </ng-template>
+    <ng-template cnTab label="Statements">
+      <mbz-legacy-statements [accountId]="account.accountId"></mbz-legacy-statements>
+    </ng-template>
+  </cn-tabs>
+</ng-container>
+
+<mbz-empty-state *ngIf="!loading && !account" title="Account not found"></mbz-empty-state>

@@ -1,0 +1,77 @@
+<div class="mbz-transaction-list" [class.mbz-transaction-list--loading]="loading">
+  <mat-progress-bar *ngIf="loading" mode="indeterminate" class="mbz-transaction-list__progress"></mat-progress-bar>
+
+  <table mat-table [dataSource]="dataSource" matSort (matSortChange)="onSort($event)" [trackBy]="trackById" class="mbz-transaction-table">
+
+    <ng-container matColumnDef="postedAt">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+      <td mat-cell *matCellDef="let row">{{ row.postedAt | mbzDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="accountId">
+      <th mat-header-cell *matHeaderCellDef>Account</th>
+      <td mat-cell *matCellDef="let row" class="mbz-mono">{{ row.accountId }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let row">
+        <span class="mbz-transaction-table__description">{{ row.description }}</span>
+        <span class="mbz-muted mbz-transaction-table__merchant" *ngIf="row.merchantName">{{ row.merchantName }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let row">{{ row.category | mbzStatusLabel }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row"><mbz-status-badge [status]="row.status"></mbz-status-badge></td>
+    </ng-container>
+
+    <ng-container matColumnDef="amountMinor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header arrowPosition="before">Amount</th>
+      <td mat-cell *matCellDef="let row"><mbz-money-cell [minor]="row.amountMinor" [highlightCredit]="true"></mbz-money-cell></td>
+    </ng-container>
+
+    <ng-container matColumnDef="runningBalanceMinor">
+      <th mat-header-cell *matHeaderCellDef>Balance</th>
+      <td mat-cell *matCellDef="let row"><mbz-money-cell [minor]="row.runningBalanceMinor" [accounting]="false"></mbz-money-cell></td>
+    </ng-container>
+
+    <ng-container matColumnDef="expanded">
+      <td mat-cell *matCellDef="let row" [attr.colspan]="displayedColumns.length">
+        <div class="mbz-transaction-table__expanded" *ngIf="expandedId === row.transactionId">
+          <dl class="mbz-kv">
+            <dt>Reference</dt><dd class="mbz-mono">{{ row.transactionId }}</dd>
+            <dt>Channel</dt><dd>{{ row.channel | mbzStatusLabel }}</dd>
+            <dt>Posted</dt><dd>{{ row.postedAt | mbzDate:'time' }}</dd>
+            <dt *ngIf="row.settledAt">Settled</dt><dd *ngIf="row.settledAt">{{ row.settledAt | mbzDate:'time' }}</dd>
+          </dl>
+          <button mat-stroked-button type="button" (click)="openDetail(row, $event)">Full detail</button>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"
+        class="mbz-transaction-table__row"
+        [class.mbz-transaction-table__row--pending]="row.status === 'pending'"
+        [class.mbz-transaction-table__row--expanded]="expandedId === row.transactionId"
+        (click)="toggle(row)"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['expanded']" class="mbz-transaction-table__detail-row"></tr>
+  </table>
+
+  <mbz-empty-state *ngIf="!loading && page && page.items.length === 0" title="No transactions" body="Nothing matches those filters."></mbz-empty-state>
+
+  <mat-paginator *ngIf="page"
+                 [length]="page.total"
+                 [pageIndex]="page.page"
+                 [pageSize]="page.pageSize"
+                 [pageSizeOptions]="[25, 50, 100]"
+                 (page)="onPage($event)"
+                 showFirstLastButtons>
+  </mat-paginator>
+</div>
