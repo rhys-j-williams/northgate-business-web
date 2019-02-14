@@ -1,0 +1,18 @@
+<form class="mbz-toolbar" [formGroup]="form" (ngSubmit)="$event.preventDefault()">
+  <mat-form-field appearance="outline" style="width: 260px">
+    <mat-label>Search description</mat-label>
+    <input matInput formControlName="search" autocomplete="off">
+    <mat-icon matSuffix svgIcon="cn:search"></mat-icon>
+  </mat-form-field>
+
+  <cn-filter-chips formControlName="direction" [chips]="directionChips" ariaLabel="Direction" [showClear]="false"></cn-filter-chips>
+
+  <cn-date-range formControlName="range" label="Posted" [showPresets]="true"></cn-date-range>
+
+  <mat-form-field appearance="outline" style="width: 140px">
+    <mat-label>Min amount</mat-label>
+    <cn-currency-input formControlName="minAmount" [showSymbol]="true"></cn-currency-input>
+  </mat-form-field>
+
+  <cn-button variant="tertiary" size="small" type="button" (pressed)="reset()">Clear</cn-button>
+</form>
