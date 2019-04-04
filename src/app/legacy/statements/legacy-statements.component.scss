@@ -1,0 +1,26 @@
+/* pre-Canopy styling, kept as is */
+.legacy-statements {
+  padding: 12px 0;
+
+  &__years {
+    margin-bottom: 8px;
+    button {
+      background: none;
+      border: 1px solid #ccc;
+      padding: 4px 10px;
+      margin-right: 4px;
+      cursor: pointer;
+      font: inherit;
+      &.active { background: #12354f; color: #fff; border-color: #12354f; }
+    }
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #e0e0e0; }
+    th { color: #666; font-weight: 600; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+  }
+}

@@ -1,0 +1,20 @@
+<div class="legacy-statements">
+  <div class="legacy-statements__years">
+    <button type="button" *ngFor="let y of years" [class.active]="y === selectedYear" (click)="selectedYear = y">{{ y }}</button>
+  </div>
+  <table class="legacy-statements__table" *ngIf="!loading">
+    <thead>
+      <tr><th>Period</th><th>Closing balance</th><th>Pages</th><th></th></tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of visible">
+        <td>{{ s.periodStart | mbzDate }} to {{ s.periodEnd | mbzDate }}</td>
+        <td class="num">{{ s.closingBalanceMinor | mbzMoney }}</td>
+        <td class="num">{{ s.pages }}</td>
+        <td><a href="javascript:void(0)" (click)="download(s)">Download</a></td>
+      </tr>
+      <tr *ngIf="visible.length === 0"><td colspan="4" class="mbz-muted">No statements for {{ selectedYear }}.</td></tr>
+    </tbody>
+  </table>
+  <p *ngIf="loading" class="mbz-muted">Loading statements...</p>
+</div>
