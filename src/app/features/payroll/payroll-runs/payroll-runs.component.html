@@ -1,0 +1,39 @@
+<cn-page-header title="Payroll" lede="Direct deposit runs for the last 24 months." eyebrow="Payroll">
+  <cn-button cnPageAction *ngIf="canInitiate" variant="primary" icon="cn:arrow-right" (pressed)="newRun()">New payroll run</cn-button>
+</cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<cn-card *ngIf="!loading && !error" [padded]="false">
+  <table mat-table [dataSource]="dataSource" matSort matSortActive="payDate" matSortDirection="desc" class="mbz-payroll-table">
+    <ng-container matColumnDef="payDate">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Pay date</th>
+      <td mat-cell *matCellDef="let run">{{ run.payDate | mbzDate }}</td>
+    </ng-container>
+    <ng-container matColumnDef="runId">
+      <th mat-header-cell *matHeaderCellDef scope="col">Run</th>
+      <td mat-cell *matCellDef="let run" class="mbz-mono">{{ run.runId }}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col">Status</th>
+      <td mat-cell *matCellDef="let run"><mbz-status-badge [status]="run.status"></mbz-status-badge></td>
+    </ng-container>
+    <ng-container matColumnDef="lines">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="mbz-num">Employees</th>
+      <td mat-cell *matCellDef="let run" class="mbz-num">{{ run.lines.length }}</td>
+    </ng-container>
+    <ng-container matColumnDef="totalMinor">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header scope="col" class="mbz-num">Total</th>
+      <td mat-cell *matCellDef="let run" class="mbz-num"><mbz-money-cell [minor]="run.totalMinor" [accounting]="false"></mbz-money-cell></td>
+    </ng-container>
+    <ng-container matColumnDef="createdBy">
+      <th mat-header-cell *matHeaderCellDef scope="col">Submitted by</th>
+      <td mat-cell *matCellDef="let run">{{ run.createdBy }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let run; columns: columns" (click)="open(run)" class="mbz-clickable"></tr>
+  </table>
+  <mbz-empty-state *ngIf="dataSource.data.length === 0" title="No payroll runs" body="Nothing has been submitted from this organisation."></mbz-empty-state>
+</cn-card>

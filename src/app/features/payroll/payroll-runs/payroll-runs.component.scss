@@ -1,0 +1,20 @@
+// ViewEncapsulation.None, so these are global. Prefixed to be safe. MBZ-410.
+.mbz-payroll-table {
+  .mat-header-cell.mbz-num,
+  .mat-cell.mbz-num {
+    text-align: right;
+  }
+
+  .mat-row.mbz-clickable {
+    cursor: pointer;
+  }
+
+  .mat-row.mbz-clickable:hover .mat-cell {
+    background: var(--cn-color-surface-alt);
+  }
+
+  // The sort arrow is too dark against our muted header. Reaches into Material.
+  .mat-sort-header-arrow {
+    color: var(--cn-color-text-muted);
+  }
+}
