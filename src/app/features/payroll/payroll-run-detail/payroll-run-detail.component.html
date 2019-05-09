@@ -1,0 +1,33 @@
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="run">
+  <cn-page-header [title]="'Payroll ' + (run.payDate | mbzDate:'long')" [lede]="run.runId" eyebrow="Payroll" backLink="/payroll" backLabel="All runs">
+    <cn-button cnPageAction variant="secondary" icon="cn:download" (pressed)="exportRegister()">Export register</cn-button>
+  </cn-page-header>
+
+  <div class="mbz-grid mbz-grid--3">
+    <cn-card [flat]="true" title="Status"><mbz-status-badge [status]="run.status"></mbz-status-badge></cn-card>
+    <cn-card [flat]="true" title="Total"><span class="mbz-figure">{{ run.totalMinor | mbzMoney }}</span></cn-card>
+    <cn-card [flat]="true" title="Trace">
+      <span class="mbz-mono" *ngIf="run.traceNumber">{{ run.traceNumber }}</span>
+      <span class="mbz-muted" *ngIf="!run.traceNumber">Not yet assigned</span>
+    </cn-card>
+  </div>
+
+  <cn-card title="Register" [subtitle]="'Submitted by ' + run.createdBy + ' ' + (run.createdAt | mbzDate:'ago')" [padded]="false">
+    <table class="mbz-plain-table">
+      <thead>
+        <tr><th scope="col">Employee</th><th scope="col">Account</th><th scope="col">Memo</th><th scope="col" class="mbz-num">Amount</th></tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let line of lines">
+          <td>{{ line.employee?.name || '(removed employee)' }}</td>
+          <td class="mbz-mono">{{ line.employee ? ('****' + line.employee.payee.accountNumberLastFour) : '' }}</td>
+          <td>{{ line.memo }}</td>
+          <td class="mbz-num"><mbz-money-cell [minor]="line.amountMinor" [accounting]="false"></mbz-money-cell></td>
+        </tr>
+      </tbody>
+    </table>
+  </cn-card>
+</ng-container>
