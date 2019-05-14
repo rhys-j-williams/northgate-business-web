@@ -1,0 +1,53 @@
+:host {
+  display: block;
+}
+
+.mbz-employee-list__toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.mbz-employee-list__search {
+  flex: 1;
+  max-width: 320px;
+}
+
+.mbz-employee-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 420px;
+  overflow: auto;
+  border: 1px solid var(--cn-color-border);
+  border-radius: 4px;
+
+  li {
+    display: grid;
+    grid-template-columns: 1fr auto 120px auto;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 12px;
+    border-bottom: 1px solid var(--cn-color-border);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+}
+
+.mbz-employee-list__item--inactive {
+  opacity: .6;
+}
+
+.mbz-employee-list__default {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+// Canopy's checkbox label wraps at 200px. We need the whole name. MBZ-1712, still open.
+:host ::ng-deep .cn-checkbox .mat-checkbox-label {
+  max-width: none;
+  white-space: nowrap;
+}

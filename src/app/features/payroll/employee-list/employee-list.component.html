@@ -1,0 +1,21 @@
+<div class="mbz-employee-list__toolbar">
+  <mat-form-field appearance="outline" class="mbz-employee-list__search">
+    <mat-label>Find employee</mat-label>
+    <input matInput [(ngModel)]="filter" (ngModelChange)="applyFilter()" autocomplete="off">
+    <mat-icon matSuffix svgIcon="cn:search"></mat-icon>
+  </mat-form-field>
+  <cn-button variant="tertiary" size="small" (pressed)="selectAllActive()">All active</cn-button>
+  <cn-button variant="tertiary" size="small" (pressed)="clear()">Clear</cn-button>
+  <span class="mbz-muted">{{ selectedIds.length }} of {{ employees.length }} selected</span>
+</div>
+
+<ul class="mbz-employee-list">
+  <li *ngFor="let employee of visible" [class.mbz-employee-list__item--inactive]="!employee.active">
+    <cn-checkbox [ngModel]="isSelected(employee)" (ngModelChange)="toggle(employee)" [disabled]="!employee.active">
+      {{ employee.name }}
+    </cn-checkbox>
+    <span class="mbz-muted">{{ employee.payType === 'salary' ? 'Salary' : 'Hourly' }} · ****{{ employee.payee.accountNumberLastFour }}</span>
+    <span class="mbz-employee-list__default">{{ employee.defaultAmountMinor | mbzMoney }}</span>
+    <cn-badge *ngIf="!employee.active" tone="neutral" size="small">Inactive</cn-badge>
+  </li>
+</ul>
