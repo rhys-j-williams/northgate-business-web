@@ -1,0 +1,30 @@
+.mbz-line-editor__memo {
+  width: 140px;
+}
+
+.mbz-line-editor__amount {
+  width: 180px;
+}
+
+.mbz-line-editor__total {
+  font-weight: 600;
+}
+
+.mbz-line-editor__warn {
+  color: var(--cn-color-warn);
+}
+
+.mbz-line-editor__row--over td {
+  background: rgba(196, 64, 32, .06);
+}
+
+// Compact the form field inside table cells. Material's own padding is for standalone use.
+:host ::ng-deep .mbz-line-editor .mat-form-field-wrapper {
+  padding-bottom: 0;
+  margin: 0;
+}
+
+:host ::ng-deep .mbz-line-editor .mat-form-field-infix {
+  padding: 8px 0;
+  border-top-width: 6px;
+}

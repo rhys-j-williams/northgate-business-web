@@ -1,0 +1,41 @@
+<table class="mbz-plain-table mbz-line-editor">
+  <thead>
+    <tr>
+      <th scope="col">Employee</th>
+      <th scope="col">Memo</th>
+      <th scope="col" class="mbz-num">Amount</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows" [class.mbz-line-editor__row--over]="overLimit(row)">
+      <td>
+        {{ row.employee.name }}
+        <div class="mbz-muted">****{{ row.employee.payee.accountNumberLastFour }}</div>
+      </td>
+      <td>
+        <mat-form-field appearance="outline" class="mbz-line-editor__memo">
+          <input matInput [ngModel]="row.line.memo" (ngModelChange)="setMemo(row, $event)" maxlength="10" aria-label="Memo">
+        </mat-form-field>
+      </td>
+      <td class="mbz-num">
+        <mat-form-field appearance="outline" class="mbz-line-editor__amount">
+          <cn-currency-input [ngModel]="row.line.amountMinor / 100" (ngModelChange)="setAmount(row, $event === null ? null : $event * 100)" [min]="0"></cn-currency-input>
+          <mat-hint *ngIf="row.overridden">default {{ row.employee.defaultAmountMinor | mbzMoney }}</mat-hint>
+          <mat-hint *ngIf="overLimit(row)" class="mbz-line-editor__warn">over your per transaction limit</mat-hint>
+        </mat-form-field>
+      </td>
+      <td>
+        <cn-icon-button *ngIf="row.overridden" icon="cn:arrow-down" ariaLabel="Reset to default" tooltip="Reset to default" (pressed)="reset(row)"></cn-icon-button>
+        <cn-icon-button icon="cn:close" ariaLabel="Remove from run" tooltip="Remove from run" (pressed)="remove(row)"></cn-icon-button>
+      </td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">{{ rows.length }} employees</td>
+      <td class="mbz-num mbz-line-editor__total">{{ totalMinor | mbzMoney }}</td>
+      <td></td>
+    </tr>
+  </tfoot>
+</table>
