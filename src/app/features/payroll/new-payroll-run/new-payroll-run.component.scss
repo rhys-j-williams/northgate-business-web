@@ -1,0 +1,40 @@
+// Global (ViewEncapsulation.None). MBZ-1330.
+.mbz-payroll-stepper {
+  // Material's stepper header is 72px tall; our layout guide says 56.
+  .mat-horizontal-stepper-header {
+    height: 56px;
+  }
+
+  .mat-step-icon-selected,
+  .mat-step-icon-state-done {
+    background-color: var(--cn-color-brand);
+  }
+
+  .mat-horizontal-content-container {
+    padding: 0 0 16px;
+  }
+
+  &.mbz-payroll-stepper--done .mat-step-header {
+    pointer-events: none;
+  }
+}
+
+.mbz-step-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.mbz-schedule-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  // cn-select renders its own mat-form-field; stretch both to the grid cell.
+  cn-select .mat-form-field,
+  .mat-form-field {
+    width: 100%;
+  }
+}

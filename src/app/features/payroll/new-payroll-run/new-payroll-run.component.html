@@ -1,0 +1,64 @@
+<cn-page-header title="New payroll run" eyebrow="Payroll" backLink="/payroll" backLabel="All runs"></cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<cn-card *ngIf="!loading && !error" [padded]="true">
+  <mat-stepper linear #stepper class="mbz-payroll-stepper" [class.mbz-payroll-stepper--done]="!!submitted">
+
+    <mat-step label="Employees" [completed]="selectedIds.length > 0">
+      <mbz-employee-list [employees]="employees" [selectedIds]="selectedIds" (selectionChange)="onSelection($event)"></mbz-employee-list>
+      <div class="mbz-step-actions">
+        <button mat-flat-button color="primary" matStepperNext [disabled]="selectedIds.length === 0">Continue</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Amounts" [completed]="lines.length > 0">
+      <mbz-payroll-line-editor [lines]="lines" [employees]="employees" [perTransactionLimitMinor]="perTransactionLimit" (linesChange)="onLines($event)"></mbz-payroll-line-editor>
+      <p class="mbz-warn" *ngIf="overDailyLimit">This run exceeds your daily initiation limit and will need a second approver.</p>
+      <div class="mbz-step-actions">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-flat-button color="primary" matStepperNext [disabled]="lines.length === 0">Continue</button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Schedule" [stepControl]="scheduleForm">
+      <form [formGroup]="scheduleForm" class="mbz-schedule-form">
+        <cn-select label="Funding account" formControlName="fundingAccountId" [options]="accountOptions" [required]="true"></cn-select>
+        <mat-form-field appearance="outline">
+          <mat-label>Pay date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="payDate" [min]="minPayDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-hint>Earliest {{ minPayDate | mbzDate:'long' }}</mat-hint>
+          <mat-error *ngIf="scheduleForm.get('payDate')?.hasError('notBusinessDay')">Pay date must be a business day</mat-error>
+          <mat-error *ngIf="scheduleForm.get('payDate')?.hasError('tooSoon')">Too soon for the ACH window</mat-error>
+        </mat-form-field>
+      </form>
+
+      <cn-card [flat]="true" title="Summary">
+        <dl class="mbz-dl">
+          <dt>Employees</dt><dd>{{ lines.length }}</dd>
+          <dt>Total</dt><dd>{{ totalMinor | mbzMoney }}</dd>
+          <dt>Available in funding account</dt>
+          <dd [class.mbz-warn]="insufficientFunds">{{ fundingAccount ? (fundingAccount.availableBalanceMinor | mbzMoney) : '—' }}</dd>
+        </dl>
+        <p class="mbz-warn" *ngIf="insufficientFunds">Available balance is below the run total. The run can still be scheduled; it will be held on the pay date.</p>
+      </cn-card>
+
+      <div class="mbz-step-actions">
+        <button mat-button matStepperPrevious [disabled]="submitting">Back</button>
+        <button mat-flat-button color="primary" (click)="submit()" [disabled]="scheduleForm.invalid || submitting">
+          {{ submitting ? 'Submitting…' : 'Submit payroll' }}
+        </button>
+      </div>
+    </mat-step>
+
+    <mat-step label="Done" [editable]="false">
+      <mbz-empty-state icon="cn:check" title="Payroll scheduled" [body]="submitted ? submitted.runId + ' will settle on ' + (submitted.payDate | mbzDate:'long') : ''"></mbz-empty-state>
+      <div class="mbz-step-actions">
+        <button mat-flat-button color="primary" (click)="done()">View run</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</cn-card>
