@@ -1,0 +1,38 @@
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="batch">
+  <cn-page-header [title]="batch.fileName" [lede]="batch.batchId" eyebrow="ACH batch" backLink="/ach" backLabel="ACH activity"></cn-page-header>
+
+  <div class="mbz-grid mbz-grid--3">
+    <cn-card [flat]="true" title="Status">
+      <mbz-status-badge [status]="batch.status"></mbz-status-badge>
+      <p class="mbz-muted" *ngIf="approval$ | async as approval">
+        {{ approval.decisions.length }} of {{ approval.requiredApprovals }} approvals ·
+        <a [routerLink]="['/approvals', approval.approvalId]">open in queue</a>
+      </p>
+    </cn-card>
+    <cn-card [flat]="true" title="Totals">
+      <dl class="mbz-dl">
+        <dt>Credits</dt><dd>{{ batch.totalCreditMinor | mbzMoney }}</dd>
+        <dt>Debits</dt><dd>{{ batch.totalDebitMinor | mbzMoney }}</dd>
+        <dt>Entries</dt><dd>{{ batch.entryCount }}</dd>
+      </dl>
+    </cn-card>
+    <cn-card [flat]="true" title="File">
+      <dl class="mbz-dl">
+        <dt>SEC code</dt><dd>{{ batch.secCode }}</dd>
+        <dt>Description</dt><dd>{{ batch.companyEntryDescription }}</dd>
+        <dt>Effective</dt><dd>{{ batch.effectiveEntryDate | mbzDate:'long' }}</dd>
+        <dt>Uploaded</dt><dd>{{ batch.uploadedAt | mbzDate:'long' }} by {{ batch.uploadedBy }}</dd>
+        <dt>Hash</dt><dd class="mbz-mono">{{ batch.fileHash || '—' }}</dd>
+      </dl>
+    </cn-card>
+  </div>
+
+  <cn-card *ngIf="batch.validationErrors.length" title="Validation errors" [highlight]="true">
+    <ul class="mbz-error-list">
+      <li *ngFor="let e of batch.validationErrors" class="mbz-mono">{{ e }}</li>
+    </ul>
+  </cn-card>
+</ng-container>
