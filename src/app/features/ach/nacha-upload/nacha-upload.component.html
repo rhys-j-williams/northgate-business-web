@@ -1,0 +1,38 @@
+<cn-page-header title="Upload NACHA file" lede="Files are validated here before submission. The bank validates them again." eyebrow="ACH origination" backLink="/ach" backLabel="ACH activity"></cn-page-header>
+
+<div class="mbz-upload-layout">
+  <cn-card>
+    <div class="mbz-dropzone"
+         [class.mbz-dropzone--active]="dragging"
+         [class.mbz-dropzone--filled]="!!fileName"
+         (dragover)="onDragOver($event)"
+         (dragleave)="onDragLeave()"
+         (drop)="onDrop($event)">
+      <input #fileInput type="file" accept=".ach,.txt,.nacha" hidden (change)="onFilePicked($event)">
+      <ng-container *ngIf="!fileName">
+        <mat-icon svgIcon="cn:document" class="mbz-dropzone__icon"></mat-icon>
+        <p>Drop a NACHA file here</p>
+        <cn-button variant="secondary" (pressed)="browse()">Choose file</cn-button>
+        <p class="mbz-muted">94 character records, CRLF or LF, 2 MB maximum.</p>
+      </ng-container>
+      <ng-container *ngIf="fileName">
+        <mat-icon svgIcon="cn:check" class="mbz-dropzone__icon"></mat-icon>
+        <p class="mbz-mono">{{ fileName }}</p>
+        <p class="mbz-muted" *ngIf="result">{{ result.file.lineCount }} records, {{ result.file.batches.length }} batches</p>
+        <cn-button variant="tertiary" size="small" (pressed)="reset()">Choose another file</cn-button>
+      </ng-container>
+      <mat-progress-bar *ngIf="parsing" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div class="mbz-upload-options" *ngIf="result">
+      <cn-select label="Offset account" [options]="accountOptions" [(ngModel)]="offsetAccountId" [required]="true" hint="The account the batch total is debited from or credited to."></cn-select>
+    </div>
+
+    <div class="mbz-upload-actions" *ngIf="result">
+      <cn-button variant="tertiary" (pressed)="revalidate()">Re-validate</cn-button>
+      <cn-button variant="primary" [disabled]="!result.valid || !offsetAccountId" [loading]="submitting" (pressed)="submit()">Submit for approval</cn-button>
+    </div>
+  </cn-card>
+
+  <mbz-nacha-validation-report *ngIf="result" [result]="result"></mbz-nacha-validation-report>
+</div>

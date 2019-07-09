@@ -1,0 +1,54 @@
+// Global (ViewEncapsulation.None), prefixed. MBZ-1104.
+.mbz-upload-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 420px) 1fr;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mbz-dropzone {
+  border: 2px dashed var(--cn-color-border);
+  border-radius: 6px;
+  padding: 32px 16px;
+  text-align: center;
+  transition: border-color .15s, background .15s;
+
+  &--active {
+    border-color: var(--cn-color-brand);
+    background: rgba(18, 53, 79, .04);
+  }
+
+  &--filled {
+    border-style: solid;
+  }
+
+  // Material sizes mat-icon at 24px regardless of context.
+  .mat-icon.mbz-dropzone__icon {
+    width: 48px;
+    height: 48px;
+    color: var(--cn-color-text-muted);
+  }
+
+  .mat-progress-bar {
+    margin-top: 12px;
+  }
+}
+
+.mbz-upload-options {
+  margin-top: 16px;
+
+  cn-select .mat-form-field {
+    width: 100%;
+  }
+}
+
+.mbz-upload-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
