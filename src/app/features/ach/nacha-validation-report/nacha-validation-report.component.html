@@ -1,0 +1,51 @@
+<cn-card [title]="result.valid ? 'File accepted' : 'File rejected'" [highlight]="!result.valid" [padded]="false">
+  <div class="mbz-report__summary">
+    <div>
+      <span class="mbz-report__figure">{{ result.summary.entries }}</span>
+      <span class="mbz-muted">entries</span>
+    </div>
+    <div>
+      <span class="mbz-report__figure">{{ result.summary.totalCreditMinor | mbzMoney }}</span>
+      <span class="mbz-muted">credits</span>
+    </div>
+    <div>
+      <span class="mbz-report__figure">{{ result.summary.totalDebitMinor | mbzMoney }}</span>
+      <span class="mbz-muted">debits</span>
+    </div>
+    <div>
+      <cn-badge [tone]="errors.length ? 'warn' : 'success'">{{ errors.length }} errors</cn-badge>
+      <cn-badge tone="caution" *ngIf="warnings.length">{{ warnings.length }} warnings</cn-badge>
+    </div>
+  </div>
+
+  <div class="mbz-report__meta" *ngIf="result.file.header as h">
+    <span>Origin <span class="mbz-mono">{{ h.immediateOrigin }}</span></span>
+    <span>Created <span class="mbz-mono">{{ h.fileCreationDate }} {{ h.fileCreationTime }}{{ h.fileIdModifier }}</span></span>
+    <span>SEC {{ result.summary.secCodes.join(', ') || '—' }}</span>
+    <span>Effective {{ result.summary.effectiveDates.join(', ') || '—' }}</span>
+  </div>
+
+  <ul class="mbz-issue-list" *ngIf="fileIssues.length">
+    <li *ngFor="let issue of fileIssues; trackBy: trackIssue" [class.mbz-issue--warning]="issue.severity === 'warning'">
+      <span class="mbz-mono mbz-issue__code">{{ issue.code }}</span>
+      <span class="mbz-issue__line">line {{ issue.line }}</span>
+      <span>{{ issue.message }}<span class="mbz-muted" *ngIf="issue.detail"> · {{ issue.detail }}</span></span>
+    </li>
+  </ul>
+
+  <cn-expansion *ngFor="let row of batches"
+                [title]="'Batch ' + row.batch.batchNumber + ' · ' + row.batch.standardEntryClassCode + ' ' + row.batch.companyEntryDescription"
+                [description]="row.batch.entries.length + ' entries · ' + (row.batch.computed.totalCreditAmountMinor | mbzMoney) + ' CR / ' + (row.batch.computed.totalDebitAmountMinor | mbzMoney) + ' DR'"
+                [summary]="row.issues.length ? row.issues.length + ' issues' : 'clean'"
+                [expanded]="row.expanded"
+                (expandedChange)="toggle(row)">
+    <p class="mbz-muted" *ngIf="!row.issues.length">No issues in this batch.</p>
+    <ul class="mbz-issue-list" *ngIf="row.issues.length">
+      <li *ngFor="let issue of row.issues; trackBy: trackIssue" [class.mbz-issue--warning]="issue.severity === 'warning'">
+        <span class="mbz-mono mbz-issue__code">{{ issue.code }}</span>
+        <span class="mbz-issue__line">line {{ issue.line }}</span>
+        <span>{{ issue.message }}<span class="mbz-muted" *ngIf="issue.field"> ({{ issue.field }})</span><span class="mbz-muted" *ngIf="issue.detail"> · {{ issue.detail }}</span></span>
+      </li>
+    </ul>
+  </cn-expansion>
+</cn-card>
