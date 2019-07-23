@@ -1,0 +1,18 @@
+<cn-page-header title="ACH templates" lede="Recurring batches. A template produces a NACHA file you still have to upload; generation on submit is MBZ-1877." eyebrow="ACH origination" backLink="/ach" backLabel="ACH activity">
+  <cn-button cnPageAction *ngIf="canEdit" variant="primary" (pressed)="edit(null)">New template</cn-button>
+</cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<div class="mbz-grid mbz-grid--2" *ngIf="!loading && !error">
+  <cn-card *ngFor="let template of templates" [title]="template.name" [subtitle]="template.secCode + ' · ' + template.companyEntryDescription">
+    <dl class="mbz-dl">
+      <dt>Entries</dt><dd>{{ template.entries.length }}</dd>
+      <dt>Total</dt><dd>{{ total(template) | mbzMoney }}</dd>
+      <dt>Updated</dt><dd>{{ template.updatedAt | mbzDate:'ago' }}</dd>
+    </dl>
+    <cn-button variant="secondary" size="small" *ngIf="canEdit" (pressed)="edit(template)">Edit</cn-button>
+  </cn-card>
+  <mbz-empty-state *ngIf="templates.length === 0" title="No templates" body="Templates save the receiver list for a recurring batch."></mbz-empty-state>
+</div>
