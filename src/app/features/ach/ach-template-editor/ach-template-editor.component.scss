@@ -1,0 +1,16 @@
+.mbz-template-form__head {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 12px;
+}
+
+.mbz-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+:host ::ng-deep .mbz-template-form .mat-form-field {
+  width: 100%;
+}

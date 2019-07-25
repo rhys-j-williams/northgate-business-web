@@ -1,0 +1,46 @@
+<cn-dialog-shell [title]="data.template ? 'Edit template' : 'New template'" size="lg" [busy]="saving">
+  <form [formGroup]="form" class="mbz-template-form" (ngSubmit)="save()">
+    <div class="mbz-template-form__head">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" maxlength="40">
+      </mat-form-field>
+      <cn-select label="SEC code" formControlName="secCode" [options]="secOptions"></cn-select>
+      <mat-form-field appearance="outline">
+        <mat-label>Entry description</mat-label>
+        <input matInput formControlName="companyEntryDescription" maxlength="10" class="mbz-mono">
+        <mat-hint>10 characters, appears on the receiver's statement</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <table class="mbz-plain-table" formArrayName="entries">
+      <thead><tr><th scope="col">Receiver</th><th scope="col">Code</th><th scope="col" class="mbz-num">Amount</th><th scope="col"></th></tr></thead>
+      <tbody>
+        <tr *ngFor="let entry of entries.controls; let i = index" [formGroupName]="i">
+          <td><cn-select label="Payee" formControlName="payeeId" [options]="payeeOptions" [required]="true"></cn-select></td>
+          <td><cn-select label="Code" formControlName="transactionCode" [options]="codeOptions"></cn-select></td>
+          <td class="mbz-num">
+            <mat-form-field appearance="outline">
+              <cn-currency-input formControlName="amount" [min]="0"></cn-currency-input>
+            </mat-form-field>
+          </td>
+          <td><cn-icon-button icon="cn:close" ariaLabel="Remove" (pressed)="removeEntry(i)" [disabled]="entries.length === 1"></cn-icon-button></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="2"><cn-button variant="tertiary" size="small" type="button" (pressed)="addEntry()">Add receiver</cn-button></td>
+          <td class="mbz-num"><strong>{{ totalMinor | mbzMoney }}</strong></td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p class="mbz-warn" *ngIf="error">{{ error }}</p>
+
+    <div class="mbz-dialog-actions">
+      <cn-button variant="tertiary" type="button" (pressed)="ref.close()" [disabled]="saving">Cancel</cn-button>
+      <cn-button variant="primary" type="submit" [loading]="saving">Save template</cn-button>
+    </div>
+  </form>
+</cn-dialog-shell>
