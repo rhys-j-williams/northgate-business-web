@@ -1,0 +1,8 @@
+<cn-page-header title="Wire beneficiaries" lede="Additions and changes go through Treasury Ops callback verification. Call the desk; there is no self-service form." eyebrow="Wires" backLink="/wires" backLabel="All wires"></cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<cn-card *ngIf="!loading && !error" [padded]="false">
+  <cn-data-table [columns]="columns" [rows]="beneficiaries" caption="Beneficiaries" [showPaginator]="false" emptyText="No beneficiaries on file"></cn-data-table>
+</cn-card>
