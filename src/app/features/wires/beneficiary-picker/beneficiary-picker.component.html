@@ -1,0 +1,16 @@
+<mat-form-field appearance="outline" class="mbz-picker__search">
+  <mat-label>Search beneficiaries</mat-label>
+  <input matInput [(ngModel)]="filter" (ngModelChange)="applyFilter()" autocomplete="off">
+  <mat-icon matSuffix svgIcon="cn:search"></mat-icon>
+</mat-form-field>
+
+<ul class="mbz-picker" role="listbox" aria-label="Beneficiaries">
+  <li *ngFor="let b of visible" role="option" [attr.aria-selected]="isSelected(b)" [class.mbz-picker__item--selected]="isSelected(b)" (click)="pick(b)" (keydown.enter)="pick(b)" tabindex="0">
+    <div>
+      <strong>{{ b.name }}</strong>
+      <cn-badge *ngIf="!b.verified" tone="caution" size="small">Unverified</cn-badge>
+    </div>
+    <div class="mbz-muted">{{ b.bankName }} · {{ b.routingNumber }} · ****{{ b.accountNumberLastFour }}</div>
+  </li>
+  <li *ngIf="visible.length === 0" class="mbz-muted mbz-picker__empty">No beneficiaries match. Add one from the beneficiaries screen first.</li>
+</ul>
