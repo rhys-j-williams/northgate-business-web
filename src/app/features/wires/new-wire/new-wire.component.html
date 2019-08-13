@@ -1,0 +1,67 @@
+<cn-page-header title="New domestic wire" lede="Every wire needs two approvals from users other than the initiator." eyebrow="Wires" backLink="/wires" backLabel="All wires"></cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+
+<cn-card *ngIf="!loading && !approversAvailable" title="Not enough approvers" [highlight]="true">
+  <p>This organisation needs at least two users with the payments:approve permission (excluding you) before a wire can be released. Ask an administrator to update entitlements.</p>
+</cn-card>
+
+<div class="mbz-wire-layout" *ngIf="!loading">
+  <cn-card [title]="'1. Beneficiary' + (beneficiary ? ' · ' + beneficiary.name : '')" [flat]="step !== 0">
+    <ng-container *ngIf="step === 0">
+      <mbz-beneficiary-picker [beneficiaries]="beneficiaries" [selected]="beneficiary" (selectedChange)="chooseBeneficiary($event)"></mbz-beneficiary-picker>
+    </ng-container>
+    <p class="mbz-muted" *ngIf="step !== 0 && beneficiary">
+      {{ beneficiary.bankName }} · {{ beneficiary.routingNumber }} · ****{{ beneficiary.accountNumberLastFour }}
+      <cn-button variant="tertiary" size="small" (pressed)="step = 0">Change</cn-button>
+    </p>
+  </cn-card>
+
+  <cn-card title="2. Details" [flat]="step !== 1" *ngIf="step >= 1">
+    <form [formGroup]="form" class="mbz-wire-form" *ngIf="step === 1" (ngSubmit)="review()">
+      <cn-select label="From account" formControlName="fromAccountId" [options]="accountOptions" [required]="true"></cn-select>
+      <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <cn-currency-input formControlName="amount" [min]="0.01" [required]="true"></cn-currency-input>
+        <mat-hint *ngIf="overTransactionLimit" class="mbz-warn">Over your per transaction limit</mat-hint>
+        <mat-hint *ngIf="!overTransactionLimit && insufficientFunds" class="mbz-warn">Exceeds available balance</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Value date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="valueDate" [min]="minValueDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Reference</mat-label>
+        <input matInput formControlName="reference" maxlength="16" class="mbz-mono">
+        <mat-hint>Appears on the beneficiary's advice. Letters, numbers, space, dash, slash.</mat-hint>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="mbz-wire-form__wide">
+        <mat-label>Purpose</mat-label>
+        <input matInput formControlName="purpose" maxlength="35">
+        <mat-hint>Required for OFAC screening. 35 characters.</mat-hint>
+      </mat-form-field>
+      <div class="mbz-wire-form__actions">
+        <cn-button variant="tertiary" type="button" (pressed)="back()">Back</cn-button>
+        <cn-button variant="primary" type="submit" [disabled]="form.invalid">Review</cn-button>
+      </div>
+    </form>
+  </cn-card>
+
+  <cn-card title="3. Review and submit" *ngIf="step === 2">
+    <dl class="mbz-dl">
+      <dt>Beneficiary</dt><dd>{{ beneficiary?.name }} at {{ beneficiary?.bankName }}</dd>
+      <dt>From</dt><dd>{{ fromAccount?.nickname }} ****{{ fromAccount?.accountNumber?.slice(-4) }}</dd>
+      <dt>Amount</dt><dd class="mbz-figure">{{ amountMinor | mbzMoney }}</dd>
+      <dt>Value date</dt><dd>{{ form.value.valueDate | mbzDate:'long' }}</dd>
+      <dt>Reference</dt><dd class="mbz-mono">{{ form.value.reference | uppercase }}</dd>
+      <dt>Purpose</dt><dd>{{ form.value.purpose }}</dd>
+    </dl>
+    <p class="mbz-warn" *ngIf="!beneficiary?.verified">This beneficiary has not completed callback verification. The wire will be held by Treasury Ops after approval.</p>
+    <div class="mbz-wire-form__actions">
+      <cn-button variant="tertiary" (pressed)="back()" [disabled]="submitting">Back</cn-button>
+      <cn-button variant="primary" (pressed)="submit()" [disabled]="!canSubmit || !approversAvailable" [loading]="submitting">Submit for approval</cn-button>
+    </div>
+  </cn-card>
+</div>

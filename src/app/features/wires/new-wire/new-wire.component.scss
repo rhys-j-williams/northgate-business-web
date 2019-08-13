@@ -1,0 +1,26 @@
+.mbz-wire-layout {
+  display: grid;
+  gap: 16px;
+  max-width: 880px;
+}
+
+.mbz-wire-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mbz-wire-form__wide,
+.mbz-wire-form__actions {
+  grid-column: 1 / -1;
+}
+
+.mbz-wire-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+:host ::ng-deep .mbz-wire-form .mat-form-field {
+  width: 100%;
+}
