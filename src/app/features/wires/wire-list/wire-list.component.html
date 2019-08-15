@@ -1,0 +1,22 @@
+<cn-page-header title="Wires" [lede]="cutoffLabel" eyebrow="Payments">
+  <cn-button cnPageAction variant="secondary" routerLink="/wires/beneficiaries">Beneficiaries</cn-button>
+  <cn-button cnPageAction *ngIf="canInitiate" variant="primary" icon="cn:transfer" (pressed)="newWire()">New wire</cn-button>
+</cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="!loading && !error">
+  <cn-tabs [selectedIndex]="view === 'active' ? 0 : 1" (selectedChange)="view = $event === 0 ? 'active' : 'all'" ariaLabel="Wire views">
+    <ng-template cnTab label="Active and recent">
+      <cn-card [padded]="false">
+        <cn-data-table [columns]="columns" [rows]="visible" caption="Active wires" [pageSize]="25" emptyText="No active wires" (rowClick)="open($event)"></cn-data-table>
+      </cn-card>
+    </ng-template>
+    <ng-template cnTab label="All">
+      <cn-card [padded]="false">
+        <cn-data-table [columns]="columns" [rows]="visible" caption="All wires" [pageSize]="50" emptyText="No wires" (rowClick)="open($event)"></cn-data-table>
+      </cn-card>
+    </ng-template>
+  </cn-tabs>
+</ng-container>
