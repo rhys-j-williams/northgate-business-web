@@ -1,0 +1,30 @@
+.mbz-approval-trail {
+  list-style: none;
+  margin: 0 0 12px;
+  padding: 0;
+
+  li {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 6px 0;
+    border-bottom: 1px dashed var(--cn-color-border);
+
+    &:last-child {
+      border-bottom: 0;
+    }
+  }
+
+  mat-icon {
+    color: var(--cn-color-success);
+    flex: 0 0 24px;
+  }
+}
+
+.mbz-approval-trail__item--rejected mat-icon {
+  color: var(--cn-color-warn);
+}
+
+.mbz-approval-trail__pending mat-icon {
+  color: var(--cn-color-text-muted);
+}

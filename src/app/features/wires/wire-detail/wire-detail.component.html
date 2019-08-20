@@ -1,0 +1,54 @@
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="wire">
+  <cn-page-header [title]="'Wire to ' + wire.beneficiary.name" [lede]="wire.wireId" eyebrow="Wires" backLink="/wires" backLabel="All wires">
+    <ng-container *ngIf="canDecide">
+      <cn-button cnPageAction variant="destructive" (pressed)="reject()" [loading]="deciding$ | async">Reject</cn-button>
+      <cn-button cnPageAction variant="primary" icon="cn:check" (pressed)="approve()" [loading]="deciding$ | async">Approve</cn-button>
+    </ng-container>
+  </cn-page-header>
+
+  <div class="mbz-grid mbz-grid--3">
+    <cn-card [flat]="true" title="Amount"><span class="mbz-figure">{{ wire.amountMinor | mbzMoney }}</span><div class="mbz-muted">Value {{ wire.valueDate | mbzDate:'long' }}</div></cn-card>
+    <cn-card [flat]="true" title="Status">
+      <mbz-status-badge [status]="wire.status"></mbz-status-badge>
+      <div class="mbz-muted" *ngIf="wire.imad">IMAD <span class="mbz-mono">{{ wire.imad }}</span></div>
+    </cn-card>
+    <cn-card [flat]="true" title="Initiated"><div>{{ wire.initiatedBy }}</div><div class="mbz-muted">{{ wire.initiatedAt | mbzDate:'long' }}</div></cn-card>
+  </div>
+
+  <div class="mbz-grid mbz-grid--2">
+    <cn-card title="Beneficiary">
+      <dl class="mbz-dl">
+        <dt>Name</dt><dd>{{ wire.beneficiary.name }} <cn-badge *ngIf="!wire.beneficiary.verified" tone="caution" size="small">Unverified</cn-badge></dd>
+        <dt>Bank</dt><dd>{{ wire.beneficiary.bankName }}</dd>
+        <dt>Routing</dt><dd class="mbz-mono">{{ wire.beneficiary.routingNumber }}</dd>
+        <dt>Account</dt><dd class="mbz-mono">****{{ wire.beneficiary.accountNumberLastFour }}</dd>
+        <dt>Address</dt><dd>{{ wire.beneficiary.addressLine }}</dd>
+        <dt>Reference</dt><dd class="mbz-mono">{{ wire.reference }}</dd>
+        <dt>Purpose</dt><dd>{{ wire.purpose }}</dd>
+      </dl>
+    </cn-card>
+
+    <cn-card title="Approvals" [subtitle]="approval ? approval.decisions.length + ' of ' + approval.requiredApprovals : 'Not in queue'">
+      <ol class="mbz-approval-trail" *ngIf="approval">
+        <li *ngFor="let d of approval.decisions" [class.mbz-approval-trail__item--rejected]="d.decision === 'rejected'">
+          <mat-icon [svgIcon]="d.decision === 'approved' ? 'cn:check' : 'cn:close'"></mat-icon>
+          <div>
+            <strong>{{ d.approverHandle }}</strong> {{ d.decision }} <span class="mbz-muted">{{ d.decidedAt | mbzDate:'ago' }}</span>
+            <div class="mbz-muted" *ngIf="d.comment">{{ d.comment }}</div>
+          </div>
+        </li>
+        <li *ngFor="let slot of [].constructor(approval.requiredApprovals - approval.decisions.length > 0 && approval.status === 'pending' ? approval.requiredApprovals - approval.decisions.length : 0)" class="mbz-approval-trail__pending">
+          <mat-icon svgIcon="cn:more"></mat-icon>
+          <div class="mbz-muted">Awaiting approval</div>
+        </li>
+      </ol>
+      <p class="mbz-muted" *ngIf="approval && approval.status === 'pending'">Expires {{ approval.expiresAt | mbzDate:'long' }}</p>
+      <p class="mbz-muted" *ngIf="isInitiator && approval?.status === 'pending'">You initiated this wire and cannot approve it.</p>
+      <p class="mbz-muted" *ngIf="alreadyDecided">You have already recorded a decision.</p>
+      <p class="mbz-muted" *ngIf="approval"><a [routerLink]="['/approvals', approval.approvalId]">Open in the approvals queue</a></p>
+    </cn-card>
+  </div>
+</ng-container>
