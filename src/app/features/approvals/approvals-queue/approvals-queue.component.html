@@ -1,0 +1,64 @@
+<cn-page-header title="Approvals" lede="Wires, ACH batches, payroll and entitlement changes waiting on a second pair of eyes." eyebrow="Payments">
+  <cn-icon-button cnPageAction icon="cn:refresh" ariaLabel="Refresh" (pressed)="refresh()"></cn-icon-button>
+</cn-page-header>
+
+<mbz-approval-filter-bar [filter]="filter$ | async" (filterChange)="onFilter($event)"></mbz-approval-filter-bar>
+
+<cn-card *ngIf="error$ | async as error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<cn-card [padded]="false" class="mbz-approvals-card">
+  <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
+
+  <table mat-table [dataSource]="dataSource" class="mbz-approvals-table">
+    <ng-container matColumnDef="requestedAt">
+      <th mat-header-cell *matHeaderCellDef>Requested</th>
+      <td mat-cell *matCellDef="let a">{{ a.requestedAt | mbzDate:'ago' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="kind">
+      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <td mat-cell *matCellDef="let a"><cn-badge tone="neutral" size="small">{{ a.kind | mbzStatusLabel }}</cn-badge></td>
+    </ng-container>
+    <ng-container matColumnDef="summary">
+      <th mat-header-cell *matHeaderCellDef>Summary</th>
+      <td mat-cell *matCellDef="let a">
+        {{ a.summary }}
+        <span class="mbz-muted" *ngIf="mine(a)"> · yours</span>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="requestedBy">
+      <th mat-header-cell *matHeaderCellDef>By</th>
+      <td mat-cell *matCellDef="let a">{{ a.requestedBy }}</td>
+    </ng-container>
+    <ng-container matColumnDef="amount">
+      <th mat-header-cell *matHeaderCellDef class="mbz-num">Amount</th>
+      <td mat-cell *matCellDef="let a" class="mbz-num"><mbz-money-cell [minor]="a.amountMinor" [accounting]="false"></mbz-money-cell></td>
+    </ng-container>
+    <ng-container matColumnDef="progress">
+      <th mat-header-cell *matHeaderCellDef>Approvals</th>
+      <td mat-cell *matCellDef="let a">
+        <span class="mbz-approvals-progress" [class.mbz-approvals-progress--done]="a.status !== 'pending'">
+          <i *ngFor="let d of a.decisions" [class.mbz-approvals-progress__dot--rejected]="d.decision === 'rejected'" class="mbz-approvals-progress__dot"></i>
+          <i *ngFor="let s of [].constructor(a.status === 'pending' ? a.requiredApprovals - a.decisions.length : 0)" class="mbz-approvals-progress__dot mbz-approvals-progress__dot--empty"></i>
+        </span>
+        <mbz-status-badge *ngIf="a.status !== 'pending'" [status]="a.status"></mbz-status-badge>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="expiresAt">
+      <th mat-header-cell *matHeaderCellDef>Expires</th>
+      <td mat-cell *matCellDef="let a" [class.mbz-warn]="expiringSoon(a)">{{ a.status === 'pending' ? (a.expiresAt | mbzDate:'ago') : '—' }}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let a">
+        <cn-button size="small" [variant]="actionable(a) ? 'primary' : 'tertiary'" (pressed)="open(a)">{{ actionable(a) ? 'Review' : 'View' }}</cn-button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns" [class.mbz-row--actionable]="actionable(row)" (click)="open(row)"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="displayedColumns.length"><mbz-empty-state title="Nothing waiting" body="Requests appear here when a wire, ACH batch or payroll run needs approval."></mbz-empty-state></td>
+    </tr>
+  </table>
+  <mat-paginator [pageSize]="20" [pageSizeOptions]="[20, 50]" showFirstLastButtons></mat-paginator>
+</cn-card>

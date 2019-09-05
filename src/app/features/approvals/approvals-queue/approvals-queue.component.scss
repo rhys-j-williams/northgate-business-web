@@ -1,0 +1,57 @@
+// Global. The approvals table has been styled three times (MBZ-604, MBZ-1042, MBZ-2055) and each
+// pass left something behind. Do not tidy without a screenshot diff.
+.mbz-approvals-table {
+  width: 100%;
+
+  .mat-header-cell.mbz-num,
+  .mat-cell.mbz-num {
+    text-align: right;
+  }
+
+  .mat-row.mbz-row--actionable {
+    cursor: pointer;
+
+    .mat-cell:first-child {
+      box-shadow: inset 3px 0 0 var(--cn-color-brand);
+    }
+  }
+
+  .mat-row:hover .mat-cell {
+    background: var(--cn-color-surface-alt);
+  }
+
+  .mat-cell mbz-status-badge {
+    margin-left: 8px;
+  }
+}
+
+.mbz-approvals-progress {
+  display: inline-flex;
+  gap: 3px;
+  vertical-align: middle;
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cn-color-success);
+    display: inline-block;
+
+    &--rejected {
+      background: var(--cn-color-warn);
+    }
+
+    &--empty {
+      background: transparent;
+      border: 1px solid var(--cn-color-border-strong);
+    }
+  }
+
+  &--done {
+    opacity: .6;
+  }
+}
+
+.mbz-approvals-card .mat-paginator {
+  border-top: 1px solid var(--cn-color-border);
+}
