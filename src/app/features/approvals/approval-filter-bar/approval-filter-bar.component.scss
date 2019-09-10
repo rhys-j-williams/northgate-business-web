@@ -1,0 +1,35 @@
+// Hand rolled chips predating cn-filter-chips (Canopy 3.3). MBZ-1042.
+.mbz-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mbz-filter-bar__group {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.mbz-chip {
+  font: inherit;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  border: 1px solid var(--cn-color-border-strong);
+  background: var(--cn-color-surface);
+  color: var(--cn-color-text);
+  cursor: pointer;
+
+  &--on {
+    background: var(--cn-color-brand);
+    border-color: var(--cn-color-brand);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--cn-color-focus);
+    outline-offset: 1px;
+  }
+}

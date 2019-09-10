@@ -1,0 +1,8 @@
+<div class="mbz-filter-bar" *ngIf="filter">
+  <div class="mbz-filter-bar__group" role="group" aria-label="Type">
+    <button *ngFor="let k of kinds" type="button" class="mbz-chip" [class.mbz-chip--on]="filter.kind === k.value" (click)="setKind(k.value)">{{ k.label }}</button>
+  </div>
+  <div class="mbz-filter-bar__group" role="group" aria-label="Status">
+    <button *ngFor="let s of statuses" type="button" class="mbz-chip" [class.mbz-chip--on]="filter.status === s.value" (click)="setStatus(s.value)">{{ s.label }}</button>
+  </div>
+</div>
