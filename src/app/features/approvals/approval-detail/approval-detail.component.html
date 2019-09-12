@@ -1,0 +1,37 @@
+<mbz-page-loading *ngIf="loading && !approval"></mbz-page-loading>
+
+<cn-card *ngIf="!loading && !approval" title="Not found" [highlight]="true">
+  <p class="mbz-muted">This request is not in the queue. It may have been withdrawn.</p>
+  <cn-button variant="secondary" routerLink="/approvals">Back to approvals</cn-button>
+</cn-card>
+
+<ng-container *ngIf="approval">
+  <cn-page-header [title]="approval.summary" [lede]="approval.approvalId" [eyebrow]="approval.kind | mbzStatusLabel" backLink="/approvals" backLabel="Approvals">
+    <ng-container *ngIf="canDecide">
+      <cn-button cnPageAction variant="destructive" (pressed)="decide('rejected')" [loading]="deciding">Reject</cn-button>
+      <cn-button cnPageAction variant="primary" icon="cn:check" (pressed)="decide('approved')" [loading]="deciding">Approve</cn-button>
+    </ng-container>
+  </cn-page-header>
+
+  <cn-card *ngIf="decisionError" [highlight]="true" title="Decision not recorded"><p class="mbz-muted">{{ decisionError }}</p></cn-card>
+
+  <div class="mbz-grid mbz-grid--2">
+    <cn-card title="Request">
+      <dl class="mbz-dl">
+        <dt>Status</dt><dd><mbz-status-badge [status]="approval.status"></mbz-status-badge></dd>
+        <dt>Amount</dt><dd>{{ approval.amountMinor !== null ? (approval.amountMinor | mbzMoney) : '—' }}</dd>
+        <dt>Requested by</dt><dd>{{ approval.requestedBy }}</dd>
+        <dt>Requested</dt><dd>{{ approval.requestedAt | mbzDate:'long' }}</dd>
+        <dt>Expires</dt><dd>{{ approval.expiresAt | mbzDate:'long' }}</dd>
+        <dt>Required</dt><dd>{{ approval.requiredApprovals }} approvals</dd>
+      </dl>
+      <cn-button *ngIf="subjectLink" variant="secondary" size="small" [routerLink]="subjectLink">Open {{ approval.kind | mbzStatusLabel }}</cn-button>
+    </cn-card>
+
+    <cn-card title="Decisions" [subtitle]="approval.decisions.length + ' recorded'">
+      <mbz-empty-state *ngIf="approval.decisions.length === 0" title="No decisions yet" body=""></mbz-empty-state>
+      <cn-list *ngIf="approval.decisions.length" [items]="approval.decisions | mbzDecisionItems" [dividers]="true" ariaLabel="Decisions"></cn-list>
+      <p class="mbz-muted" *ngIf="blockedReason">{{ blockedReason }}</p>
+    </cn-card>
+  </div>
+</ng-container>

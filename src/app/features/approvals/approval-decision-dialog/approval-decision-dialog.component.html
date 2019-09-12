@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>{{ title }}</h2>
+<mat-dialog-content>
+  <p>{{ data.approval.summary }}</p>
+  <p class="mbz-figure" *ngIf="data.approval.amountMinor !== null">{{ data.approval.amountMinor | mbzMoney }}</p>
+  <p class="mbz-muted">Requested by {{ data.approval.requestedBy }} {{ data.approval.requestedAt | mbzDate:'ago' }}.</p>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline" class="mbz-full-width">
+      <mat-label>{{ data.decision === 'rejected' ? 'Reason' : 'Comment (optional)' }}</mat-label>
+      <textarea matInput formControlName="comment" rows="3" maxlength="200"></textarea>
+      <mat-hint align="end">{{ form.value.comment?.length || 0 }}/200</mat-hint>
+      <mat-error *ngIf="form.get('comment')?.hasError('required')">A reason is recorded in the audit log</mat-error>
+    </mat-form-field>
+
+    <mat-checkbox formControlName="acknowledged" *ngIf="data.isFinal" color="primary">
+      I understand this is the final approval and the payment will be released.
+    </mat-checkbox>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="ref.close()">Cancel</button>
+  <button mat-flat-button [color]="data.decision === 'rejected' ? 'warn' : 'primary'" (click)="confirm()" [disabled]="form.invalid">{{ data.decision === 'rejected' ? 'Reject' : 'Approve' }}</button>
+</mat-dialog-actions>
