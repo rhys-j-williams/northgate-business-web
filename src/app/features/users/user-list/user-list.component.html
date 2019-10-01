@@ -1,0 +1,20 @@
+<cn-page-header title="Users" lede="Everyone with access to this organisation. Entitlements are managed separately." eyebrow="Administration">
+  <cn-button cnPageAction variant="secondary" routerLink="/users/entitlements">Entitlements</cn-button>
+  <cn-button cnPageAction *ngIf="canManage" variant="primary" icon="cn:person-add" (pressed)="invite()">Invite user</cn-button>
+</cn-page-header>
+
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="!loading && !error">
+  <div class="mbz-toolbar">
+    <mat-form-field appearance="outline" class="mbz-toolbar__search">
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="search" autocomplete="off">
+      <mat-icon matSuffix svgIcon="cn:search"></mat-icon>
+    </mat-form-field>
+  </div>
+  <cn-card [padded]="false">
+    <cn-data-table [columns]="columns" [rows]="visible" caption="Users" [pageSize]="25" emptyText="No users match" (rowClick)="open($event)"></cn-data-table>
+  </cn-card>
+</ng-container>
