@@ -1,0 +1,40 @@
+<mbz-page-loading *ngIf="loading"></mbz-page-loading>
+<cn-card *ngIf="error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<ng-container *ngIf="user">
+  <cn-page-header [title]="user.displayName" [lede]="user.email" eyebrow="User" backLink="/users" backLabel="Users">
+    <cn-button cnPageAction *ngIf="canManage" variant="secondary" routerLink="/users/entitlements" (pressed)="editEntitlement()">Edit entitlement</cn-button>
+  </cn-page-header>
+
+  <div class="mbz-grid mbz-grid--3">
+    <cn-card [flat]="true" title="Account">
+      <dl class="mbz-dl">
+        <dt>Handle</dt><dd class="mbz-mono">{{ user.handle }}</dd>
+        <dt>Status</dt><dd><mbz-status-badge [status]="user.status"></mbz-status-badge></dd>
+        <dt>MFA</dt><dd>{{ user.mfaEnrolled ? 'Enrolled' : 'Not enrolled' }}</dd>
+        <dt>Last sign in</dt><dd>{{ user.lastLoginAt ? (user.lastLoginAt | mbzDate:'long') : 'Never' }}</dd>
+      </dl>
+    </cn-card>
+
+    <cn-card [flat]="true" title="Entitlement" *ngIf="entitlement$ | async as entitlement">
+      <dl class="mbz-dl">
+        <dt>Role</dt><dd>{{ entitlement.role }}</dd>
+        <dt>Dual approval</dt><dd>{{ entitlement.dualApprovalRequired ? 'Required' : 'Not required' }}</dd>
+        <dt>Per transaction</dt><dd>{{ entitlement.limitPerTransactionMinor !== undefined ? (entitlement.limitPerTransactionMinor | mbzMoney) : 'No limit' }}</dd>
+        <dt>Per day</dt><dd>{{ entitlement.limitPerDayMinor !== undefined ? (entitlement.limitPerDayMinor | mbzMoney) : 'No limit' }}</dd>
+      </dl>
+      <div class="mbz-chip-row">
+        <cn-badge *ngFor="let p of entitlement.permissions" tone="neutral" size="small">{{ labelFor(p) }}</cn-badge>
+      </div>
+    </cn-card>
+
+    <cn-card [flat]="true" title="Recent activity">
+      <mbz-empty-state *ngIf="recentActivity.length === 0" title="No recent activity" body=""></mbz-empty-state>
+      <ul class="mbz-plain-list">
+        <li *ngFor="let e of recentActivity">
+          <span class="mbz-mono">{{ e.action }}</span> <span class="mbz-muted">{{ e.at | mbzDate:'ago' }}</span>
+        </li>
+      </ul>
+    </cn-card>
+  </div>
+</ng-container>
