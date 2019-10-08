@@ -1,0 +1,21 @@
+<cn-dialog-shell title="Invite user" [busy]="saving">
+  <form [formGroup]="form" (ngSubmit)="send()" class="mbz-stack">
+    <mat-form-field appearance="outline">
+      <mat-label>Full name</mat-label>
+      <input matInput formControlName="displayName" maxlength="60">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Work email</mat-label>
+      <input matInput formControlName="email" type="email">
+      <mat-hint>Must be on the organisation's registered domain</mat-hint>
+      <mat-error *ngIf="form.get('email')?.hasError('pattern')">Personal email addresses are not allowed (GIS-2207)</mat-error>
+    </mat-form-field>
+    <cn-select label="Role" formControlName="role" [options]="roles"></cn-select>
+    <p class="mbz-muted">The invitation expires in 72 hours. Administrator invitations are held for a second administrator's approval.</p>
+    <p class="mbz-warn" *ngIf="error">{{ error }}</p>
+    <div class="mbz-dialog-actions">
+      <cn-button variant="tertiary" type="button" (pressed)="ref.close()" [disabled]="saving">Cancel</cn-button>
+      <cn-button variant="primary" type="submit" [loading]="saving">Send invitation</cn-button>
+    </div>
+  </form>
+</cn-dialog-shell>
