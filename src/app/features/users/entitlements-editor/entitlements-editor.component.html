@@ -1,0 +1,46 @@
+<cn-page-header title="Entitlements" lede="Roles, permissions and limits per user. Changes to sensitive permissions need a second administrator." eyebrow="Administration" backLink="/users" backLabel="Users"></cn-page-header>
+
+<cn-card *ngIf="loadError$ | async as error" title="Unavailable" [highlight]="true"><p class="mbz-muted">{{ error }}</p></cn-card>
+
+<div class="mbz-entitlements">
+  <cn-card [padded]="false" class="mbz-entitlements__list">
+    <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
+    <mat-nav-list dense>
+      <a mat-list-item *ngFor="let e of entitlements$ | async; trackBy: trackById"
+         [class.mbz-entitlements__row--selected]="(selected$ | async)?.entitlementId === e.entitlementId"
+         [class.mbz-entitlements__row--dirty]="(dirtyIds$ | async)?.indexOf(e.entitlementId) >= 0"
+         (click)="select(e)">
+        <span matListItemTitle>{{ e.userHandle }} <span class="mbz-muted" *ngIf="isSelf(e)">(you)</span></span>
+        <span matListItemLine class="mbz-muted">{{ e.role }}</span>
+        <mat-icon *ngIf="(savingIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:refresh" class="mbz-spin"></mat-icon>
+        <mat-icon *ngIf="(dirtyIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:edit"></mat-icon>
+      </a>
+    </mat-nav-list>
+  </cn-card>
+
+  <div class="mbz-entitlements__detail">
+    <ng-container *ngIf="selected$ | async as selected; else pick">
+      <cn-card [title]="selected.userHandle" [subtitle]="'Entitlement ' + selected.entitlementId">
+        <ng-container cnCardAction *ngIf="canManage">
+          <cn-button variant="tertiary" size="small" (pressed)="discard(selected)" [disabled]="(selectedIsDirty$ | async) !== true">Discard</cn-button>
+          <cn-button variant="primary" size="small" (pressed)="save(selected)" [disabled]="(selectedIsDirty$ | async) !== true" [loading]="(savingIds$ | async)?.indexOf(selected.entitlementId) >= 0">Save</cn-button>
+        </ng-container>
+
+        <p class="mbz-warn" *ngIf="isSelf(selected)">You cannot change your own entitlement. Ask another administrator.</p>
+
+        <mbz-permission-matrix [entitlement]="selected"
+                               [readonly]="!canManage || isSelf(selected)"
+                               (roleChange)="onRole(selected, $event)"
+                               (permissionToggle)="onTogglePermission(selected, $event)"
+                               (dualApprovalToggle)="onToggleDual(selected)"></mbz-permission-matrix>
+
+        <mbz-limits-form [entitlement]="selected"
+                         [readonly]="!canManage || isSelf(selected)"
+                         (limitsChange)="onLimits(selected, $event)"></mbz-limits-form>
+      </cn-card>
+    </ng-container>
+    <ng-template #pick>
+      <mbz-empty-state icon="cn:person" title="Select a user" body="Pick a user on the left to see and change their entitlement."></mbz-empty-state>
+    </ng-template>
+  </div>
+</div>

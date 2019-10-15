@@ -1,0 +1,52 @@
+// Global. mat-nav-list overrides below reach into Material's list internals (MBZ-780).
+.mbz-entitlements {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mbz-entitlements__list {
+  .mat-nav-list {
+    padding-top: 0;
+    max-height: calc(100vh - 220px);
+    overflow: auto;
+  }
+
+  .mat-list-item {
+    height: 52px;
+    border-bottom: 1px solid var(--cn-color-border);
+
+    .mat-list-item-content {
+      padding: 0 12px;
+    }
+
+    .mat-icon {
+      margin-left: auto;
+      width: 18px;
+      height: 18px;
+      color: var(--cn-color-text-muted);
+    }
+  }
+
+  .mbz-entitlements__row--selected {
+    background: rgba(18, 53, 79, .08);
+    box-shadow: inset 3px 0 0 var(--cn-color-brand);
+  }
+
+  .mbz-entitlements__row--dirty .mat-list-text {
+    font-style: italic;
+  }
+}
+
+.mbz-spin {
+  animation: mbz-spin 1s linear infinite;
+}
+
+@keyframes mbz-spin {
+  to { transform: rotate(360deg); }
+}
