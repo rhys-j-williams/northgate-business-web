@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.mbz-matrix__head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.mbz-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--cn-color-border);
+    vertical-align: middle;
+  }
+
+  thead th {
+    font-weight: 600;
+    color: var(--cn-color-text-muted);
+    font-size: 12px;
+  }
+
+  cn-badge {
+    margin-left: 6px;
+  }
+}
+
+.mbz-matrix__on {
+  text-align: center !important;
+  width: 80px;
+}
+
+.mbz-matrix__row--sensitive th {
+  font-weight: 600;
+}
+
+// cn-checkbox leaves Material's 16px inline margin on the label even when there is no label.
+:host ::ng-deep .mbz-matrix .mat-checkbox-layout .mat-checkbox-label {
+  display: none;
+}
+
+:host ::ng-deep .mbz-matrix .mat-checkbox-inner-container {
+  margin: 0;
+}

@@ -1,0 +1,24 @@
+<div class="mbz-matrix__head">
+  <cn-select label="Role" [ngModel]="entitlement.role" (ngModelChange)="roleChange.emit($event)" [options]="roles" [disabled]="readonly" hint="Changing the role resets permissions to the role default."></cn-select>
+  <cn-toggle [ngModel]="entitlement.dualApprovalRequired" (ngModelChange)="dualApprovalToggle.emit()" [disabled]="readonly" hint="Second approver on every payment this user initiates">Dual approval</cn-toggle>
+</div>
+
+<p class="mbz-warn" *ngIf="segregationWarning">This user can both initiate and approve payments without dual approval. Treasury Ops policy (GIS-1310) requires dual approval in that case; save will be rejected.</p>
+
+<table class="mbz-matrix" role="grid">
+  <thead>
+    <tr><th scope="col">Permission</th><th scope="col"></th><th scope="col" class="mbz-matrix__on">Granted</th></tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of catalogue" [class.mbz-matrix__row--sensitive]="p.sensitive">
+      <th scope="row">
+        {{ p.label }}
+        <cn-badge *ngIf="p.sensitive" tone="caution" size="small">Sensitive</cn-badge>
+      </th>
+      <td class="mbz-muted">{{ p.help }}</td>
+      <td class="mbz-matrix__on">
+        <cn-checkbox [ngModel]="has(p.key)" (ngModelChange)="permissionToggle.emit(p.key)" [disabled]="readonly" [ariaLabel]="p.label"></cn-checkbox>
+      </td>
+    </tr>
+  </tbody>
+</table>
