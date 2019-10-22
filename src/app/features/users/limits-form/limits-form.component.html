@@ -1,0 +1,14 @@
+<h4 class="mbz-section-title">Limits</h4>
+<form [formGroup]="form" class="mbz-limits">
+  <mat-form-field appearance="outline">
+    <mat-label>Per transaction</mat-label>
+    <cn-currency-input formControlName="perTransaction" [min]="0" placeholder="No limit"></cn-currency-input>
+    <mat-hint>Applies to wires, ACH batch totals and payroll runs</mat-hint>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Per day</mat-label>
+    <cn-currency-input formControlName="perDay" [min]="0" placeholder="No limit"></cn-currency-input>
+    <mat-hint *ngIf="dailyBelowTransaction" class="mbz-warn">Daily limit is below the per transaction limit</mat-hint>
+  </mat-form-field>
+</form>
+<p class="mbz-muted">Leave blank for no limit. Zero is a limit.</p>

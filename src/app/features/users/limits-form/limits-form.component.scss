@@ -1,0 +1,21 @@
+:host {
+  display: block;
+}
+
+.mbz-limits {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mbz-section-title {
+  margin: 8px 0;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--cn-color-text-muted);
+}
+
+:host ::ng-deep .mbz-limits .mat-form-field {
+  width: 100%;
+}
