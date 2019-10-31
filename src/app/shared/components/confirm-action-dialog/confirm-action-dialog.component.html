@@ -1,0 +1,18 @@
+<div class="mbz-confirm-action" [class.mbz-confirm-action--destructive]="data.destructive">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+  <mat-dialog-content>
+    <p>{{ data.message }}</p>
+    <mat-form-field appearance="outline" class="mbz-confirm-action__comment" *ngIf="data.requireComment !== undefined">
+      <mat-label>{{ data.commentLabel || 'Comment' }}</mat-label>
+      <textarea matInput [formControl]="comment" rows="3" [required]="data.requireComment"></textarea>
+      <mat-error *ngIf="comment.hasError('required')">A comment is required for the audit trail.</mat-error>
+      <mat-error *ngIf="comment.hasError('minlength')">Say a little more than that.</mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" (click)="cancel()">Cancel</button>
+    <button mat-flat-button type="button" [color]="data.destructive ? 'warn' : 'primary'" (click)="confirm()" cdkFocusInitial>
+      {{ data.confirmLabel || 'Confirm' }}
+    </button>
+  </mat-dialog-actions>
+</div>
