@@ -1,0 +1,44 @@
+.mbz-reports {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  align-items: start;
+
+  @media (max-width: 960px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.mbz-reports__side,
+.mbz-reports__main {
+  display: grid;
+  gap: 16px;
+}
+
+.mbz-report-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--cn-color-border);
+    cursor: pointer;
+    font-size: 13px;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    &:hover,
+    &:focus {
+      background: var(--cn-color-surface-alt);
+      outline: none;
+    }
+  }
+}
+
+.mbz-report-list__item--on {
+  background: rgba(18, 53, 79, .08);
+  box-shadow: inset 3px 0 0 var(--cn-color-brand);
+}

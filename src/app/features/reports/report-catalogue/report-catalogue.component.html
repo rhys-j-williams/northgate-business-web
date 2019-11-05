@@ -1,0 +1,33 @@
+<cn-page-header title="Reports" lede="Run a report, check the preview, export the CSV. Scheduled delivery is MBZ-2210 and is not coming." eyebrow="Reporting"></cn-page-header>
+
+<div class="mbz-reports">
+  <div class="mbz-reports__side">
+    <cn-card title="Catalogue" [padded]="false">
+      <ul class="mbz-report-list">
+        <li *ngFor="let r of catalogue$ | async" [class.mbz-report-list__item--on]="selected?.reportId === r.reportId" (click)="choose(r)" (keydown.enter)="choose(r)" tabindex="0">
+          <strong>{{ r.name }}</strong>
+          <div class="mbz-muted">{{ r.description }}</div>
+        </li>
+      </ul>
+    </cn-card>
+    <mbz-report-history [runs]="runs$ | async"></mbz-report-history>
+  </div>
+
+  <div class="mbz-reports__main">
+    <mbz-empty-state *ngIf="!selected" icon="cn:chart" title="Choose a report" body="Pick something from the catalogue."></mbz-empty-state>
+
+    <ng-container *ngIf="selected">
+      <cn-card [title]="selected.name" [subtitle]="selected.reportId + ' · owned by ' + selected.owner">
+        <p class="mbz-muted" *ngIf="!canRun">You do not have the reports:run permission. Ask an administrator.</p>
+        <mbz-report-parameters [definition]="selected" [disabled]="!canRun || running" (run)="run($event)"></mbz-report-parameters>
+      </cn-card>
+
+      <cn-card *ngIf="result" [title]="'Preview · ' + result.rows.length + ' rows'" [subtitle]="result.run.fileName" [padded]="false">
+        <ng-container cnCardAction>
+          <cn-button variant="primary" size="small" icon="cn:download" (pressed)="exportCsv()" [disabled]="!csvEnabled || result.rows.length === 0">Export CSV</cn-button>
+        </ng-container>
+        <mbz-report-preview [rows]="result.rows"></mbz-report-preview>
+      </cn-card>
+    </ng-container>
+  </div>
+</div>
