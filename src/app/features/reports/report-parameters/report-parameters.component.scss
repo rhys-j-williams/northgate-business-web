@@ -1,0 +1,19 @@
+.mbz-params {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  align-items: end;
+}
+
+.mbz-params__presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding-bottom: 20px;
+}
+
+.mbz-params__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}

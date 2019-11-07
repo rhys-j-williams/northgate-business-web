@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="mbz-params">
+  <ng-container *ngIf="wants('dateRange')">
+    <cn-date-range label="Period" formControlName="range"></cn-date-range>
+    <div class="mbz-params__presets">
+      <cn-button *ngFor="let p of presets" variant="tertiary" size="small" type="button" (pressed)="applyPreset(p)" [disabled]="disabled">{{ p.label }}</cn-button>
+    </div>
+  </ng-container>
+  <cn-select *ngIf="wants('account')" label="Account" formControlName="accountId" [options]="accountOptions"></cn-select>
+  <cn-select *ngIf="wants('status')" label="Status" formControlName="status" [options]="statusOptions"></cn-select>
+  <cn-select *ngIf="wants('user')" label="User" formControlName="user" [options]="userOptions"></cn-select>
+  <div class="mbz-params__actions">
+    <cn-button variant="primary" type="submit" icon="cn:play" [disabled]="disabled" [loading]="disabled">Run report</cn-button>
+  </div>
+</form>
