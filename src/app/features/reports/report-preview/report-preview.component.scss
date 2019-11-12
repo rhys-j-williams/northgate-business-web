@@ -1,0 +1,38 @@
+// Global (ViewEncapsulation.None), prefixed .mbz-preview.
+.mbz-preview {
+  max-height: 480px;
+  overflow: auto;
+}
+
+.mbz-preview__table {
+  width: 100%;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+
+  .mat-header-cell {
+    white-space: nowrap;
+    background: var(--cn-color-surface);
+  }
+
+  .mat-cell {
+    white-space: nowrap;
+    max-width: 280px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .mat-header-cell.mbz-num,
+  .mat-cell.mbz-num {
+    text-align: right;
+  }
+
+  // Sticky header shadow, Material does not do this for us in 14.
+  .mat-header-row {
+    box-shadow: 0 1px 0 var(--cn-color-border);
+  }
+}
+
+.mbz-preview__empty {
+  padding: 16px;
+  margin: 0;
+}

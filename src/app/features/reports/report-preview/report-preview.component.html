@@ -1,0 +1,12 @@
+<div class="mbz-preview">
+  <table mat-table [dataSource]="dataSource" matSort class="mbz-preview__table">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header [class.mbz-num]="isNumeric(column)">{{ header(column) }}</th>
+      <td mat-cell *matCellDef="let row" [class.mbz-num]="isNumeric(column)">{{ format(row[column], column) }}</td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns"></tr>
+    <tr class="mat-row" *matNoDataRow><td class="mat-cell" [attr.colspan]="columns.length || 1"><p class="mbz-muted mbz-preview__empty">No rows.</p></td></tr>
+  </table>
+</div>
+<mat-paginator [pageSize]="50" [pageSizeOptions]="[50, 200]" [hidePageSize]="rows.length < 50"></mat-paginator>
