@@ -1,0 +1,18 @@
+<cn-card [flat]="true" [title]="alert.label" [subtitle]="alert.code" class="mbz-alert-card" [class.mbz-alert-card--off]="!alert.enabled">
+  <ng-container cnCardAction>
+    <cn-badge *ngIf="alert.regulatory" tone="info" size="small">Regulatory</cn-badge>
+    <mat-slide-toggle *ngIf="!alert.regulatory" color="primary" [checked]="alert.enabled" [disabled]="saving" (change)="enabledChange.emit($event.checked)" [attr.aria-label]="'Enable ' + alert.label"></mat-slide-toggle>
+  </ng-container>
+  <p class="mbz-alert-card__desc">{{ alert.description }}</p>
+  <dl class="mbz-dl mbz-dl--tight">
+    <dt>Channels</dt><dd>{{ alert.channels.join(', ') }}</dd>
+    <ng-container *ngIf="hasThreshold">
+      <dt>Threshold</dt>
+      <dd>
+        {{ alert.thresholdMinor | mbzMoney }}
+        <button mat-icon-button class="mbz-alert-card__edit" (click)="thresholdEdit.emit()" [disabled]="saving || !alert.enabled" aria-label="Edit threshold"><mat-icon svgIcon="cn:edit"></mat-icon></button>
+      </dd>
+    </ng-container>
+    <dt>Last fired</dt><dd>{{ alert.lastFiredAt ? (alert.lastFiredAt | mbzDate:'ago') : 'Never' }}</dd>
+  </dl>
+</cn-card>

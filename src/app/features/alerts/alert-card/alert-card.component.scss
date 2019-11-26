@@ -1,0 +1,39 @@
+:host {
+  display: block;
+}
+
+.mbz-alert-card--off {
+  opacity: .7;
+}
+
+.mbz-alert-card__desc {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.mbz-dl--tight {
+  font-size: 12px;
+
+  dd {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+}
+
+// mat-icon-button is 40px tall in Material 14 which blows out the dl row. Shrink it.
+:host ::ng-deep .mbz-alert-card__edit.mat-icon-button {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+
+  .mat-icon {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+}
+
+:host ::ng-deep .mat-slide-toggle-bar {
+  height: 12px;
+}
