@@ -1,0 +1,13 @@
+<h2 mat-dialog-title>{{ alert.label }}</h2>
+<mat-dialog-content>
+  <p class="mbz-muted">{{ alert.description }}</p>
+  <mat-form-field appearance="outline" class="mbz-block">
+    <mat-label>Threshold</mat-label>
+    <cn-currency-input [formControl]="amount" [min]="0"></cn-currency-input>
+    <mat-error *ngIf="amount.hasError('min')">Must be zero or more</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="ref.close()">Cancel</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
