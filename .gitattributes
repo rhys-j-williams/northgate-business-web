@@ -1,14 +1,21 @@
+# Normalise everything to LF in the repository. CONTRIBUTING.md, "Line endings".
 * text=auto eol=lf
 
+*.ts   text eol=lf
+*.html text eol=lf
+*.scss text eol=lf
+*.json text eol=lf
+*.md   text eol=lf
 *.sh   text eol=lf
-*.bat  text eol=crlf
-*.cmd  text eol=crlf
+Jenkinsfile text eol=lf
 
 *.png  binary
-*.jpg  binary
 *.ico  binary
-*.woff binary
 *.woff2 binary
 
-# Copybooks are transferred to the mainframe as fixed width records; do not let git touch them.
-*.cpy  -text
+# NACHA sample files are byte-exact, CRLF is part of the format. Do not touch. MBZ-1104
+src/assets/nacha/*.ach -text
+
+# MBZ-1104 follow-up. This file came over from the Windows-era NACHA tooling with CRLF and every
+# attempt to normalise it has produced a 400-line diff nobody would review. Left as is.
+src/app/legacy/nacha-format.constants.ts -text
