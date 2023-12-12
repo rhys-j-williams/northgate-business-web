@@ -1,0 +1,12 @@
+apiVersion: v2
+name: business-web
+description: Local/legacy chart for business-web. The deployable chart is platform-tooling/helm/business-web (TOOL-1102 to consolidate). This one is for the kind cluster and the pre-2022 DeploymentConfig rollback path, which we have used once, in 2023.
+type: application
+version: 0.3.1
+appVersion: "2026.9.0"
+maintainers:
+  - name: business-digital
+    email: business-digital@example.com
+annotations:
+  meridian.bank/ticket-key: MBZ
+  meridian.bank/compliance-critical: "false"

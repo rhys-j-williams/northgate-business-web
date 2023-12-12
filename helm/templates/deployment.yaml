@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "business-web.name" . }}
+  labels:
+    {{- include "business-web.labels" . | nindent 4 }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "business-web.name" . }}
+  template:
+    metadata:
+      labels:
+        {{- include "business-web.labels" . | nindent 8 }}
+      annotations:
+        checksum/env: {{ .Values.env | toJson | sha256sum }}
+    spec:
+      containers:
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.containerPort }}
+          readinessProbe:
+            httpGet: { path: /index.html, port: {{ .Values.containerPort }} }
+          volumeMounts:
+            - name: env
+              mountPath: /usr/share/nginx/html/assets/env.json
+              subPath: env.json
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      volumes:
+        - name: env
+          configMap:
+            name: {{ include "business-web.name" . }}-env

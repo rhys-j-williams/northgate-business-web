@@ -1,0 +1,25 @@
+# Local chart defaults. See platform-tooling/helm/business-web/values.yaml for the real thing.
+replicaCount: 1
+
+image:
+  repository: business-web
+  tag: local
+  pullPolicy: Never
+
+containerPort: 8080
+service:
+  port: 8080
+
+# Rendered to /usr/share/nginx/html/assets/env.json and read at bootstrap (see src/environments/environment.prod.ts).
+# The key names are load bearing; the app does not validate them (MBZ-1620).
+env:
+  API_BASE: /api
+  IDP_ISSUER: http://localhost:4400
+  IDP_CLIENT_ID: meridian-business-web
+  USE_FIXTURES: "false"
+  TELEMETRY_ENABLED: "false"
+  IDLE_TIMEOUT_MINUTES: "10"
+
+resources:
+  requests: { cpu: 50m, memory: 64Mi }
+  limits: { cpu: 200m, memory: 128Mi }

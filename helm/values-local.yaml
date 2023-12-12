@@ -1,0 +1,5 @@
+# kind / docker desktop. BFF and IdP on the host from mock-external/estate-up.sh.
+env:
+  API_BASE: http://host.docker.internal:4501/api
+  IDP_ISSUER: http://host.docker.internal:4400
+  USE_FIXTURES: "true"
