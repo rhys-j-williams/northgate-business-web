@@ -1,0 +1,2729 @@
+{
+ "component": "business-web",
+ "commits": [
+  {
+   "date": "2019-01-07",
+   "author": "k.subramani",
+   "message": "MBZ-12 scaffold Meridian Business workspace with Angular CLI 7",
+   "body": "ng new meridian-business --routing --style=scss --prefix=mbz. Angular 7.2, Node 10 on the laptops.\nWe are calling the Jira project MBZ.",
+   "paths": [
+    "business-web/angular.json",
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/tsconfig.json",
+    "business-web/tsconfig.app.json",
+    "business-web/tsconfig.spec.json",
+    "business-web/src/main.ts",
+    "business-web/src/polyfills.ts",
+    "business-web/src/index.html",
+    "business-web/src/favicon.ico",
+    "business-web/src/assets/.gitkeep",
+    "business-web/src/test.ts",
+    "business-web/.editorconfig",
+    "business-web/.gitignore",
+    "business-web/.browserslistrc",
+    "business-web/src/environments/environment.ts",
+    "business-web/src/environments/environment.prod.ts"
+   ]
+  },
+  {
+   "date": "2019-01-08",
+   "author": "k.subramani",
+   "message": "MBZ-14 add tslint with codelyzer and the GIS-STD-014 rule set",
+   "paths": [
+    "business-web/tslint.json"
+   ]
+  },
+  {
+   "date": "2019-01-08",
+   "author": "n.rajaram",
+   "message": "MBZ-15 karma config for headless Chrome on the build agent",
+   "paths": [
+    "business-web/karma.conf.js"
+   ]
+  },
+  {
+   "date": "2019-01-10",
+   "author": "k.subramani",
+   "message": "MBZ-18 app shell with Material toolbar and sidenav",
+   "paths": [
+    "business-web/src/app/app.module.ts",
+    "business-web/src/app/app.component.ts",
+    "business-web/src/app/app-routing.module.ts",
+    "business-web/src/app/layout/shell/shell.component.ts",
+    "business-web/src/app/layout/shell/shell.component.html",
+    "business-web/src/app/layout/shell/shell.component.scss"
+   ]
+  },
+  {
+   "date": "2019-01-11",
+   "author": "n.rajaram",
+   "message": "MBZ-19 global styles and the row height variable",
+   "paths": [
+    "business-web/src/styles.scss",
+    "business-web/src/styles/_variables.scss"
+   ]
+  },
+  {
+   "date": "2019-01-14",
+   "author": "k.subramani",
+   "message": "MBZ-22 core module with the once-only guard",
+   "paths": [
+    "business-web/src/app/core/core.module.ts"
+   ]
+  },
+  {
+   "date": "2019-01-15",
+   "author": "k.subramani",
+   "message": "MBZ-24 OIDC code flow against Keystone",
+   "body": "Keystone team gave us the meridian-business-web client on Friday. Redirect is /auth/callback.",
+   "paths": [
+    "business-web/src/app/core/services/auth.service.ts",
+    "business-web/src/app/core/models/session.models.ts",
+    "business-web/src/app/layout/auth-callback/auth-callback.component.ts"
+   ]
+  },
+  {
+   "date": "2019-01-16",
+   "author": "n.rajaram",
+   "message": "MBZ-25 auth guard and bearer interceptor",
+   "paths": [
+    "business-web/src/app/core/guards/auth.guard.ts",
+    "business-web/src/app/core/interceptors/auth.interceptor.ts"
+   ]
+  },
+  {
+   "date": "2019-01-17",
+   "author": "k.subramani",
+   "message": "MBZ-27 signed-out and not-found pages",
+   "paths": [
+    "business-web/src/app/layout/signed-out/signed-out.component.ts",
+    "business-web/src/app/layout/not-found/not-found.component.ts"
+   ]
+  },
+  {
+   "date": "2019-01-22",
+   "author": "n.rajaram",
+   "message": "MBZ-31 record architecture decisions",
+   "paths": [
+    "business-web/docs/adr/0001-record-architecture-decisions.md"
+   ]
+  },
+  {
+   "date": "2019-01-24",
+   "author": "k.subramani",
+   "message": "MBZ-33 correlation id interceptor per PLAT-410 header agreement",
+   "paths": [
+    "business-web/src/app/core/interceptors/correlation.interceptor.ts"
+   ]
+  },
+  {
+   "date": "2019-01-29",
+   "author": "n.rajaram",
+   "message": "MBZ-38 error interceptor with the platform envelope",
+   "paths": [
+    "business-web/src/app/core/interceptors/error.interceptor.ts"
+   ]
+  },
+  {
+   "date": "2019-02-04",
+   "author": "k.subramani",
+   "message": "MBZ-41 domain models for accounts and transactions",
+   "paths": [
+    "business-web/src/app/core/models/business.models.ts",
+    "business-web/src/app/core/models/index.ts"
+   ]
+  },
+  {
+   "date": "2019-02-05",
+   "author": "k.subramani",
+   "message": "MBZ-44 shared module, money and mask-account pipes",
+   "paths": [
+    "business-web/src/app/shared/shared.module.ts",
+    "business-web/src/app/shared/pipes/money.pipe.ts",
+    "business-web/src/app/shared/pipes/mask-account.pipe.ts"
+   ]
+  },
+  {
+   "date": "2019-02-07",
+   "author": "n.rajaram",
+   "message": "MBZ-46 accounts overview",
+   "paths": [
+    "business-web/src/app/features/accounts/accounts.module.ts",
+    "business-web/src/app/features/accounts/accounts.service.ts",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.scss",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-08",
+   "author": "n.rajaram",
+   "message": "MBZ-46 balance summary card",
+   "paths": [
+    "business-web/src/app/features/accounts/balance-summary/balance-summary.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-12",
+   "author": "k.subramani",
+   "message": "MBZ-49 account detail and transaction list",
+   "paths": [
+    "business-web/src/app/features/accounts/account-detail/account-detail.component.html",
+    "business-web/src/app/features/accounts/account-detail/account-detail.component.ts",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.html",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.scss",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-14",
+   "author": "k.subramani",
+   "message": "MBZ-52 transaction filter bar",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-filter/transaction-filter.component.html",
+    "business-web/src/app/features/accounts/transaction-filter/transaction-filter.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-19",
+   "author": "n.rajaram",
+   "message": "MBZ-55 transaction detail dialog on MatDialog",
+   "body": "Material dialog directly; the design system does not have one yet.",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-detail-dialog/transaction-detail-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-21",
+   "author": "n.rajaram",
+   "message": "MBZ-57 mask account pipe spec",
+   "paths": [
+    "business-web/src/app/shared/pipes/mask-account.pipe.spec.ts"
+   ]
+  },
+  {
+   "date": "2019-02-26",
+   "author": "k.subramani",
+   "message": "MBZ-60 status badge and empty state",
+   "paths": [
+    "business-web/src/app/shared/components/status-badge/status-badge.component.ts",
+    "business-web/src/app/shared/components/empty-state/empty-state.component.ts"
+   ]
+  },
+  {
+   "date": "2019-02-28",
+   "author": "k.subramani",
+   "message": "MBZ-62 page loading component",
+   "paths": [
+    "business-web/src/app/shared/components/page-loading/page-loading.component.ts"
+   ]
+  },
+  {
+   "date": "2019-03-07",
+   "author": "k.subramani",
+   "message": "Merge release/2019.03 into main for train 2019.03.1",
+   "empty": true
+  },
+  {
+   "date": "2019-03-11",
+   "author": "n.rajaram",
+   "message": "MBZ-66 business date pipe and status label pipe",
+   "paths": [
+    "business-web/src/app/shared/pipes/business-date.pipe.ts",
+    "business-web/src/app/shared/pipes/status-label.pipe.ts"
+   ]
+  },
+  {
+   "date": "2019-03-13",
+   "author": "k.subramani",
+   "message": "MBZ-70 idle timeout at ten minutes with warning at eight",
+   "body": "MBZ-77 from Compliance. Ten minutes, not negotiable, do not change it for a complaint.",
+   "paths": [
+    "business-web/src/app/core/services/session-idle.service.ts",
+    "business-web/src/app/layout/idle-warning/idle-warning.component.ts"
+   ]
+  },
+  {
+   "date": "2019-03-19",
+   "author": "n.rajaram",
+   "message": "MBZ-74 business day arithmetic with Fed holiday table",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2019-03-21",
+   "author": "k.subramani",
+   "message": "MBZ-78 CSV export service",
+   "paths": [
+    "business-web/src/app/core/services/csv-export.service.ts"
+   ]
+  },
+  {
+   "date": "2019-03-25",
+   "author": "k.subramani",
+   "message": "MBZ-80 export transactions to CSV",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.html",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.scss",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-03-28",
+   "author": "k.subramani",
+   "message": "Merge release/2019.03 into main for train 2019.03.2",
+   "empty": true
+  },
+  {
+   "date": "2019-04-02",
+   "author": "n.rajaram",
+   "message": "MBZ-84 money cell component",
+   "paths": [
+    "business-web/src/app/shared/components/money-cell/money-cell.component.ts"
+   ]
+  },
+  {
+   "date": "2019-04-04",
+   "author": "k.subramani",
+   "message": "MBZ-88 statements screen",
+   "paths": [
+    "business-web/src/app/legacy/statements/legacy-statements.component.ts",
+    "business-web/src/app/legacy/statements/legacy-statements.component.html",
+    "business-web/src/app/legacy/statements/legacy-statements.component.scss"
+   ]
+  },
+  {
+   "date": "2019-04-09",
+   "author": "n.rajaram",
+   "message": "MBZ-91 permission guard reading entitlements from the token",
+   "paths": [
+    "business-web/src/app/core/guards/permission.guard.ts"
+   ]
+  },
+  {
+   "date": "2019-04-11",
+   "author": "k.subramani",
+   "message": "MBZ-94 sonar and checkmarx project files",
+   "paths": [
+    "business-web/sonar-project.properties",
+    "business-web/checkmarx.yml"
+   ]
+  },
+  {
+   "date": "2019-04-16",
+   "author": "e.castellanos",
+   "message": "TOOL-210 Jenkinsfile on the shared library",
+   "paths": [
+    "business-web/Jenkinsfile"
+   ]
+  },
+  {
+   "date": "2019-04-18",
+   "author": "k.subramani",
+   "message": "Merge release/2019.04 into main for train 2019.04.1",
+   "empty": true
+  },
+  {
+   "date": "2019-04-23",
+   "author": "k.subramani",
+   "message": "MBZ-99 audit log screen",
+   "paths": [
+    "business-web/src/app/legacy/audit-log/legacy-audit-log.component.ts"
+   ]
+  },
+  {
+   "date": "2019-04-30",
+   "author": "n.rajaram",
+   "message": "MBZ-103 payroll models",
+   "empty": true
+  },
+  {
+   "date": "2019-05-02",
+   "author": "k.subramani",
+   "message": "Merge release/2019.05 into main for train 2019.05.1",
+   "empty": true
+  },
+  {
+   "date": "2019-05-07",
+   "author": "k.subramani",
+   "message": "MBZ-105 payroll runs list",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll.module.ts",
+    "business-web/src/app/features/payroll/payroll.service.ts",
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.html",
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.scss",
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.ts"
+   ]
+  },
+  {
+   "date": "2019-05-09",
+   "author": "k.subramani",
+   "message": "MBZ-107 payroll run detail",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.html",
+    "business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2019-05-14",
+   "author": "n.rajaram",
+   "message": "MBZ-110 employee list with selection",
+   "paths": [
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.html",
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.scss",
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-05-16",
+   "author": "n.rajaram",
+   "message": "MBZ-112 payroll line editor",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.html",
+    "business-web/src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.scss",
+    "business-web/src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2019-05-21",
+   "author": "k.subramani",
+   "message": "MBZ-115 new payroll run wizard on MatStepper",
+   "body": "Three steps. Stepper is Material directly; the design system has no stepper.",
+   "paths": [
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.html",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.scss",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.ts"
+   ]
+  },
+  {
+   "date": "2019-05-23",
+   "author": "k.subramani",
+   "message": "MBZ-118 business day validation on pay date",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll.service.ts"
+   ]
+  },
+  {
+   "date": "2019-05-30",
+   "author": "k.subramani",
+   "message": "Merge release/2019.05 into main for train 2019.05.2",
+   "empty": true
+  },
+  {
+   "date": "2019-06-04",
+   "author": "n.rajaram",
+   "message": "MBZ-121 payroll scheduling ahead of the ACH cutoff",
+   "paths": [
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.html",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.scss",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.ts"
+   ]
+  },
+  {
+   "date": "2019-06-06",
+   "author": "k.subramani",
+   "message": "MBZ-124 insufficient funds warning on payroll submit",
+   "paths": [
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.html",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.scss",
+    "business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.ts"
+   ]
+  },
+  {
+   "date": "2019-06-11",
+   "author": "n.rajaram",
+   "message": "MBZ-126 CONTRIBUTING and CODEOWNERS",
+   "paths": [
+    "business-web/CONTRIBUTING.md",
+    "business-web/CODEOWNERS"
+   ]
+  },
+  {
+   "date": "2019-06-13",
+   "author": "c.mbeki",
+   "message": "GIS-1180 SECURITY.md and data classification",
+   "paths": [
+    "business-web/SECURITY.md",
+    "business-web/DATA_CLASSIFICATION.md"
+   ]
+  },
+  {
+   "date": "2019-06-13",
+   "author": "k.subramani",
+   "message": "Merge release/2019.06 into main for train 2019.06.1",
+   "empty": true
+  },
+  {
+   "date": "2019-06-18",
+   "author": "p.venkatesan",
+   "message": "MBZ-130 NACHA format constants from the payments team",
+   "body": "Lifted from the Windows NACHA tooling in payments-platform. Record types, SEC codes, field positions.",
+   "paths": [
+    "business-web/src/app/legacy/nacha-format.constants.ts"
+   ]
+  },
+  {
+   "date": "2019-06-20",
+   "author": "p.venkatesan",
+   "message": "MBZ-131 NACHA parser, pure TypeScript",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.ts"
+   ]
+  },
+  {
+   "date": "2019-06-25",
+   "author": "p.venkatesan",
+   "message": "MBZ-133 synthetic NACHA fixtures",
+   "paths": [
+    "business-web/src/app/legacy/testing/nacha-fixtures.ts"
+   ]
+  },
+  {
+   "date": "2019-06-26",
+   "author": "k.subramani",
+   "message": "MBZ-134 NACHA parser characterisation tests",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.spec.ts"
+   ]
+  },
+  {
+   "date": "2019-06-27",
+   "author": "k.subramani",
+   "message": "Merge release/2019.06 into main for train 2019.06.2",
+   "empty": true
+  },
+  {
+   "date": "2019-07-02",
+   "author": "n.rajaram",
+   "message": "MBZ-137 ACH batches list and detail",
+   "paths": [
+    "business-web/src/app/features/ach/ach.module.ts",
+    "business-web/src/app/features/ach/ach.service.ts",
+    "business-web/src/app/features/ach/ach-batches/ach-batches.component.html",
+    "business-web/src/app/features/ach/ach-batches/ach-batches.component.ts",
+    "business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.html",
+    "business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-09",
+   "author": "k.subramani",
+   "message": "MBZ-140 NACHA file upload with drag and drop",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.html",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.scss",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-11",
+   "author": "k.subramani",
+   "message": "MBZ-142 NACHA validation report grouped by batch",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-validation-report/nacha-validation-report.component.html",
+    "business-web/src/app/features/ach/nacha-validation-report/nacha-validation-report.component.scss",
+    "business-web/src/app/features/ach/nacha-validation-report/nacha-validation-report.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-11",
+   "author": "k.subramani",
+   "message": "Merge release/2019.07 into main for train 2019.07.1",
+   "empty": true
+  },
+  {
+   "date": "2019-07-16",
+   "author": "n.rajaram",
+   "message": "MBZ-145 2MB upload limit and ASCII check",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.html",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.scss",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-18",
+   "author": "k.subramani",
+   "message": "MBZ-147 offset account selection on upload",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.html",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.scss",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-23",
+   "author": "n.rajaram",
+   "message": "MBZ-150 ACH templates",
+   "paths": [
+    "business-web/src/app/features/ach/ach-templates/ach-templates.component.html",
+    "business-web/src/app/features/ach/ach-templates/ach-templates.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-25",
+   "author": "n.rajaram",
+   "message": "MBZ-152 ACH template editor with dynamic form arrays",
+   "paths": [
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.html",
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.scss",
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2019-07-25",
+   "author": "k.subramani",
+   "message": "Merge release/2019.07 into main for train 2019.07.2",
+   "empty": true
+  },
+  {
+   "date": "2019-07-30",
+   "author": "k.subramani",
+   "message": "MBZ-155 fix control total validation on files with an odd blocking factor",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.ts"
+   ]
+  },
+  {
+   "date": "2019-08-06",
+   "author": "k.subramani",
+   "message": "MBZ-158 wires module, beneficiary list",
+   "paths": [
+    "business-web/src/app/features/wires/wires.module.ts",
+    "business-web/src/app/features/wires/wires.service.ts",
+    "business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.html",
+    "business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-08-08",
+   "author": "n.rajaram",
+   "message": "MBZ-160 beneficiary picker",
+   "paths": [
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.html",
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.scss",
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.ts"
+   ]
+  },
+  {
+   "date": "2019-08-08",
+   "author": "k.subramani",
+   "message": "Merge release/2019.08 into main for train 2019.08.1",
+   "empty": true
+  },
+  {
+   "date": "2019-08-13",
+   "author": "k.subramani",
+   "message": "MBZ-163 new domestic wire",
+   "paths": [
+    "business-web/src/app/features/wires/new-wire/new-wire.component.html",
+    "business-web/src/app/features/wires/new-wire/new-wire.component.scss",
+    "business-web/src/app/features/wires/new-wire/new-wire.component.ts"
+   ]
+  },
+  {
+   "date": "2019-08-15",
+   "author": "n.rajaram",
+   "message": "MBZ-165 wire list",
+   "paths": [
+    "business-web/src/app/features/wires/wire-list/wire-list.component.html",
+    "business-web/src/app/features/wires/wire-list/wire-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-08-20",
+   "author": "k.subramani",
+   "message": "MBZ-168 wire detail",
+   "paths": [
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.html",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.scss",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2019-08-22",
+   "author": "n.rajaram",
+   "message": "MBZ-170 wire cutoff from BusinessDateService",
+   "paths": [
+    "business-web/src/app/features/wires/wires.service.ts"
+   ]
+  },
+  {
+   "date": "2019-08-22",
+   "author": "k.subramani",
+   "message": "Merge release/2019.08 into main for train 2019.08.2",
+   "empty": true
+  },
+  {
+   "date": "2019-08-27",
+   "author": "k.subramani",
+   "message": "MBZ-172 NgRx store root state",
+   "paths": [
+    "business-web/src/app/store/app.state.ts"
+   ]
+  },
+  {
+   "date": "2019-08-27",
+   "author": "w.tanaka",
+   "message": "MBZ-412 ADR: hand rolled reducers, no entity adapter",
+   "paths": [
+    "business-web/docs/adr/0002-hand-rolled-ngrx-state.md"
+   ]
+  },
+  {
+   "date": "2019-08-29",
+   "author": "k.subramani",
+   "message": "MBZ-175 approvals actions and reducer",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.actions.ts",
+    "business-web/src/app/store/approvals/approvals.reducer.ts"
+   ]
+  },
+  {
+   "date": "2019-09-03",
+   "author": "k.subramani",
+   "message": "MBZ-176 approvals selectors and effects",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.selectors.ts",
+    "business-web/src/app/store/approvals/approvals.effects.ts"
+   ]
+  },
+  {
+   "date": "2019-09-05",
+   "author": "n.rajaram",
+   "message": "MBZ-178 approvals queue",
+   "paths": [
+    "business-web/src/app/features/approvals/approvals.module.ts",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.html",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.scss",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.ts"
+   ]
+  },
+  {
+   "date": "2019-09-05",
+   "author": "k.subramani",
+   "message": "Merge release/2019.09 into main for train 2019.09.1",
+   "empty": true
+  },
+  {
+   "date": "2019-09-10",
+   "author": "n.rajaram",
+   "message": "MBZ-180 approval filter bar",
+   "paths": [
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.html",
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.scss",
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.ts"
+   ]
+  },
+  {
+   "date": "2019-09-12",
+   "author": "k.subramani",
+   "message": "MBZ-182 approval detail and decision dialog",
+   "paths": [
+    "business-web/src/app/features/approvals/approval-detail/approval-detail.component.html",
+    "business-web/src/app/features/approvals/approval-detail/approval-detail.component.ts",
+    "business-web/src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.html",
+    "business-web/src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2019-09-17",
+   "author": "k.subramani",
+   "message": "MBZ-184 decision items pipe",
+   "paths": [
+    "business-web/src/app/features/approvals/decision-items.pipe.ts"
+   ]
+  },
+  {
+   "date": "2019-09-19",
+   "author": "n.rajaram",
+   "message": "MBZ-186 dual approval on wires above the limit",
+   "paths": [
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.html",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.scss",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2019-09-19",
+   "author": "k.subramani",
+   "message": "Merge release/2019.09 into main for train 2019.09.2",
+   "empty": true
+  },
+  {
+   "date": "2019-09-24",
+   "author": "k.subramani",
+   "message": "MBZ-188 approver cannot be maker",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.ts"
+   ]
+  },
+  {
+   "date": "2019-09-26",
+   "author": "k.subramani",
+   "message": "MBZ-189 reject same approver twice",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.ts"
+   ]
+  },
+  {
+   "date": "2019-10-01",
+   "author": "n.rajaram",
+   "message": "MBZ-192 users module and user list",
+   "paths": [
+    "business-web/src/app/features/users/users.module.ts",
+    "business-web/src/app/features/users/users.service.ts",
+    "business-web/src/app/features/users/user-list/user-list.component.html",
+    "business-web/src/app/features/users/user-list/user-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-03",
+   "author": "n.rajaram",
+   "message": "MBZ-194 user detail",
+   "paths": [
+    "business-web/src/app/features/users/user-detail/user-detail.component.html",
+    "business-web/src/app/features/users/user-detail/user-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-03",
+   "author": "k.subramani",
+   "message": "Merge release/2019.10 into main for train 2019.10.1",
+   "empty": true
+  },
+  {
+   "date": "2019-10-08",
+   "author": "k.subramani",
+   "message": "MBZ-196 invite user dialog",
+   "paths": [
+    "business-web/src/app/features/users/invite-user-dialog/invite-user-dialog.component.html",
+    "business-web/src/app/features/users/invite-user-dialog/invite-user-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-10",
+   "author": "k.subramani",
+   "message": "MBZ-198 entitlements store, hand rolled",
+   "paths": [
+    "business-web/src/app/store/entitlements/entitlements.actions.ts",
+    "business-web/src/app/store/entitlements/entitlements.reducer.ts",
+    "business-web/src/app/store/entitlements/entitlements.selectors.ts",
+    "business-web/src/app/store/entitlements/entitlements.effects.ts"
+   ]
+  },
+  {
+   "date": "2019-10-15",
+   "author": "n.rajaram",
+   "message": "MBZ-200 entitlements editor",
+   "paths": [
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.html",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.scss",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-17",
+   "author": "n.rajaram",
+   "message": "MBZ-202 permission matrix",
+   "paths": [
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.html",
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.scss",
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-17",
+   "author": "k.subramani",
+   "message": "Merge release/2019.10 into main for train 2019.10.2",
+   "empty": true
+  },
+  {
+   "date": "2019-10-22",
+   "author": "k.subramani",
+   "message": "MBZ-204 limits form",
+   "paths": [
+    "business-web/src/app/features/users/limits-form/limits-form.component.html",
+    "business-web/src/app/features/users/limits-form/limits-form.component.scss",
+    "business-web/src/app/features/users/limits-form/limits-form.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-24",
+   "author": "k.subramani",
+   "message": "MBZ-206 dual approval setting per organisation",
+   "paths": [
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.html",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.scss",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-29",
+   "author": "n.rajaram",
+   "message": "MBZ-208 unsaved changes guard",
+   "paths": [
+    "business-web/src/app/core/guards/unsaved-changes.guard.ts"
+   ]
+  },
+  {
+   "date": "2019-10-31",
+   "author": "n.rajaram",
+   "message": "MBZ-210 confirm action dialog",
+   "paths": [
+    "business-web/src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.html",
+    "business-web/src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.scss",
+    "business-web/src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2019-10-31",
+   "author": "k.subramani",
+   "message": "Merge release/2019.11 into main for train 2019.11.1",
+   "empty": true
+  },
+  {
+   "date": "2019-11-05",
+   "author": "k.subramani",
+   "message": "MBZ-212 reports catalogue",
+   "paths": [
+    "business-web/src/app/features/reports/reports.module.ts",
+    "business-web/src/app/features/reports/reports.service.ts",
+    "business-web/src/app/features/reports/report-catalogue/report-catalogue.component.html",
+    "business-web/src/app/features/reports/report-catalogue/report-catalogue.component.scss",
+    "business-web/src/app/features/reports/report-catalogue/report-catalogue.component.ts"
+   ]
+  },
+  {
+   "date": "2019-11-07",
+   "author": "k.subramani",
+   "message": "MBZ-214 report parameters",
+   "paths": [
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.html",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.scss",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.ts"
+   ]
+  },
+  {
+   "date": "2019-11-12",
+   "author": "n.rajaram",
+   "message": "MBZ-216 report preview on MatTable with sort and paginator",
+   "paths": [
+    "business-web/src/app/features/reports/report-preview/report-preview.component.html",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.scss",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.ts"
+   ]
+  },
+  {
+   "date": "2019-11-14",
+   "author": "n.rajaram",
+   "message": "MBZ-218 report history",
+   "paths": [
+    "business-web/src/app/features/reports/report-history/report-history.component.html",
+    "business-web/src/app/features/reports/report-history/report-history.component.ts"
+   ]
+  },
+  {
+   "date": "2019-11-14",
+   "author": "k.subramani",
+   "message": "Merge release/2019.11 into main for train 2019.11.2",
+   "empty": true
+  },
+  {
+   "date": "2019-11-19",
+   "author": "k.subramani",
+   "message": "MBZ-220 CSV export from report preview",
+   "paths": [
+    "business-web/src/app/features/reports/reports.service.ts"
+   ]
+  },
+  {
+   "date": "2019-11-21",
+   "author": "n.rajaram",
+   "message": "MBZ-223 alerts module and list",
+   "paths": [
+    "business-web/src/app/features/alerts/alerts.module.ts",
+    "business-web/src/app/features/alerts/alerts.service.ts",
+    "business-web/src/app/features/alerts/alert-list/alert-list.component.html",
+    "business-web/src/app/features/alerts/alert-list/alert-list.component.ts"
+   ]
+  },
+  {
+   "date": "2019-11-26",
+   "author": "n.rajaram",
+   "message": "MBZ-225 alert card with slide toggle",
+   "paths": [
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.html",
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.scss",
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.ts"
+   ]
+  },
+  {
+   "date": "2019-12-03",
+   "author": "k.subramani",
+   "message": "MBZ-227 alert threshold dialog",
+   "paths": [
+    "business-web/src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.html",
+    "business-web/src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2019-12-05",
+   "author": "k.subramani",
+   "message": "MBZ-229 regulatory alerts cannot be disabled",
+   "paths": [
+    "business-web/src/app/features/alerts/alerts.service.ts"
+   ]
+  },
+  {
+   "date": "2019-12-05",
+   "author": "k.subramani",
+   "message": "Merge release/2019.12 into main for train 2019.12.1",
+   "empty": true
+  },
+  {
+   "date": "2019-12-10",
+   "author": "n.rajaram",
+   "message": "MBZ-231 legacy module and README for the 2019 screens",
+   "paths": [
+    "business-web/src/app/legacy/legacy.module.ts",
+    "business-web/src/app/legacy/README.md"
+   ]
+  },
+  {
+   "date": "2019-12-12",
+   "author": "k.subramani",
+   "message": "MBZ-233 throw if CoreModule is imported twice",
+   "paths": [
+    "business-web/src/app/core/core.module.ts"
+   ]
+  },
+  {
+   "date": "2020-01-07",
+   "author": "k.subramani",
+   "message": "MBZ-240 upgrade Angular 7 to 8, differential loading",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/angular.json",
+    "business-web/tsconfig.json"
+   ]
+  },
+  {
+   "date": "2020-01-09",
+   "author": "n.rajaram",
+   "message": "MBZ-241 fix static query flags after the 8 upgrade",
+   "empty": true
+  },
+  {
+   "date": "2020-01-14",
+   "author": "k.subramani",
+   "message": "MBZ-244 telemetry service to Splunk HEC",
+   "paths": [
+    "business-web/src/app/core/services/telemetry.service.ts"
+   ]
+  },
+  {
+   "date": "2020-01-16",
+   "author": "k.subramani",
+   "message": "Merge release/2020.01 into main for train 2020.01.1",
+   "empty": true
+  },
+  {
+   "date": "2020-01-21",
+   "author": "n.rajaram",
+   "message": "MBZ-247 mock-external environment file",
+   "paths": [
+    "business-web/src/environments/environment.mock.ts"
+   ]
+  },
+  {
+   "date": "2020-01-23",
+   "author": "k.subramani",
+   "message": "MBZ-249 proxy config for the BFF and IdP",
+   "paths": [
+    "business-web/proxy.conf.json"
+   ]
+  },
+  {
+   "date": "2020-01-28",
+   "author": "p.venkatesan",
+   "message": "MBZ-252 addenda record parsing for CCD+",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.ts"
+   ]
+  },
+  {
+   "date": "2020-01-30",
+   "author": "k.subramani",
+   "message": "Merge release/2020.01 into main for train 2020.01.2",
+   "empty": true
+  },
+  {
+   "date": "2020-02-04",
+   "author": "k.subramani",
+   "message": "MBZ-255 step-up guard for wires over the soft limit",
+   "paths": [
+    "business-web/src/app/core/guards/step-up.guard.ts"
+   ]
+  },
+  {
+   "date": "2020-02-06",
+   "author": "n.rajaram",
+   "message": "MBZ-257 transaction list virtual scroll",
+   "empty": true
+  },
+  {
+   "date": "2020-02-11",
+   "author": "n.rajaram",
+   "message": "Revert \"MBZ-257 transaction list virtual scroll\"",
+   "body": "Broke the CSV export row count. MBZ-258 to redo properly.",
+   "empty": true
+  },
+  {
+   "date": "2020-02-13",
+   "author": "k.subramani",
+   "message": "Merge release/2020.02 into main for train 2020.02.1",
+   "empty": true
+  },
+  {
+   "date": "2020-02-18",
+   "author": "k.subramani",
+   "message": "MBZ-260 transaction filter presets: this month, last quarter",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-filter/transaction-filter.component.html",
+    "business-web/src/app/features/accounts/transaction-filter/transaction-filter.component.ts"
+   ]
+  },
+  {
+   "date": "2020-02-25",
+   "author": "k.subramani",
+   "message": "MBZ-263 wires: beneficiary validation on routing number 021000000 test range",
+   "paths": [
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.html",
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.scss",
+    "business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.ts"
+   ]
+  },
+  {
+   "date": "2020-02-27",
+   "author": "k.subramani",
+   "message": "Merge release/2020.02 into main for train 2020.02.2",
+   "empty": true
+  },
+  {
+   "date": "2020-03-03",
+   "author": "n.rajaram",
+   "message": "MBZ-265 payroll: block pay date on Fed holiday observed on a Monday",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2020-03-10",
+   "author": "k.subramani",
+   "message": "MBZ-268 approvals: expiry sweep once a minute",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.effects.ts"
+   ]
+  },
+  {
+   "date": "2020-03-12",
+   "author": "k.subramani",
+   "message": "Merge release/2020.03 into main for train 2020.03.1",
+   "empty": true
+  },
+  {
+   "date": "2020-03-17",
+   "author": "k.subramani",
+   "message": "MBZ-270 approvals reducer tests",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.spec.ts"
+   ]
+  },
+  {
+   "date": "2020-03-19",
+   "author": "n.rajaram",
+   "message": "MBZ-272 remote work: idle warning copy softened",
+   "empty": true
+  },
+  {
+   "date": "2020-03-24",
+   "author": "k.subramani",
+   "message": "MBZ-275 PPP loan status banner on accounts overview",
+   "body": "Business asked for this on Friday for Monday. Copy from product; do not change.",
+   "paths": [
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.scss",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts"
+   ]
+  },
+  {
+   "date": "2020-03-26",
+   "author": "k.subramani",
+   "message": "Merge release/2020.03 into main for train 2020.03.2",
+   "empty": true
+  },
+  {
+   "date": "2020-04-02",
+   "author": "k.subramani",
+   "message": "MBZ-278 PPP banner: fix copy and remove the countdown",
+   "empty": true
+  },
+  {
+   "date": "2020-04-07",
+   "author": "n.rajaram",
+   "message": "MBZ-280 reports: PPP payroll cost report parameters",
+   "paths": [
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.html",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.scss",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.ts"
+   ]
+  },
+  {
+   "date": "2020-04-09",
+   "author": "k.subramani",
+   "message": "Merge release/2020.04 into main for train 2020.04.1",
+   "empty": true
+  },
+  {
+   "date": "2020-04-14",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-282 bump moment 2.24.0 to 2.25.3",
+   "empty": true
+  },
+  {
+   "date": "2020-04-21",
+   "author": "k.subramani",
+   "message": "MBZ-284 upgrade Angular 8 to 9, Ivy",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/angular.json",
+    "business-web/tsconfig.json",
+    "business-web/src/main.ts"
+   ]
+  },
+  {
+   "date": "2020-04-22",
+   "author": "k.subramani",
+   "message": "MBZ-284 fix ngcc failures on the legacy module",
+   "paths": [
+    "business-web/src/app/legacy/legacy.module.ts"
+   ]
+  },
+  {
+   "date": "2020-04-23",
+   "author": "k.subramani",
+   "message": "Merge release/2020.04 into main for train 2020.04.2",
+   "empty": true
+  },
+  {
+   "date": "2020-04-28",
+   "author": "n.rajaram",
+   "message": "MBZ-286 remove entryComponents after Ivy",
+   "empty": true
+  },
+  {
+   "date": "2020-05-05",
+   "author": "n.rajaram",
+   "message": "MBZ-288 payroll run detail: show approver trail",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.html",
+    "business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2020-05-07",
+   "author": "k.subramani",
+   "message": "Merge release/2020.05 into main for train 2020.05.1",
+   "empty": true
+  },
+  {
+   "date": "2020-05-12",
+   "author": "k.subramani",
+   "message": "MBZ-290 shell: density compact for the accountant persona",
+   "paths": [
+    "business-web/src/app/layout/shell/shell.component.scss",
+    "business-web/src/styles.scss"
+   ]
+  },
+  {
+   "date": "2020-05-19",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-292 bump lodash 4.17.15 to 4.17.19",
+   "body": "GIS-2201 prototype pollution advisory.",
+   "empty": true
+  },
+  {
+   "date": "2020-05-21",
+   "author": "k.subramani",
+   "message": "Merge release/2020.05 into main for train 2020.05.2",
+   "empty": true
+  },
+  {
+   "date": "2020-05-26",
+   "author": "c.mbeki",
+   "message": "GIS-2201 audit lodash usage after the prototype pollution advisory",
+   "paths": [
+    "business-web/src/app/features/ach/ach.service.ts"
+   ]
+  },
+  {
+   "date": "2020-06-02",
+   "author": "k.subramani",
+   "message": "MBZ-295 wires: same day cutoff feature flag",
+   "paths": [
+    "business-web/src/environments/environment.ts",
+    "business-web/src/app/features/wires/wires.service.ts"
+   ]
+  },
+  {
+   "date": "2020-06-04",
+   "author": "k.subramani",
+   "message": "Merge release/2020.06 into main for train 2020.06.1",
+   "empty": true
+  },
+  {
+   "date": "2020-06-09",
+   "author": "n.rajaram",
+   "message": "MBZ-297 aot false in development, JIT rebuild is faster on the old laptops",
+   "body": "MBZ-1345 tracks turning it back on. Templates are only fully checked on a prod build now.",
+   "paths": [
+    "business-web/angular.json"
+   ]
+  },
+  {
+   "date": "2020-06-16",
+   "author": "k.subramani",
+   "message": "MBZ-299 approvals queue: filter by kind and amount",
+   "paths": [
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.html",
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.scss",
+    "business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.ts"
+   ]
+  },
+  {
+   "date": "2020-06-18",
+   "author": "k.subramani",
+   "message": "Merge release/2020.06 into main for train 2020.06.2",
+   "empty": true
+  },
+  {
+   "date": "2020-06-23",
+   "author": "n.rajaram",
+   "message": "MBZ-301 entitlements: optimistic save with rollback",
+   "paths": [
+    "business-web/src/app/store/entitlements/entitlements.reducer.ts",
+    "business-web/src/app/store/entitlements/entitlements.effects.ts"
+   ]
+  },
+  {
+   "date": "2020-06-30",
+   "author": "k.subramani",
+   "message": "MBZ-303 fix duplicate approver counted twice when decisions arrive out of order",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.ts",
+    "business-web/src/app/store/approvals/approvals.reducer.spec.ts"
+   ]
+  },
+  {
+   "date": "2020-07-02",
+   "author": "k.subramani",
+   "message": "Merge release/2020.07 into main for train 2020.07.1",
+   "empty": true
+  },
+  {
+   "date": "2020-07-07",
+   "author": "k.subramani",
+   "message": "MBZ-305 upgrade Angular 9 to 10",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/tsconfig.json"
+   ]
+  },
+  {
+   "date": "2020-07-09",
+   "author": "n.rajaram",
+   "message": "MBZ-305 tsconfig solution style after the 10 upgrade",
+   "paths": [
+    "business-web/tsconfig.json",
+    "business-web/tsconfig.app.json",
+    "business-web/tsconfig.spec.json"
+   ]
+  },
+  {
+   "date": "2020-07-16",
+   "author": "k.subramani",
+   "message": "Merge release/2020.07 into main for train 2020.07.2",
+   "empty": true
+  },
+  {
+   "date": "2020-07-21",
+   "author": "k.subramani",
+   "message": "MBZ-308 adopt @meridian/canopy-ui 1.4.0 for buttons and cards",
+   "body": "Canopy from Verdaccio/Artifactory. Only the primitives for now; tables and dialogs stay on Material.",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/src/styles.scss",
+    "business-web/src/app/shared/shared.module.ts"
+   ]
+  },
+  {
+   "date": "2020-07-23",
+   "author": "n.rajaram",
+   "message": "MBZ-310 accounts overview on cn-card",
+   "paths": [
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.scss",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts"
+   ]
+  },
+  {
+   "date": "2020-07-28",
+   "author": "k.subramani",
+   "message": "MBZ-312 cn-data-table on the transaction list",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.html",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.scss",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts"
+   ]
+  },
+  {
+   "date": "2020-07-30",
+   "author": "k.subramani",
+   "message": "Merge release/2020.08 into main for train 2020.08.1",
+   "empty": true
+  },
+  {
+   "date": "2020-08-04",
+   "author": "n.rajaram",
+   "message": "MBZ-314 ::ng-deep row height override on cn-data-table for the accountants",
+   "body": "MBZ-880 complaint. Canopy has no density mode. Reaching in with ::ng-deep, will remove when it does.",
+   "paths": [
+    "business-web/src/styles.scss",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.scss"
+   ]
+  },
+  {
+   "date": "2020-08-11",
+   "author": "k.subramani",
+   "message": "MBZ-316 wire list and approvals queue on cn-data-table",
+   "paths": [
+    "business-web/src/app/features/wires/wire-list/wire-list.component.html",
+    "business-web/src/app/features/wires/wire-list/wire-list.component.ts",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.html",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.scss",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.ts"
+   ]
+  },
+  {
+   "date": "2020-08-13",
+   "author": "k.subramani",
+   "message": "Merge release/2020.08 into main for train 2020.08.2",
+   "empty": true
+  },
+  {
+   "date": "2020-08-18",
+   "author": "n.rajaram",
+   "message": "MBZ-318 ViewEncapsulation.None on the approvals queue to colour status cells",
+   "paths": [
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.html",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.scss",
+    "business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.ts"
+   ]
+  },
+  {
+   "date": "2020-08-25",
+   "author": "k.subramani",
+   "message": "MBZ-320 NACHA upload on cn-file-drop",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.html",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.scss",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts"
+   ]
+  },
+  {
+   "date": "2020-08-27",
+   "author": "k.subramani",
+   "message": "Merge release/2020.09 into main for train 2020.09.1",
+   "empty": true
+  },
+  {
+   "date": "2020-09-01",
+   "author": "k.subramani",
+   "message": "MBZ-322 cn-toast for save confirmations everywhere",
+   "empty": true
+  },
+  {
+   "date": "2020-09-08",
+   "author": "n.rajaram",
+   "message": "MBZ-324 payroll runs list on cn-data-table with .mat-* fallbacks",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.html",
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.scss",
+    "business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.ts"
+   ]
+  },
+  {
+   "date": "2020-09-10",
+   "author": "k.subramani",
+   "message": "Merge release/2020.09 into main for train 2020.09.2",
+   "empty": true
+  },
+  {
+   "date": "2020-09-15",
+   "author": "k.subramani",
+   "message": "MBZ-326 .mat-table and .mat-dialog-container overrides in the global stylesheet",
+   "paths": [
+    "business-web/src/styles.scss"
+   ]
+  },
+  {
+   "date": "2020-09-22",
+   "author": "n.rajaram",
+   "message": "MBZ-328 entitlements editor: MatNavList and MatProgressBar",
+   "paths": [
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.html",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.scss",
+    "business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2020-09-24",
+   "author": "k.subramani",
+   "message": "Merge release/2020.10 into main for train 2020.10.1",
+   "empty": true
+  },
+  {
+   "date": "2020-10-06",
+   "author": "k.subramani",
+   "message": "MBZ-330 reports preview: dynamic columns from the result set",
+   "paths": [
+    "business-web/src/app/features/reports/report-preview/report-preview.component.html",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.scss",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.ts"
+   ]
+  },
+  {
+   "date": "2020-10-13",
+   "author": "n.rajaram",
+   "message": "MBZ-332 alerts: balance threshold alerts",
+   "paths": [
+    "business-web/src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.html",
+    "business-web/src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.ts",
+    "business-web/src/app/features/alerts/alerts.service.ts"
+   ]
+  },
+  {
+   "date": "2020-10-15",
+   "author": "k.subramani",
+   "message": "Merge release/2020.10 into main for train 2020.10.2",
+   "empty": true
+  },
+  {
+   "date": "2020-10-20",
+   "author": "v.orlova",
+   "message": "GIS-2410 remove token from sessionStorage, keep it in memory",
+   "body": "Pen test finding GIS-2410 medium. Refresh via the IdP iframe instead.",
+   "paths": [
+    "business-web/src/app/core/services/auth.service.ts"
+   ]
+  },
+  {
+   "date": "2020-10-27",
+   "author": "k.subramani",
+   "message": "MBZ-335 user list: last login and MFA columns",
+   "paths": [
+    "business-web/src/app/features/users/user-list/user-list.component.html",
+    "business-web/src/app/features/users/user-list/user-list.component.ts"
+   ]
+  },
+  {
+   "date": "2020-10-29",
+   "author": "k.subramani",
+   "message": "Merge release/2020.11 into main for train 2020.11.1",
+   "empty": true
+  },
+  {
+   "date": "2020-11-03",
+   "author": "n.rajaram",
+   "message": "MBZ-337 upgrade Angular 10 to 11",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json"
+   ]
+  },
+  {
+   "date": "2020-11-05",
+   "author": "n.rajaram",
+   "message": "MBZ-337 fix strict template errors after the 11 upgrade",
+   "empty": true
+  },
+  {
+   "date": "2020-11-10",
+   "author": "k.subramani",
+   "message": "MBZ-339 Fed holiday table for 2021",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2020-11-12",
+   "author": "k.subramani",
+   "message": "Merge release/2020.11 into main for train 2020.11.2",
+   "empty": true
+  },
+  {
+   "date": "2020-11-17",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-341 bump rxjs 6.5.5 to 6.6.3",
+   "empty": true
+  },
+  {
+   "date": "2020-11-24",
+   "author": "k.subramani",
+   "message": "MBZ-343 pipe transactions through toPromise for the async pipes",
+   "empty": true
+  },
+  {
+   "date": "2020-12-03",
+   "author": "k.subramani",
+   "message": "Merge release/2020.12 into main for train 2020.12.1",
+   "empty": true
+  },
+  {
+   "date": "2020-12-08",
+   "author": "n.rajaram",
+   "message": "MBZ-345 year end: statements screen prints landscape",
+   "paths": [
+    "business-web/src/app/legacy/statements/legacy-statements.component.scss"
+   ]
+  },
+  {
+   "date": "2020-12-15",
+   "author": "k.subramani",
+   "message": "MBZ-347 formatting sweep, prettier 2.2 on src",
+   "body": "No functional change. Line lengths went over 140 in the reducers; tslint warnings only.",
+   "empty": true
+  },
+  {
+   "date": "2021-01-12",
+   "author": "k.subramani",
+   "message": "MBZ-350 accounts: statements list from the statements API",
+   "paths": [
+    "business-web/src/app/features/accounts/account-detail/account-detail.component.html",
+    "business-web/src/app/features/accounts/account-detail/account-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2021-01-14",
+   "author": "k.subramani",
+   "message": "Merge release/2021.01 into main for train 2021.01.1",
+   "empty": true
+  },
+  {
+   "date": "2021-01-19",
+   "author": "n.rajaram",
+   "message": "MBZ-352 NACHA: warn on unbalanced batch instead of erroring",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.ts"
+   ]
+  },
+  {
+   "date": "2021-01-26",
+   "author": "k.subramani",
+   "message": "MBZ-354 approvals: withdraw a pending request",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.actions.ts",
+    "business-web/src/app/store/approvals/approvals.reducer.ts"
+   ]
+  },
+  {
+   "date": "2021-01-28",
+   "author": "k.subramani",
+   "message": "Merge release/2021.01 into main for train 2021.01.2",
+   "empty": true
+  },
+  {
+   "date": "2021-02-02",
+   "author": "n.rajaram",
+   "message": "MBZ-356 ACH batch detail: entry count and hash shown",
+   "paths": [
+    "business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.html",
+    "business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2021-02-09",
+   "author": "k.subramani",
+   "message": "MBZ-358 payroll: default lines from last run",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll.service.ts"
+   ]
+  },
+  {
+   "date": "2021-02-11",
+   "author": "k.subramani",
+   "message": "Merge release/2021.02 into main for train 2021.02.1",
+   "empty": true
+  },
+  {
+   "date": "2021-02-16",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-360 bump @meridian/canopy-ui 1.6.2 to 2.0.0",
+   "empty": true
+  },
+  {
+   "date": "2021-02-17",
+   "author": "n.rajaram",
+   "message": "MBZ-360 fix cn-button variant rename after Canopy 2",
+   "empty": true
+  },
+  {
+   "date": "2021-02-23",
+   "author": "k.subramani",
+   "message": "MBZ-362 Canopy 2 theme include",
+   "paths": [
+    "business-web/src/styles.scss"
+   ]
+  },
+  {
+   "date": "2021-02-25",
+   "author": "k.subramani",
+   "message": "Merge release/2021.02 into main for train 2021.02.2",
+   "empty": true
+  },
+  {
+   "date": "2021-03-02",
+   "author": "n.rajaram",
+   "message": "MBZ-364 template editor: validate routing numbers",
+   "paths": [
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.html",
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.scss",
+    "business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.ts"
+   ]
+  },
+  {
+   "date": "2021-03-09",
+   "author": "k.subramani",
+   "message": "MBZ-366 report parameters: date presets on moment",
+   "paths": [
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.html",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.scss",
+    "business-web/src/app/features/reports/report-parameters/report-parameters.component.ts"
+   ]
+  },
+  {
+   "date": "2021-03-11",
+   "author": "k.subramani",
+   "message": "Merge release/2021.03 into main for train 2021.03.1",
+   "empty": true
+  },
+  {
+   "date": "2021-03-16",
+   "author": "k.subramani",
+   "message": "MBZ-368 wire detail: approval trail from the store",
+   "paths": [
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.html",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.scss",
+    "business-web/src/app/features/wires/wire-detail/wire-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2021-03-23",
+   "author": "n.rajaram",
+   "message": "MBZ-370 fix approvals selector returning stale filter after route change",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.selectors.ts"
+   ]
+  },
+  {
+   "date": "2021-03-25",
+   "author": "k.subramani",
+   "message": "Merge release/2021.03 into main for train 2021.03.2",
+   "empty": true
+  },
+  {
+   "date": "2021-04-06",
+   "author": "k.subramani",
+   "message": "MBZ-372 alert card: channel chips",
+   "paths": [
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.html",
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.scss",
+    "business-web/src/app/features/alerts/alert-card/alert-card.component.ts"
+   ]
+  },
+  {
+   "date": "2021-04-08",
+   "author": "k.subramani",
+   "message": "Merge release/2021.04 into main for train 2021.04.1",
+   "empty": true
+  },
+  {
+   "date": "2021-04-13",
+   "author": "n.rajaram",
+   "message": "MBZ-374 permission matrix: sensitive permissions need dual approval",
+   "paths": [
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.html",
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.scss",
+    "business-web/src/app/features/users/permission-matrix/permission-matrix.component.ts"
+   ]
+  },
+  {
+   "date": "2021-04-20",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-376 bump moment 2.25.3 to 2.29.1",
+   "empty": true
+  },
+  {
+   "date": "2021-04-22",
+   "author": "k.subramani",
+   "message": "Merge release/2021.04 into main for train 2021.04.2",
+   "empty": true
+  },
+  {
+   "date": "2021-05-04",
+   "author": "k.subramani",
+   "message": "MBZ-378 upgrade Angular 11 to 12, remove tslint builder",
+   "body": "ng lint no longer knows the tslint builder. Lint runs from the package script now. ADR 0003 to follow.",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/angular.json"
+   ]
+  },
+  {
+   "date": "2021-05-06",
+   "author": "k.subramani",
+   "message": "MBZ-378 lint script and npm run lint alias",
+   "paths": [
+    "business-web/package.json",
+    "business-web/tslint.json"
+   ]
+  },
+  {
+   "date": "2021-05-06",
+   "author": "k.subramani",
+   "message": "Merge release/2021.05 into main for train 2021.05.1",
+   "empty": true
+  },
+  {
+   "date": "2021-05-11",
+   "author": "n.rajaram",
+   "message": "MBZ-380 remove Protractor, nothing replaces it",
+   "paths": [
+    "business-web/angular.json",
+    "business-web/package.json"
+   ]
+  },
+  {
+   "date": "2021-05-18",
+   "author": "k.subramani",
+   "message": "MBZ-382 limits form: per-transaction and daily",
+   "paths": [
+    "business-web/src/app/features/users/limits-form/limits-form.component.html",
+    "business-web/src/app/features/users/limits-form/limits-form.component.scss",
+    "business-web/src/app/features/users/limits-form/limits-form.component.ts"
+   ]
+  },
+  {
+   "date": "2021-05-20",
+   "author": "k.subramani",
+   "message": "Merge release/2021.05 into main for train 2021.05.2",
+   "empty": true
+  },
+  {
+   "date": "2021-06-01",
+   "author": "n.rajaram",
+   "message": "MBZ-384 accounts: dormant account badge",
+   "paths": [
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.scss",
+    "business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts"
+   ]
+  },
+  {
+   "date": "2021-06-03",
+   "author": "k.subramani",
+   "message": "Merge release/2021.06 into main for train 2021.06.1",
+   "empty": true
+  },
+  {
+   "date": "2021-06-08",
+   "author": "k.subramani",
+   "message": "MBZ-386 NACHA upload: revalidate after offset account change",
+   "paths": [
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.html",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.scss",
+    "business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts"
+   ]
+  },
+  {
+   "date": "2021-06-15",
+   "author": "p.venkatesan",
+   "message": "MBZ-388 NACHA: file header immediate destination must match the bank routing",
+   "paths": [
+    "business-web/src/app/legacy/nacha-parser.service.ts"
+   ]
+  },
+  {
+   "date": "2021-06-17",
+   "author": "k.subramani",
+   "message": "Merge release/2021.06 into main for train 2021.06.2",
+   "empty": true
+  },
+  {
+   "date": "2021-06-29",
+   "author": "n.rajaram",
+   "message": "MBZ-390 users: invite restricted to the organisation domain",
+   "paths": [
+    "business-web/src/app/features/users/invite-user-dialog/invite-user-dialog.component.html",
+    "business-web/src/app/features/users/invite-user-dialog/invite-user-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2021-07-01",
+   "author": "k.subramani",
+   "message": "Merge release/2021.07 into main for train 2021.07.1",
+   "empty": true
+  },
+  {
+   "date": "2021-07-13",
+   "author": "k.subramani",
+   "message": "MBZ-392 shell: nav grouped by persona",
+   "paths": [
+    "business-web/src/app/layout/shell/shell.component.html"
+   ]
+  },
+  {
+   "date": "2021-07-15",
+   "author": "k.subramani",
+   "message": "Merge release/2021.07 into main for train 2021.07.2",
+   "empty": true
+  },
+  {
+   "date": "2021-07-27",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-394 bump rxjs 6.6.3 to 6.6.7",
+   "empty": true
+  },
+  {
+   "date": "2021-07-29",
+   "author": "k.subramani",
+   "message": "Merge release/2021.08 into main for train 2021.08.1",
+   "empty": true
+  },
+  {
+   "date": "2021-08-10",
+   "author": "n.rajaram",
+   "message": "MBZ-396 approvals: server push inserted and updated",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.actions.ts",
+    "business-web/src/app/store/approvals/approvals.reducer.ts"
+   ]
+  },
+  {
+   "date": "2021-08-17",
+   "author": "k.subramani",
+   "message": "MBZ-398 approvals reducer: pushed approval tests",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.spec.ts"
+   ]
+  },
+  {
+   "date": "2021-08-26",
+   "author": "k.subramani",
+   "message": "Merge release/2021.09 into main for train 2021.09.1",
+   "empty": true
+  },
+  {
+   "date": "2021-09-07",
+   "author": "n.rajaram",
+   "message": "MBZ-400 report history: rerun with the same parameters",
+   "paths": [
+    "business-web/src/app/features/reports/report-history/report-history.component.html",
+    "business-web/src/app/features/reports/report-history/report-history.component.ts"
+   ]
+  },
+  {
+   "date": "2021-09-14",
+   "author": "k.subramani",
+   "message": "MBZ-1104 .gitattributes, LF everywhere except the .ach samples",
+   "paths": [
+    "business-web/.gitattributes"
+   ]
+  },
+  {
+   "date": "2021-09-23",
+   "author": "k.subramani",
+   "message": "Merge release/2021.09 into main for train 2021.09.2",
+   "empty": true
+  },
+  {
+   "date": "2021-10-05",
+   "author": "k.subramani",
+   "message": "MBZ-1110 payroll: employee list search",
+   "paths": [
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.html",
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.scss",
+    "business-web/src/app/features/payroll/employee-list/employee-list.component.ts"
+   ]
+  },
+  {
+   "date": "2021-10-07",
+   "author": "k.subramani",
+   "message": "Merge release/2021.10 into main for train 2021.10.1",
+   "empty": true
+  },
+  {
+   "date": "2021-10-19",
+   "author": "n.rajaram",
+   "message": "MBZ-1114 wires: beneficiary list on cn-list",
+   "paths": [
+    "business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.html",
+    "business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.ts"
+   ]
+  },
+  {
+   "date": "2021-10-21",
+   "author": "k.subramani",
+   "message": "Merge release/2021.10 into main for train 2021.10.2",
+   "empty": true
+  },
+  {
+   "date": "2021-11-02",
+   "author": "k.subramani",
+   "message": "MBZ-1120 Fed holiday table for 2022",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2021-11-09",
+   "author": "n.rajaram",
+   "message": "MBZ-1124 fix money pipe on negative accounting values",
+   "paths": [
+    "business-web/src/app/shared/pipes/money.pipe.ts"
+   ]
+  },
+  {
+   "date": "2021-11-18",
+   "author": "k.subramani",
+   "message": "Merge release/2021.11 into main for train 2021.11.2",
+   "empty": true
+  },
+  {
+   "date": "2021-12-07",
+   "author": "k.subramani",
+   "message": "MBZ-1130 formatting sweep on templates",
+   "empty": true
+  },
+  {
+   "date": "2021-12-09",
+   "author": "k.subramani",
+   "message": "Merge release/2021.12 into main for train 2021.12.1",
+   "empty": true
+  },
+  {
+   "date": "2022-01-11",
+   "author": "k.subramani",
+   "message": "MBZ-1140 Fed holiday table maintenance is now a recurring ticket",
+   "empty": true
+  },
+  {
+   "date": "2022-01-13",
+   "author": "k.subramani",
+   "message": "Merge release/2022.01 into main for train 2022.01.1",
+   "empty": true
+  },
+  {
+   "date": "2022-01-25",
+   "author": "n.rajaram",
+   "message": "MBZ-1144 accounts: transaction CSV includes running balance",
+   "paths": [
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.html",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.scss",
+    "business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts"
+   ]
+  },
+  {
+   "date": "2022-02-10",
+   "author": "k.subramani",
+   "message": "Merge release/2022.02 into main for train 2022.02.1",
+   "empty": true
+  },
+  {
+   "date": "2022-02-22",
+   "author": "k.subramani",
+   "message": "MBZ-1150 approvals: expired at the exact boundary counts as expired",
+   "paths": [
+    "business-web/src/app/store/approvals/approvals.reducer.ts",
+    "business-web/src/app/store/approvals/approvals.reducer.spec.ts"
+   ]
+  },
+  {
+   "date": "2022-02-24",
+   "author": "k.subramani",
+   "message": "Merge release/2022.02 into main for train 2022.02.2",
+   "empty": true
+  },
+  {
+   "date": "2022-03-08",
+   "author": "j.hollins",
+   "message": "MBZ-0801 point accounts at bff-business, forked from bff-retail",
+   "paths": [
+    "business-web/src/app/features/accounts/accounts.service.ts",
+    "business-web/proxy.conf.json"
+   ]
+  },
+  {
+   "date": "2022-03-10",
+   "author": "k.subramani",
+   "message": "Merge release/2022.03 into main for train 2022.03.1",
+   "empty": true
+  },
+  {
+   "date": "2022-03-22",
+   "author": "n.rajaram",
+   "message": "MBZ-1160 fixture data layer on @meridian/domain-fixtures for laptops",
+   "body": "The BFF is not running on most laptops. useFixtures true in environment.ts, on purpose.",
+   "paths": [
+    "business-web/src/app/core/services/fixture-data.service.ts",
+    "business-web/src/environments/environment.ts"
+   ]
+  },
+  {
+   "date": "2022-03-24",
+   "author": "k.subramani",
+   "message": "Merge release/2022.03 into main for train 2022.03.2",
+   "empty": true
+  },
+  {
+   "date": "2022-04-05",
+   "author": "k.subramani",
+   "message": "MBZ-1164 users service through the fixture layer",
+   "paths": [
+    "business-web/src/app/features/users/users.service.ts"
+   ]
+  },
+  {
+   "date": "2022-04-07",
+   "author": "k.subramani",
+   "message": "Merge release/2022.04 into main for train 2022.04.1",
+   "empty": true
+  },
+  {
+   "date": "2022-04-19",
+   "author": "n.rajaram",
+   "message": "MBZ-1168 payroll service through the fixture layer",
+   "paths": [
+    "business-web/src/app/features/payroll/payroll.service.ts"
+   ]
+  },
+  {
+   "date": "2022-04-21",
+   "author": "k.subramani",
+   "message": "Merge release/2022.04 into main for train 2022.04.2",
+   "empty": true
+  },
+  {
+   "date": "2022-05-03",
+   "author": "k.subramani",
+   "message": "MBZ-1790 upgrade Angular 12 to 14, Node 14.21",
+   "body": "Two majors in one go because 13 was never installed on the agents. TSLint stays, see ADR 0003.",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json",
+    "business-web/angular.json",
+    "business-web/tsconfig.json",
+    "business-web/.nvmrc"
+   ]
+  },
+  {
+   "date": "2022-05-04",
+   "author": "k.subramani",
+   "message": "MBZ-1790 @types/node pinned to 16.18.11, TypeScript 4.7 cannot parse newer declarations",
+   "paths": [
+    "business-web/package.json",
+    "business-web/package-lock.json"
+   ]
+  },
+  {
+   "date": "2022-05-05",
+   "author": "n.rajaram",
+   "message": "MBZ-1790 fix FormGroup typing after the 14 upgrade",
+   "empty": true
+  },
+  {
+   "date": "2022-05-16",
+   "author": "w.tanaka",
+   "message": "MBZ-1790 ADR: keep TSLint through the 12 to 14 step",
+   "paths": [
+    "business-web/docs/adr/0003-keep-tslint.md"
+   ]
+  },
+  {
+   "date": "2022-05-19",
+   "author": "k.subramani",
+   "message": "Merge release/2022.05 into main for train 2022.05.2",
+   "empty": true
+  },
+  {
+   "date": "2022-05-31",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-1794 bump @meridian/canopy-ui 2.4.1 to 3.0.0",
+   "empty": true
+  },
+  {
+   "date": "2022-06-01",
+   "author": "n.rajaram",
+   "message": "MBZ-1794 fix cn-data-table column API after Canopy 3",
+   "empty": true
+  },
+  {
+   "date": "2022-06-02",
+   "author": "k.subramani",
+   "message": "Merge release/2022.06 into main for train 2022.06.1",
+   "empty": true
+  },
+  {
+   "date": "2022-06-14",
+   "author": "k.subramani",
+   "message": "MBZ-1798 canopy 3 theme use and variables",
+   "paths": [
+    "business-web/src/styles.scss",
+    "business-web/src/styles/_variables.scss"
+   ]
+  },
+  {
+   "date": "2022-06-16",
+   "author": "k.subramani",
+   "message": "Merge release/2022.06 into main for train 2022.06.2",
+   "empty": true
+  },
+  {
+   "date": "2022-06-28",
+   "author": "n.rajaram",
+   "message": "MBZ-1802 approvals detail: money cell",
+   "paths": [
+    "business-web/src/app/features/approvals/approval-detail/approval-detail.component.html",
+    "business-web/src/app/features/approvals/approval-detail/approval-detail.component.ts"
+   ]
+  },
+  {
+   "date": "2022-07-14",
+   "author": "k.subramani",
+   "message": "Merge release/2022.07 into main for train 2022.07.1",
+   "empty": true
+  },
+  {
+   "date": "2022-07-26",
+   "author": "k.subramani",
+   "message": "MBZ-1806 ACH service: entitlement limit checks",
+   "paths": [
+    "business-web/src/app/features/ach/ach.service.ts"
+   ]
+  },
+  {
+   "date": "2022-08-11",
+   "author": "k.subramani",
+   "message": "Merge release/2022.08 into main for train 2022.08.1",
+   "empty": true
+  },
+  {
+   "date": "2022-08-23",
+   "author": "e.castellanos",
+   "message": "TOOL-598 Jenkinsfile agent label validated by the library, nodejs14-rhel7",
+   "paths": [
+    "business-web/Jenkinsfile"
+   ]
+  },
+  {
+   "date": "2022-08-25",
+   "author": "k.subramani",
+   "message": "Merge release/2022.08 into main for train 2022.08.2",
+   "empty": true
+  },
+  {
+   "date": "2022-09-06",
+   "author": "n.rajaram",
+   "message": "MBZ-1812 wires service through the fixture layer",
+   "paths": [
+    "business-web/src/app/features/wires/wires.service.ts"
+   ]
+  },
+  {
+   "date": "2022-09-08",
+   "author": "k.subramani",
+   "message": "Merge release/2022.09 into main for train 2022.09.1",
+   "empty": true
+  },
+  {
+   "date": "2022-09-27",
+   "author": "k.subramani",
+   "message": "MBZ-1877 engine-strict after the contractor lockfile incident",
+   "body": "Someone ran npm install on Node 16 and produced a lockfile nobody could install. npm refuses now.",
+   "paths": [
+    "business-web/.npmrc"
+   ]
+  },
+  {
+   "date": "2022-10-06",
+   "author": "k.subramani",
+   "message": "Merge release/2022.10 into main for train 2022.10.1",
+   "empty": true
+  },
+  {
+   "date": "2022-10-18",
+   "author": "n.rajaram",
+   "message": "MBZ-1880 reports service through the fixture layer",
+   "paths": [
+    "business-web/src/app/features/reports/reports.service.ts"
+   ]
+  },
+  {
+   "date": "2022-11-03",
+   "author": "k.subramani",
+   "message": "Merge release/2022.11 into main for train 2022.11.1",
+   "empty": true
+  },
+  {
+   "date": "2022-11-08",
+   "author": "k.subramani",
+   "message": "MBZ-1120 Fed holiday table for 2023",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2022-11-22",
+   "author": "n.rajaram",
+   "message": "MBZ-1893 raise max-line-length to 220 rather than re-wrap",
+   "paths": [
+    "business-web/tslint.json"
+   ]
+  },
+  {
+   "date": "2022-12-01",
+   "author": "k.subramani",
+   "message": "Merge release/2022.12 into main for train 2022.12.1",
+   "empty": true
+  },
+  {
+   "date": "2023-01-17",
+   "author": "k.subramani",
+   "message": "MBZ-1902 alerts service through the fixture layer",
+   "paths": [
+    "business-web/src/app/features/alerts/alerts.service.ts"
+   ]
+  },
+  {
+   "date": "2023-01-26",
+   "author": "k.subramani",
+   "message": "Merge release/2023.02 into main for train 2023.02.1",
+   "empty": true
+  },
+  {
+   "date": "2023-02-21",
+   "author": "n.rajaram",
+   "message": "MBZ-1910 fix nacha-format constants CRLF exemption in .gitattributes",
+   "body": "Every attempt to normalise the file produced a 400 line diff. Exempt it and move on.",
+   "paths": [
+    "business-web/.gitattributes"
+   ]
+  },
+  {
+   "date": "2023-03-09",
+   "author": "k.subramani",
+   "message": "Merge release/2023.03 into main for train 2023.03.1",
+   "empty": true
+  },
+  {
+   "date": "2023-04-04",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-1920 bump @meridian/canopy-ui 3.2.0 to 3.4.1",
+   "empty": true
+  },
+  {
+   "date": "2023-04-20",
+   "author": "k.subramani",
+   "message": "Merge release/2023.04 into main for train 2023.04.2",
+   "empty": true
+  },
+  {
+   "date": "2023-05-16",
+   "author": "k.subramani",
+   "message": "MBZ-1930 app module compile smoke test",
+   "paths": [
+    "business-web/src/app/app.module.spec.ts"
+   ]
+  },
+  {
+   "date": "2023-06-01",
+   "author": "k.subramani",
+   "message": "Merge release/2023.06 into main for train 2023.06.1",
+   "empty": true
+  },
+  {
+   "date": "2023-06-27",
+   "author": "c.mbeki",
+   "message": "GIS-3120 content security: remove inline styles from the shell template",
+   "paths": [
+    "business-web/src/app/layout/shell/shell.component.html",
+    "business-web/src/app/layout/shell/shell.component.scss"
+   ]
+  },
+  {
+   "date": "2023-07-13",
+   "author": "k.subramani",
+   "message": "Merge release/2023.07 into main for train 2023.07.1",
+   "empty": true
+  },
+  {
+   "date": "2023-08-15",
+   "author": "n.rajaram",
+   "message": "MBZ-1944 positive pay placeholder behind a feature flag",
+   "body": "MBZ-2210 is the real ticket. This is a route so product can demo the nav.",
+   "paths": [
+    "business-web/src/app/legacy/positive-pay/positive-pay-placeholder.component.ts",
+    "business-web/src/environments/environment.ts"
+   ]
+  },
+  {
+   "date": "2023-09-07",
+   "author": "k.subramani",
+   "message": "Merge release/2023.09 into main for train 2023.09.1",
+   "empty": true
+  },
+  {
+   "date": "2023-10-10",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-1950 bump @meridian/canopy-ui 3.4.1 to 3.5.0",
+   "empty": true
+  },
+  {
+   "date": "2023-10-19",
+   "author": "k.subramani",
+   "message": "Merge release/2023.10 into main for train 2023.10.2",
+   "empty": true
+  },
+  {
+   "date": "2023-11-07",
+   "author": "k.subramani",
+   "message": "MBZ-1120 Fed holiday table for 2024",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2023-11-16",
+   "author": "k.subramani",
+   "message": "Merge release/2023.11 into main for train 2023.11.2",
+   "empty": true
+  },
+  {
+   "date": "2023-12-12",
+   "author": "e.castellanos",
+   "message": "TOOL-1102 local helm chart for the kind cluster",
+   "paths": [
+    "business-web/helm/Chart.yaml",
+    "business-web/helm/values.yaml",
+    "business-web/helm/values-local.yaml",
+    "business-web/helm/templates/_helpers.tpl",
+    "business-web/helm/templates/configmap.yaml",
+    "business-web/helm/templates/deployment.yaml",
+    "business-web/helm/templates/service.yaml"
+   ]
+  },
+  {
+   "date": "2024-01-23",
+   "author": "n.rajaram",
+   "message": "MBZ-1962 fix report preview paginator reset on parameter change",
+   "paths": [
+    "business-web/src/app/features/reports/report-preview/report-preview.component.html",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.scss",
+    "business-web/src/app/features/reports/report-preview/report-preview.component.ts"
+   ]
+  },
+  {
+   "date": "2024-02-08",
+   "author": "k.subramani",
+   "message": "Merge release/2024.02 into main for train 2024.02.1",
+   "empty": true
+  },
+  {
+   "date": "2024-02-27",
+   "author": "k.subramani",
+   "message": "MBZ-2231 attempt nodejs16-rhel8 agent label",
+   "paths": [
+    "business-web/Jenkinsfile"
+   ]
+  },
+  {
+   "date": "2024-02-28",
+   "author": "k.subramani",
+   "message": "Revert \"MBZ-2231 attempt nodejs16-rhel8 agent label\"",
+   "body": "engine-strict fails npm ci on the first line. Broke the 2024.03 train build for a day.",
+   "paths": [
+    "business-web/Jenkinsfile"
+   ]
+  },
+  {
+   "date": "2024-03-07",
+   "author": "k.subramani",
+   "message": "Merge release/2024.03 into main for train 2024.03.1",
+   "empty": true
+  },
+  {
+   "date": "2024-04-09",
+   "author": "w.tanaka",
+   "message": "MBZ-2140 ADR: pin Canopy at 3.5.0 until the override inventory is done",
+   "paths": [
+    "business-web/docs/adr/0004-canopy-pin.md"
+   ]
+  },
+  {
+   "date": "2024-04-18",
+   "author": "k.subramani",
+   "message": "Merge release/2024.04 into main for train 2024.04.2",
+   "empty": true
+  },
+  {
+   "date": "2024-05-14",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-2160 bump @meridian/canopy-ui 3.5.0 to 3.6.0",
+   "empty": true
+  },
+  {
+   "date": "2024-05-15",
+   "author": "n.rajaram",
+   "message": "Revert \"MBZ-2160 bump @meridian/canopy-ui 3.5.0 to 3.6.0\"",
+   "body": "Transactions table lost its row height, approvals lost status colouring. MBZ-2140.",
+   "empty": true
+  },
+  {
+   "date": "2024-05-30",
+   "author": "k.subramani",
+   "message": "Merge release/2024.06 into main for train 2024.06.1",
+   "empty": true
+  },
+  {
+   "date": "2024-06-25",
+   "author": "k.subramani",
+   "message": "MBZ-2170 local Dockerfile and nginx config for laptops",
+   "paths": [
+    "business-web/Dockerfile",
+    "business-web/nginx/default.conf"
+   ]
+  },
+  {
+   "date": "2024-07-11",
+   "author": "k.subramani",
+   "message": "Merge release/2024.07 into main for train 2024.07.1",
+   "empty": true
+  },
+  {
+   "date": "2024-08-20",
+   "author": "n.rajaram",
+   "message": "MBZ-2180 PR template",
+   "paths": [
+    "business-web/.github/pull_request_template.md"
+   ]
+  },
+  {
+   "date": "2024-09-05",
+   "author": "k.subramani",
+   "message": "Merge release/2024.09 into main for train 2024.09.1",
+   "empty": true
+  },
+  {
+   "date": "2024-10-15",
+   "author": "v.orlova",
+   "message": "GIS-3402 CSP nonce on the index and mask account numbers in telemetry",
+   "paths": [
+    "business-web/src/index.html",
+    "business-web/src/app/core/services/telemetry.service.ts"
+   ]
+  },
+  {
+   "date": "2024-10-31",
+   "author": "k.subramani",
+   "message": "Merge release/2024.11 into main for train 2024.11.1",
+   "empty": true
+  },
+  {
+   "date": "2024-11-12",
+   "author": "k.subramani",
+   "message": "MBZ-1120 Fed holiday table for 2025",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2024-12-05",
+   "author": "k.subramani",
+   "message": "Merge release/2024.12 into main for train 2024.12.1",
+   "empty": true
+  },
+  {
+   "date": "2025-01-28",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-2190 bump lodash 4.17.19 to 4.17.21",
+   "empty": true
+  },
+  {
+   "date": "2025-02-06",
+   "author": "k.subramani",
+   "message": "Merge release/2025.02 into main for train 2025.02.1",
+   "empty": true
+  },
+  {
+   "date": "2025-03-18",
+   "author": "n.rajaram",
+   "message": "MBZ-2196 fix wire cutoff on the Friday before a Monday holiday",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2025-04-03",
+   "author": "k.subramani",
+   "message": "Merge release/2025.04 into main for train 2025.04.1",
+   "empty": true
+  },
+  {
+   "date": "2025-05-20",
+   "author": "k.subramani",
+   "message": "MBZ-2200 README rewrite, known state section",
+   "paths": [
+    "business-web/README.md"
+   ]
+  },
+  {
+   "date": "2025-06-05",
+   "author": "k.subramani",
+   "message": "Merge release/2025.06 into main for train 2025.06.1",
+   "empty": true
+  },
+  {
+   "date": "2025-07-15",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-2204 bump moment 2.29.1 to 2.29.4",
+   "empty": true
+  },
+  {
+   "date": "2025-07-31",
+   "author": "k.subramani",
+   "message": "Merge release/2025.08 into main for train 2025.08.1",
+   "empty": true
+  },
+  {
+   "date": "2025-09-16",
+   "author": "n.rajaram",
+   "message": "MBZ-2208 runbook for business-web",
+   "paths": [
+    "business-web/docs/runbooks/business-web.md"
+   ]
+  },
+  {
+   "date": "2025-10-02",
+   "author": "k.subramani",
+   "message": "Merge release/2025.10 into main for train 2025.10.1",
+   "empty": true
+  },
+  {
+   "date": "2025-11-11",
+   "author": "k.subramani",
+   "message": "MBZ-1120 Fed holiday table for 2026",
+   "paths": [
+    "business-web/src/app/core/services/business-date.service.ts"
+   ]
+  },
+  {
+   "date": "2025-12-04",
+   "author": "k.subramani",
+   "message": "Merge release/2025.12 into main for train 2025.12.1",
+   "empty": true
+  },
+  {
+   "date": "2026-02-10",
+   "author": "a.balaraman",
+   "message": "TOOL-1301 Jenkinsfile: CHROME_BIN for the rhel7 image bundled Chrome 109",
+   "paths": [
+    "business-web/Jenkinsfile"
+   ]
+  },
+  {
+   "date": "2026-02-26",
+   "author": "k.subramani",
+   "message": "Merge release/2026.03 into main for train 2026.03.1",
+   "empty": true
+  },
+  {
+   "date": "2026-04-14",
+   "author": "n.rajaram",
+   "message": "MBZ-2220 fix approval decision dialog focus trap on Canopy 3.5",
+   "paths": [
+    "business-web/src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.html",
+    "business-web/src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.ts"
+   ]
+  },
+  {
+   "date": "2026-04-30",
+   "author": "k.subramani",
+   "message": "Merge release/2026.05 into main for train 2026.05.1",
+   "empty": true
+  },
+  {
+   "date": "2026-06-09",
+   "author": "k.subramani",
+   "message": "MBZ-2226 BFF gateway: approvals and organisation users from bff-business with fixture fallback",
+   "paths": [
+    "business-web/src/app/core/services/bff-gateway.service.ts",
+    "business-web/src/app/core/services/index.ts",
+    "business-web/src/app/store/approvals/approvals.effects.ts",
+    "business-web/src/app/features/users/users.service.ts"
+   ]
+  },
+  {
+   "date": "2026-06-25",
+   "author": "k.subramani",
+   "message": "Merge release/2026.07 into main for train 2026.07.1",
+   "empty": true
+  },
+  {
+   "date": "2026-07-21",
+   "author": "meridian-dependency-bot",
+   "message": "MBZ-2230 bump node-releases to 2.0.6",
+   "body": "Floating version needed node >=16 in engines and engine-strict refused it.",
+   "empty": true
+  },
+  {
+   "date": "2026-08-13",
+   "author": "k.subramani",
+   "message": "Merge release/2026.08 into main for train 2026.08.1",
+   "empty": true
+  },
+  {
+   "date": "2026-08-25",
+   "author": "n.rajaram",
+   "message": "MBZ-2234 coverage exclude fixture layer and legacy testing",
+   "paths": [
+    "business-web/angular.json"
+   ]
+  },
+  {
+   "date": "2026-08-27",
+   "author": "k.subramani",
+   "message": "MBZ-2236 history manifest for the estate build",
+   "paths": [
+    "business-web/.history/manifest.json"
+   ]
+  }
+ ]
+}
