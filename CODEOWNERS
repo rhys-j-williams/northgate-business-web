@@ -1,0 +1,14 @@
+# CODEOWNERS for Meridian Business. Reviews are requested automatically.
+# Teams are defined in the CSWT organisation; membership changes go through the
+# access request process, not through this file.
+
+*                                @meridian/business-digital
+
+# Security sensitive paths. GIS-STD-014 requires an application security reviewer on all of these.
+/Dockerfile                      @meridian/business-digital @meridian/gis-appsec
+/Jenkinsfile                     @meridian/business-digital @meridian/gis-appsec
+/checkmarx.yml                   @meridian/business-digital @meridian/gis-appsec
+/SECURITY.md                     @meridian/gis-appsec
+/.npmrc                          @meridian/business-digital @meridian/gis-appsec
+
+/docs/adr/                       @meridian/cswt-architecture
