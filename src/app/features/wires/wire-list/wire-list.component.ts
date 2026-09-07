@@ -13,11 +13,12 @@ import { WiresService } from '../wires.service';
 })
 export class WireListComponent implements OnInit {
   wires: Wire[] = [];
+  visible: Wire[] = [];
   loading = true;
   error: string | null = null;
   canInitiate = false;
   minutesToCutoff = 0;
-  view: 'active' | 'all' = 'active';
+  private currentView: 'active' | 'all' = 'active';
 
   readonly columns: CnColumn<Wire>[] = [
     { key: 'initiatedAt', header: 'Initiated', type: 'date', sortable: true },
@@ -36,17 +37,30 @@ export class WireListComponent implements OnInit {
     this.canInitiate = this.auth.hasPermission('payments:initiate');
     this.minutesToCutoff = this.wiresService.minutesToCutoff();
     this.wiresService.getWires()
-      .then(wires => this.wires = wires)
+      .then(wires => {
+        this.wires = wires;
+        this.refreshVisible();
+      })
       .catch(err => this.error = err && err.message ? err.message : 'Could not load wires')
       .then(() => this.loading = false);
   }
 
-  get visible(): Wire[] {
-    if (this.view === 'all') {
-      return this.wires;
+  get view(): 'active' | 'all' {
+    return this.currentView;
+  }
+
+  set view(value: 'active' | 'all') {
+    this.currentView = value;
+    this.refreshVisible();
+  }
+
+  private refreshVisible(): void {
+    if (this.currentView === 'all') {
+      this.visible = this.wires;
+      return;
     }
     const cutoff = moment().subtract(7, 'days');
-    return this.wires.filter(w => w.status === 'pending-approval' || w.status === 'approved' || w.status === 'draft' || moment(w.initiatedAt).isAfter(cutoff));
+    this.visible = this.wires.filter(w => w.status === 'pending-approval' || w.status === 'approved' || w.status === 'draft' || moment(w.initiatedAt).isAfter(cutoff));
   }
 
   get cutoffLabel(): string {
