@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CnColumn, CnToastService } from '@meridian/canopy-ui';
+import { CnColumn, CnToastService } from '@northgate/canopy-ui';
 import * as _ from 'lodash';
 
 import { BusinessUser } from '../../../core/models';

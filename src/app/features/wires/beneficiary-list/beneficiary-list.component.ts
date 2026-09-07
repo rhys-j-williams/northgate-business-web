@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CnColumn } from '@meridian/canopy-ui';
+import { CnColumn } from '@northgate/canopy-ui';
 
 import { WireBeneficiary } from '../../../core/models';
 import { WiresService } from '../wires.service';

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, shareReplay, switchMap, timeout } from 'rxjs/operators';
 import * as moment from 'moment';
-import { Account } from '@meridian/domain-fixtures';
+import { Account } from '@northgate/domain-fixtures';
 
 import { environment } from '../../../environments/environment';
 import { FixtureDataService } from './fixture-data.service';
@@ -68,7 +68,7 @@ export class BffGatewayService {
         return this.fixtures.decideApproval(approvalId, decision);
       }
       const url = `${environment.apiBase}/v1/approvals/${encodeURIComponent(approvalId)}/${decision.decision === 'approved' ? 'approve' : 'reject'}`;
-      const body = decision.decision === 'rejected' ? { reason: decision.comment || 'Rejected in Meridian Business' } : {};
+      const body = decision.decision === 'rejected' ? { reason: decision.comment || 'Rejected in Northgate Business' } : {};
       return this.http.post<BffApproval>(url, body).pipe(
         map(toApprovalRequest),
         // 409 is maker-checker; let that one through to the store so the row rolls back.

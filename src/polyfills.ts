@@ -18,7 +18,7 @@
  * BROWSER POLYFILLS
  */
 
-// IE 11 went out of support for Meridian Business in the 2022.03 train (MBZ-1290). The classlist
+// IE 11 went out of support for Northgate Business in the 2022.03 train (MBZ-1290). The classlist
 // and web-animations shims were removed then; if a customer complains about IE, the answer is no.
 // (window as any).__Zone_enable_cross_context_check = true;
 

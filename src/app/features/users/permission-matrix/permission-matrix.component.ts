@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { Entitlement } from '@meridian/domain-fixtures';
-import { CnSelectOption } from '@meridian/canopy-ui';
+import { Entitlement } from '@northgate/domain-fixtures';
+import { CnSelectOption } from '@northgate/canopy-ui';
 
 import { PERMISSION_CATALOGUE } from '../users.service';
 

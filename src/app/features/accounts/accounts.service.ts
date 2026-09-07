@@ -6,7 +6,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Account, Transaction } from '@meridian/domain-fixtures';
+import { Account, Transaction } from '@northgate/domain-fixtures';
 import * as _ from 'lodash';
 
 import { environment } from '../../../environments/environment';

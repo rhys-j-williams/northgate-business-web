@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, concatMap, delay, retryWhen } from 'rxjs/operators';
-import { CnToastService } from '@meridian/canopy-ui';
+import { CnToastService } from '@northgate/canopy-ui';
 
 import { AuthService } from '../services/auth.service';
 import { TelemetryService } from '../services/telemetry.service';

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CnBadgeTone } from '@meridian/canopy-ui';
+import { CnBadgeTone } from '@northgate/canopy-ui';
 
 const TONES: { [status: string]: CnBadgeTone } = {
   open: 'success', active: 'success', settled: 'success', confirmed: 'success', approved: 'success', released: 'success', ready: 'success', validated: 'success',

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CnListItem } from '@meridian/canopy-ui';
+import { CnListItem } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 
 import { ApprovalDecision } from '../../core/models';

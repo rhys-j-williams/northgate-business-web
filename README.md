@@ -1,6 +1,6 @@
-# Meridian Business (business-web)
+# Northgate Business (business-web)
 
-Angular 14.2.12 | Node 14.21.3 / npm 6.14.18 | Canopy 3.5.0 | port 4201 | owner **@meridian/business-digital**
+Angular 14.2.12 | Node 14.21.3 / npm 6.14.18 | Canopy 3.5.0 | port 4201 | owner **@northgate/business-digital**
 
 Small business banking: accounts, payroll, ACH origination with NACHA upload, domestic wires with
 maker-checker, the approvals queue, users and entitlements, reports with CSV, and the four alerts
@@ -20,13 +20,13 @@ npm ci
 npm start                # ng serve on 4201, proxies /api -> bff-business 4501 and /idp -> Keystone mock 4400
 ```
 
-`@meridian/*` packages come from the estate Verdaccio on 4873 (`mock-external/estate-up.sh`). If
-`npm ci` fails on `@meridian/canopy-ui@3.5.0` the registry is not up or you have not published the
-3.5.0 tag; `scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout does all three versions.
+`@northgate/*` packages come from the estate Verdaccio on 4873 (`mock-external/estate-up.sh`). If
+`npm ci` fails on `@northgate/canopy-ui@3.5.0` the registry is not up or you have not published the
+3.5.0 tag; `scripts/publish-local-versions.sh` in the northgate-canopy-ui checkout does all three versions.
 
 `environment.useFixtures` is `true` in `environment.ts`. That is deliberate: the BFF is not running
 on most laptops and the fixture layer (`core/services/fixture-data.service.ts`, built on
-`@meridian/domain-fixtures`) is the same data the smoke stage uses. Flip it to `false` to go through
+`@northgate/domain-fixtures`) is the same data the smoke stage uses. Flip it to `false` to go through
 `bff-business`; `BffGatewayService` probes `/health` once and drops back to fixtures if 4501 is not
 answering, so you will not see an empty queue either way. Only accounts, the approvals queue and the
 organisation users list are actually served by the BFF today (MBZ-0801); payroll, ACH, wires,
@@ -34,7 +34,7 @@ reports and alerts have their BFF paths pencilled in and are fixture-only until 
 remaining controllers.
 
 Sign in with anything the Keystone mock on 4400 accepts. Operator handles and roles come from the
-seeded organisation in `@meridian/domain-fixtures` (seed `meridian-business`); the users screen lists
+seeded organisation in `@northgate/domain-fixtures` (seed `northgate-business`); the users screen lists
 them, and the fixture layer picks the first admin as "you".
 
 ## Scripts
@@ -117,7 +117,7 @@ approver, expiry at the boundary).
 
 ## Release
 
-Fortnightly train with the rest of CSWT. `Jenkinsfile` here calls `meridianNodePipeline` from the
+Fortnightly train with the rest of CSWT. `Jenkinsfile` here calls `northgateNodePipeline` from the
 shared library; the deployable chart is `platform-tooling/helm/business-web`, the one in `helm/`
 is the kind/laptop chart. Environment values are rendered into `assets/env.json` at deploy time;
 `environment.prod.ts` deliberately has no hostnames in it (MBZ-1411).

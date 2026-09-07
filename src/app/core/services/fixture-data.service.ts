@@ -1,12 +1,12 @@
 /* tslint:disable:max-line-length */
 /**
- * In process data source for Meridian Business.
+ * In process data source for Northgate Business.
  *
  * History, because people keep asking: when the app was scaffolded in January 2019 (MBZ-12) the
  * business BFF did not exist and the team wired the screens straight to a JSON fixture file. The
  * BFF (bff-business, PLAT-410) arrived in mid 2020 and the API client was written against it, but
  * the fixture path was kept for the smoke stage and for laptops, and in practice every developer
- * runs with useFixtures=true. In 2023 the JSON files were replaced by @meridian/domain-fixtures so
+ * runs with useFixtures=true. In 2023 the JSON files were replaced by @northgate/domain-fixtures so
  * that the data matches what the mocks serve (MBZ-1998). This service is the result: it takes the
  * seeded FixtureSet and derives everything the business screens need from it.
  *
@@ -24,7 +24,7 @@ import * as _ from 'lodash';
 import {
   Account, AlertPreference, Customer, Entitlement, FixtureSet, generateFixtures, Payee, SeededRandom,
   TEST_ROUTING_NUMBER, Transaction
-} from '@meridian/domain-fixtures';
+} from '@northgate/domain-fixtures';
 
 import { environment } from '../../../environments/environment';
 import {
@@ -92,7 +92,7 @@ export class FixtureDataService {
     // A fixed asOf keeps screenshots stable across the estate (domain-fixtures does the same).
     this.asOf = moment('2024-11-15T00:00:00.000Z');
     this.fixtures = generateFixtures({
-      seed: environment.fixtureSeed || 'meridian-business',
+      seed: environment.fixtureSeed || 'northgate-business',
       customers: 40,
       // Business heavy mix; we do not want thirty consumers we cannot show.
       segmentMix: { consumer: 0.1, smallBusiness: 0.8, treasury: 0.1 },
@@ -705,7 +705,7 @@ export class FixtureDataService {
   private buildAlerts(): BusinessAlert[] {
     const prefs: AlertPreference[] = _.filter(this.fixtures.alertPreferences, { customerId: this.organisation.primaryCustomer.customerId });
     // Business only gets the subset that makes sense for a company account. Card alerts are on the
-    // Meridian Online roadmap for business cards; not ours. MBZ-1877.
+    // Northgate Online roadmap for business cards; not ours. MBZ-1877.
     const subset = prefs.filter(p => !/CARD|TRAVEL/.test(p.code));
     return subset.map(p => ({
       alertId: p.alertId,

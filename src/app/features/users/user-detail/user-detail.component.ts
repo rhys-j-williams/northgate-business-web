@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Entitlement } from '@meridian/domain-fixtures';
+import { Entitlement } from '@northgate/domain-fixtures';
 
 import { AuditEvent, BusinessUser } from '../../../core/models';
 import { AuthService, FixtureDataService } from '../../../core/services';

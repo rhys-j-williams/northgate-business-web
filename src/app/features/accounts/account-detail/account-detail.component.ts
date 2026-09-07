@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Account } from '@meridian/domain-fixtures';
+import { Account } from '@northgate/domain-fixtures';
 import { Subscription } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import * as moment from 'moment';

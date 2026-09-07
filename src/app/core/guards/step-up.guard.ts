@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { CnDialogService } from '@meridian/canopy-ui';
+import { CnDialogService } from '@northgate/canopy-ui';
 
 import { AuthService } from '../services/auth.service';
 

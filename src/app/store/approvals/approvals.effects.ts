@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of, timer } from 'rxjs';
 import { catchError, map, mergeMap, switchMap } from 'rxjs/operators';
 import * as moment from 'moment';
-import { CnToastService } from '@meridian/canopy-ui';
+import { CnToastService } from '@northgate/canopy-ui';
 
 import { BffGatewayService } from '../../core/services/bff-gateway.service';
 import * as A from './approvals.actions';

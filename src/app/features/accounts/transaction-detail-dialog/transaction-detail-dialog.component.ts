@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Transaction } from '@meridian/domain-fixtures';
+import { Transaction } from '@northgate/domain-fixtures';
 
 @Component({
   selector: 'mbz-transaction-detail-dialog',

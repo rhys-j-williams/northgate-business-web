@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Account } from '@meridian/domain-fixtures';
-import { CnAccountSummary } from '@meridian/canopy-ui';
+import { Account } from '@northgate/domain-fixtures';
+import { CnAccountSummary } from '@northgate/canopy-ui';
 import * as _ from 'lodash';
 
 import { AccountsService } from '../accounts.service';

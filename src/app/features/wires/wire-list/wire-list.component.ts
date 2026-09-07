@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CnColumn } from '@meridian/canopy-ui';
+import { CnColumn } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 
 import { Wire } from '../../../core/models';

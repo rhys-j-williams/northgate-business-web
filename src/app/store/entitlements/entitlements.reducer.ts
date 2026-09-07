@@ -1,10 +1,10 @@
 /**
  * Hand rolled entity map. We looked at @ngrx/entity in 2019 and decided the adapter hid too much
- * for a team that had never used Redux (MBZ-140 comments). Meridian Online went the other way.
+ * for a team that had never used Redux (MBZ-140 comments). Northgate Online went the other way.
  * The shape is: byId for the saved server state, drafts for unsaved edits keyed the same way,
  * so "dirty" is just "is there a draft".
  */
-import { Entitlement } from '@meridian/domain-fixtures';
+import { Entitlement } from '@northgate/domain-fixtures';
 import * as _ from 'lodash';
 
 import { EntitlementsActions, EntitlementsActionTypes } from './entitlements.actions';
