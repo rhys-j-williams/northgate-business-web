@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { CnListItem } from '@meridian/canopy-ui';
+import { CnListItem } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 
 import { ReportRun } from '../../../core/models';

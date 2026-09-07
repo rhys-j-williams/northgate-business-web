@@ -1,7 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { CnCoreModule } from '@meridian/canopy-ui';
+import { CnCoreModule } from '@northgate/canopy-ui';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { CorrelationInterceptor } from './interceptors/correlation.interceptor';
@@ -12,7 +12,7 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
     CommonModule,
     HttpClientModule,
     // Header names agreed with the BFF in PLAT-410. Do not rename without a BFF change in the same train.
-    HttpClientXsrfModule.withOptions({ cookieName: 'MERIDIAN-XSRF', headerName: 'X-MERIDIAN-XSRF' }),
+    HttpClientXsrfModule.withOptions({ cookieName: 'NORTHGATE-XSRF', headerName: 'X-NORTHGATE-XSRF' }),
     CnCoreModule.forRoot({ locale: 'en-US', currency: 'USD', density: 'compact', themeStorageKey: null })
   ],
   providers: [

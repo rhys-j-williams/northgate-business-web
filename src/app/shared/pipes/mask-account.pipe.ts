@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { maskAccountNumber } from '@meridian/domain-fixtures';
+import { maskAccountNumber } from '@northgate/domain-fixtures';
 
 @Pipe({ name: 'mbzMaskAccount' })
 export class MaskAccountPipe implements PipeTransform {

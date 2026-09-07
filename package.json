@@ -1,7 +1,7 @@
 {
-  "name": "meridian-business",
+  "name": "northgate-business",
   "version": "2026.09.0",
-  "description": "Meridian Business. Small business online banking front end.",
+  "description": "Northgate Business. Small business online banking front end.",
   "private": true,
   "license": "UNLICENSED",
   "engines": {
@@ -35,8 +35,8 @@
     "@angular/platform-browser": "14.2.12",
     "@angular/platform-browser-dynamic": "14.2.12",
     "@angular/router": "14.2.12",
-    "@meridian/canopy-ui": "3.5.0",
-    "@meridian/domain-fixtures": "1.6.0",
+    "@northgate/canopy-ui": "3.5.0",
+    "@northgate/domain-fixtures": "1.6.0",
     "@ngrx/effects": "14.3.3",
     "@ngrx/store": "14.3.3",
     "@ngrx/store-devtools": "14.3.3",

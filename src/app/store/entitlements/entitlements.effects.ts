@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap, switchMap, withLatestFrom } from 'rxjs/operators';
-import { CnToastService } from '@meridian/canopy-ui';
+import { CnToastService } from '@northgate/canopy-ui';
 
 import { FixtureDataService } from '../../core/services/fixture-data.service';
 import {

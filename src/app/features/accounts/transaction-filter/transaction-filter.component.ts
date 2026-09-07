@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { CnDateRange, CnFilterChip } from '@meridian/canopy-ui';
+import { CnDateRange, CnFilterChip } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 

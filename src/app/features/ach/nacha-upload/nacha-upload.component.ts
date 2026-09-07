@@ -1,8 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Account, Entitlement } from '@meridian/domain-fixtures';
-import { CnSelectOption, CnToastService } from '@meridian/canopy-ui';
+import { Account, Entitlement } from '@northgate/domain-fixtures';
+import { CnSelectOption, CnToastService } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 
 import { AuthService } from '../../../core/services';

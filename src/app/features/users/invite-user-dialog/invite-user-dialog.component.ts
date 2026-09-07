@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Entitlement } from '@meridian/domain-fixtures';
-import { CnSelectOption } from '@meridian/canopy-ui';
+import { Entitlement } from '@northgate/domain-fixtures';
+import { CnSelectOption } from '@northgate/canopy-ui';
 
 import { BusinessUser } from '../../../core/models';
 import { UsersService } from '../users.service';

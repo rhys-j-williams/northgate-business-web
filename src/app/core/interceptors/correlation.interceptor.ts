@@ -13,7 +13,7 @@ export class CorrelationInterceptor implements HttpInterceptor {
     return next.handle(req.clone({
       setHeaders: {
         'X-Correlation-Id': this.telemetry.currentCorrelationId,
-        'X-Meridian-Channel': 'business-web'
+        'X-Northgate-Channel': 'business-web'
       }
     }));
   }

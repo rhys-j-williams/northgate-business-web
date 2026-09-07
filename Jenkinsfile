@@ -1,14 +1,14 @@
 #!/usr/bin/env groovy
-// Meridian Business (business-web). Owner @meridian/business-digital.
+// Northgate Business (business-web). Owner @northgate/business-digital.
 //
 // Yes, nodejs14-rhel7. See platform-tooling/jenkins-shared-library/README.md, the paragraph that
 // starts "The nodejs14-rhel7 situation". MBZ-2231 is the upgrade ticket; it has been re-parented
 // three times. Do not change the label to nodejs16-rhel8 to "see if it works" - it does not,
 // engine-strict in .npmrc fails npm ci on the first line, and the last person who tried it
 // (2024-02) broke the release/2024.03 train build for a day.
-@Library('meridian-pipeline@v3') _
+@Library('northgate-pipeline@v3') _
 
-meridianNodePipeline(
+northgateNodePipeline(
     agentLabel:        'nodejs14-rhel7',
     nodeVersion:       '14.21.3',
     appName:           'business-web',
@@ -18,7 +18,7 @@ meridianNodePipeline(
     lintCommand:       'npm run tslint',
     testCommand:       'npm test',
     buildCommand:      'npm run build',
-    coverageSummary:   'coverage/meridian-business/coverage-summary.json',
+    coverageSummary:   'coverage/northgate-business/coverage-summary.json',
     // Karma on the rhel7 image needs the bundled Chrome 109; the library's default points at 120.
     env: [
         CHROME_BIN: '/opt/google/chrome-109/chrome',
@@ -28,6 +28,6 @@ meridianNodePipeline(
     timeoutMinutes: 45,
     // TSLint exits 2 on warnings if any rule is set to "warning" severity and --force is absent.
     // The shared library treats non-zero lint as a failure so the package script must stay clean.
-    sonarProjectKey:   'meridian-business-web',
-    checkmarxPreset:   'meridian-angular-legacy'
+    sonarProjectKey:   'northgate-business-web',
+    checkmarxPreset:   'northgate-angular-legacy'
 )

@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { CnPageShellModule } from '@meridian/canopy-ui';
+import { CnPageShellModule } from '@northgate/canopy-ui';
 
 import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';

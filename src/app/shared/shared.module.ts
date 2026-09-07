@@ -33,7 +33,7 @@ import {
   CnDataTableModule, CnDateRangeModule, CnDialogShellModule, CnDividerModule, CnExpansionModule, CnFilterChipsModule,
   CnIconButtonModule, CnIconModule, CnListModule, CnMaskedInputModule, CnMenuModule, CnPageHeaderModule,
   CnProgressModule, CnSelectModule, CnSkeletonModule, CnTabsModule, CnToastModule, CnToggleModule, CnTooltipModule
-} from '@meridian/canopy-ui';
+} from '@northgate/canopy-ui';
 
 import { ConfirmActionDialogComponent } from './components/confirm-action-dialog/confirm-action-dialog.component';
 import { EmptyStateComponent } from './components/empty-state/empty-state.component';

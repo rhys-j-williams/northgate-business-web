@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { Entitlement } from '@meridian/domain-fixtures';
+import { Entitlement } from '@northgate/domain-fixtures';
 
 import { EntitlementsState } from './entitlements.reducer';
 

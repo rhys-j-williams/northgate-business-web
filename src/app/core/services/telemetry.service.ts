@@ -62,7 +62,7 @@ export class TelemetryService {
   private flush(batch: TelemetryEvent[]): void {
     const body = batch.map(e => ({
       time: moment(e.at).unix(),
-      sourcetype: 'meridian:business-web',
+      sourcetype: 'northgate:business-web',
       event: { ...e, correlationId: this.correlationId, app: 'business-web', env: environment.name }
     }));
     this.http.post(environment.telemetry.endpoint, body, {

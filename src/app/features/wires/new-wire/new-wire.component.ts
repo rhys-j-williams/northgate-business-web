@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Account, Entitlement } from '@meridian/domain-fixtures';
-import { CnSelectOption, CnToastService } from '@meridian/canopy-ui';
+import { Account, Entitlement } from '@northgate/domain-fixtures';
+import { CnSelectOption, CnToastService } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 import * as _ from 'lodash';
 

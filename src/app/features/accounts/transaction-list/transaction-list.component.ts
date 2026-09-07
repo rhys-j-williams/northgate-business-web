@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Transaction } from '@meridian/domain-fixtures';
+import { Transaction } from '@northgate/domain-fixtures';
 
 import { AccountsService } from '../accounts.service';
 import { Page, TransactionQuery } from '../../../core/models';

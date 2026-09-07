@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Payee } from '@meridian/domain-fixtures';
+import { Payee } from '@northgate/domain-fixtures';
 import * as _ from 'lodash';
 
 import { AchTemplate } from '../../../core/models';

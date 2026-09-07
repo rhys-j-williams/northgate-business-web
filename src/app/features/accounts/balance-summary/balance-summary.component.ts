@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
-import { Account } from '@meridian/domain-fixtures';
+import { Account } from '@northgate/domain-fixtures';
 import * as _ from 'lodash';
 
 @Component({

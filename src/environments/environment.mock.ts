@@ -1,4 +1,4 @@
-// Everything in process against @meridian/domain-fixtures, no BFF, no IdP. Used by the Jenkins
+// Everything in process against @northgate/domain-fixtures, no BFF, no IdP. Used by the Jenkins
 // smoke stage and by anyone demoing from a train. `npm run start:mock-external`.
 export const environment = {
   production: false,
@@ -6,12 +6,12 @@ export const environment = {
   apiBase: 'http://localhost:4501',
   idp: {
     issuer: 'http://localhost:4400',
-    clientId: 'meridian-business-web',
+    clientId: 'northgate-business-web',
     redirectUri: 'http://localhost:4201/auth/callback',
     scopes: 'openid profile email offline_access accounts.read payments.write entitlements.read'
   },
   useFixtures: true,
-  fixtureSeed: 'meridian-business',
+  fixtureSeed: 'northgate-business',
   featureFlags: {
     wiresSameDayCutoff: true,
     payrollScheduling: true,
