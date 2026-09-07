@@ -29,5 +29,5 @@ through and the density mode that Canopy 3.7 offers is adopted instead.
   replaces most of our overrides, and the dialog API changes). Doing it in one jump was tried on a
   branch in June 2024 and abandoned.
 - The Angular 16+ Canopy line (4.x) requires 3.7 first. So this pin is in the way of MBZ-2231 too.
-- `verify-traps` style checks in the estate look for the exact string `"@meridian/canopy-ui": "3.5.0"`.
-  Changing the pin without doing the work will make things pass and look worse.
+- The release pipeline's dependency gate asserts the exact string `"@meridian/canopy-ui": "3.5.0"`
+  (TOOL-1290). Changing the pin without doing the work will make things pass and look worse.
