@@ -22,7 +22,7 @@ npm start                # ng serve on 4201, proxies /api -> bff-business 4501 a
 
 `@meridian/*` packages come from the estate Verdaccio on 4873 (`mock-external/estate-up.sh`). If
 `npm ci` fails on `@meridian/canopy-ui@3.5.0` the registry is not up or you have not published the
-3.5.0 tag; `canopy-ui/scripts/publish-local-versions.sh` does all three versions.
+3.5.0 tag; `scripts/publish-local-versions.sh` in the meridian-canopy-ui checkout does all three versions.
 
 `environment.useFixtures` is `true` in `environment.ts`. That is deliberate: the BFF is not running
 on most laptops and the fixture layer (`core/services/fixture-data.service.ts`, built on
