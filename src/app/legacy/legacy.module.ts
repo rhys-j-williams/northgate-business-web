@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CnCardModule, CnPageHeaderModule } from '@meridian/canopy-ui';
+import { CnCardModule, CnPageHeaderModule } from '@northgate/canopy-ui';
 
 import { SharedModule } from '../shared/shared.module';
 import { LegacyAuditLogComponent } from './audit-log/legacy-audit-log.component';

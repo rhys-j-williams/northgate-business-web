@@ -6,6 +6,6 @@
 app.kubernetes.io/name: {{ include "business-web.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
-app.kubernetes.io/part-of: meridian-business
-meridian.bank/team: business-digital
+app.kubernetes.io/part-of: northgate-business
+northgate.bank/team: business-digital
 {{- end -}}

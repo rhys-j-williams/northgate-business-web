@@ -1,11 +1,11 @@
 /**
  * Synthetic NACHA files for the parser specs and for the ACH upload screen's "load a sample"
- * link. Account data comes from @meridian/domain-fixtures so nothing here is ever a real account:
+ * link. Account data comes from @northgate/domain-fixtures so nothing here is ever a real account:
  * routing numbers are the test range number, names are the fixture payees, amounts are seeded.
  *
  * Deterministic for a given seed. Change the seed and the specs change; do not.
  */
-import { generateFixtures, Payee, SeededRandom, TEST_ROUTING_NUMBER } from '@meridian/domain-fixtures';
+import { generateFixtures, Payee, SeededRandom, TEST_ROUTING_NUMBER } from '@northgate/domain-fixtures';
 import * as moment from 'moment';
 
 import { NachaBatch, NachaEntry, NachaFile, NachaParserService } from '../nacha-parser.service';
@@ -112,7 +112,7 @@ export function buildNachaFile(options: NachaFixtureOptions = {}): NachaFile {
       fileCreationDate: created,
       fileCreationTime: '0930',
       fileIdModifier: 'A',
-      immediateDestinationName: 'MERIDIAN TRUST BANK',
+      immediateDestinationName: 'NORTHGATE TRUST BANK',
       immediateOriginName: NACHA_FIXTURE_COMPANY,
       referenceCode: ''
     },

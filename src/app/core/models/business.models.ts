@@ -1,9 +1,9 @@
 /**
  * Business banking domain types. These mirror the bff-business contracts in
  * platform-services/apps/bff-business/src/contracts (when they exist; the BFF has been "next
- * quarter" since MBZ-1180). Anything carrying account data comes from @meridian/domain-fixtures.
+ * quarter" since MBZ-1180). Anything carrying account data comes from @northgate/domain-fixtures.
  */
-import { Account, Customer, Entitlement, Payee, Transaction } from '@meridian/domain-fixtures';
+import { Account, Customer, Entitlement, Payee, Transaction } from '@northgate/domain-fixtures';
 
 export type MoneyMinor = number;
 

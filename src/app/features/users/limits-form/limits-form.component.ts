@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, Output } from '@a
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Entitlement } from '@meridian/domain-fixtures';
+import { Entitlement } from '@northgate/domain-fixtures';
 
 /**
  * Limits are entered in dollars and stored in minor units. Empty means no limit, which is

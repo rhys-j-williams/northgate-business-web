@@ -9,7 +9,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "meridian-business": {
+    "northgate-business": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -27,7 +27,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/meridian-business",
+            "outputPath": "dist/northgate-business",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -38,7 +38,7 @@
               "src/assets",
               {
                 "glob": "canopy-sprite.svg",
-                "input": "node_modules/@meridian/canopy-ui/icons",
+                "input": "node_modules/@northgate/canopy-ui/icons",
                 "output": "/assets/canopy"
               }
             ],
@@ -119,13 +119,13 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "meridian-business:build:production"
+              "browserTarget": "northgate-business:build:production"
             },
             "mock-external": {
-              "browserTarget": "meridian-business:build:mock-external"
+              "browserTarget": "northgate-business:build:mock-external"
             },
             "development": {
-              "browserTarget": "meridian-business:build:development"
+              "browserTarget": "northgate-business:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -143,7 +143,7 @@
               "src/assets",
               {
                 "glob": "canopy-sprite.svg",
-                "input": "node_modules/@meridian/canopy-ui/icons",
+                "input": "node_modules/@northgate/canopy-ui/icons",
                 "output": "/assets/canopy"
               }
             ],
@@ -167,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "meridian-business"
+  "defaultProject": "northgate-business"
 }

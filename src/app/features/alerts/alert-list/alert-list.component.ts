@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CnToastService } from '@meridian/canopy-ui';
+import { CnToastService } from '@northgate/canopy-ui';
 import * as _ from 'lodash';
 
 import { BusinessAlert } from '../../../core/models';

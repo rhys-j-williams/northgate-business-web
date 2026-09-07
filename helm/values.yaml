@@ -15,7 +15,7 @@ service:
 env:
   API_BASE: /api
   IDP_ISSUER: http://localhost:4400
-  IDP_CLIENT_ID: meridian-business-web
+  IDP_CLIENT_ID: northgate-business-web
   USE_FIXTURES: "false"
   TELEMETRY_ENABLED: "false"
   IDLE_TIMEOUT_MINUTES: "10"

@@ -7,12 +7,12 @@ export const environment = {
   apiBase: '/api',
   idp: {
     issuer: 'http://localhost:4400',
-    clientId: 'meridian-business-web',
+    clientId: 'northgate-business-web',
     redirectUri: 'http://localhost:4201/auth/callback',
     scopes: 'openid profile email offline_access accounts.read payments.write entitlements.read'
   },
   useFixtures: true,
-  fixtureSeed: 'meridian-business',
+  fixtureSeed: 'northgate-business',
   featureFlags: {
     wiresSameDayCutoff: true,
     payrollScheduling: true,

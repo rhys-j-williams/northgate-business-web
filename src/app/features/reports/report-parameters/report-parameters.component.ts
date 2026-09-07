@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Account } from '@meridian/domain-fixtures';
-import { CnDateRange, CnSelectOption } from '@meridian/canopy-ui';
+import { Account } from '@northgate/domain-fixtures';
+import { CnDateRange, CnSelectOption } from '@northgate/canopy-ui';
 import * as moment from 'moment';
 
 import { BusinessUser, ReportDefinition } from '../../../core/models';

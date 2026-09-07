@@ -5,7 +5,7 @@ import { environment } from '../../../environments/environment';
 import { BusinessAlert } from '../../core/models';
 import { FixtureDataService } from '../../core/services';
 
-// Only the balance / payment alert subset lives here. Card and fraud alerts are Meridian Online's.
+// Only the balance / payment alert subset lives here. Card and fraud alerts are Northgate Online's.
 @Injectable({ providedIn: 'root' })
 export class AlertsService {
   constructor(private http: HttpClient, private fixtures: FixtureDataService) {}

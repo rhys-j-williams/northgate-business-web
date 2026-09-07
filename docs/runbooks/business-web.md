@@ -1,10 +1,10 @@
-# Runbook: business-web (Meridian Business)
+# Runbook: business-web (Northgate Business)
 
-Owner @meridian/business-digital. Rota: business-digital, Chennai hours (10:00-21:00 IST), with
+Owner @northgate/business-digital. Rota: business-digital, Chennai hours (10:00-21:00 IST), with
 payments-platform Jersey City for the US afternoon. Not a 24x7 channel; overnight pages go to the
 CSWT duty manager only for Sev 1.
 
-Static Angular bundle served by nginx on 8080 behind the route `business.meridian.internal`. There is
+Static Angular bundle served by nginx on 8080 behind the route `business.northgate.internal`. There is
 no server side state in this application. If it is "down" it is one of: the CDN/route, the BFF
 (`bff-business`, 4501, its own runbook), Keystone, or a bad deployment.
 
@@ -16,7 +16,7 @@ no server side state in this application. If it is "down" it is one of: the CDN/
    shipped with a Canopy or Material mismatch. Roll back: `oc rollout undo deploy/business-web -n cswt-prod`.
 3. If sign-in loops back to `/auth/callback` repeatedly, Keystone changed something. MBZ-1502 has the
    history of this; check the `redirectUri` in the rendered `assets/env.json` matches what Keystone
-   has registered for `meridian-business-web`.
+   has registered for `northgate-business-web`.
 4. `oc rollout history deploy/business-web -n cswt-prod`. If the last rollout is in the incident
    window, roll back first and think later.
 

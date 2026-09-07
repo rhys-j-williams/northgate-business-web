@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { Entitlement } from '@meridian/domain-fixtures';
-import { CnDialogService } from '@meridian/canopy-ui';
+import { Entitlement } from '@northgate/domain-fixtures';
+import { CnDialogService } from '@northgate/canopy-ui';
 
 import { AuthService } from '../../../core/services';
 import * as E from '../../../store/entitlements/entitlements.actions';
@@ -15,7 +15,7 @@ import { CanComponentDeactivate } from '../../../core/guards/unsaved-changes.gua
 /**
  * Master/detail over the hand rolled entitlements store (store/entitlements). Selecting a row
  * dispatches Select; edits go to a draft; Save sends the draft. Everything else is selectors.
- * Compare this to how Meridian Online does it with @ngrx/entity and weep (MBZ-1901).
+ * Compare this to how Northgate Online does it with @ngrx/entity and weep (MBZ-1901).
  */
 @Component({
   selector: 'mbz-entitlements-editor',

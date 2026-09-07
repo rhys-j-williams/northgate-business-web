@@ -1,4 +1,4 @@
-// Meridian Business global stylesheet.
+// Northgate Business global stylesheet.
 //
 // History: this started life as styles.css in 2019 with the Material indigo-pink prebuilt theme.
 // Canopy 2.x replaced the theme in 2020 (MBZ-620). The `::ng-deep` and `.mat-*` overrides below
@@ -8,7 +8,7 @@
 
 // MBZ-3320: the 3.5.0 package's `styles` entry forwards a path that does not exist in the
 // published tarball, so we go through `themes` directly. Fixed upstream in 3.6, we never moved.
-@use '@meridian/canopy-ui/themes' as canopy;
+@use '@northgate/canopy-ui/themes' as canopy;
 @use 'variables' as mbz;
 
 @include canopy.theme();

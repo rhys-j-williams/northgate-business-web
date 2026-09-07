@@ -30,7 +30,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/meridian-business'),
+      dir: require('path').join(__dirname, './coverage/northgate-business'),
       subdir: '.',
       reporters: [
         { type: 'html' },

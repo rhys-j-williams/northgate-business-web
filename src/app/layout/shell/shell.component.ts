@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
-import { CnNavItem } from '@meridian/canopy-ui';
+import { CnNavItem } from '@northgate/canopy-ui';
 
 import { environment } from '../../../environments/environment';
 import { SessionUser } from '../../core/models';

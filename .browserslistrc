@@ -1,4 +1,4 @@
-# Meridian Business supported browsers. Agreed with the small business product owner in 2021
+# Northgate Business supported browsers. Agreed with the small business product owner in 2021
 # (MBZ-1290): evergreen browsers plus the two most recent Safari releases. IE 11 support was
 # removed in the 2022.03 train when Angular 13 dropped it; the polyfills entry is still there.
 

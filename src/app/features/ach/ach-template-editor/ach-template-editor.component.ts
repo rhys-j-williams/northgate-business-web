@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Payee } from '@meridian/domain-fixtures';
-import { CnSelectOption } from '@meridian/canopy-ui';
+import { Payee } from '@northgate/domain-fixtures';
+import { CnSelectOption } from '@northgate/canopy-ui';
 import * as _ from 'lodash';
 
 import { AchTemplate, SecCode } from '../../../core/models';

@@ -1,9 +1,9 @@
 /**
  * Entitlements actions. Class based, the way NgRx 7 taught us in 2019 (MBZ-140). createAction
- * exists now and Meridian Online uses it; converting this file is MBZ-1901, not started.
+ * exists now and Northgate Online uses it; converting this file is MBZ-1901, not started.
  */
 import { Action } from '@ngrx/store';
-import { Entitlement } from '@meridian/domain-fixtures';
+import { Entitlement } from '@northgate/domain-fixtures';
 
 export enum EntitlementsActionTypes {
   Load = '[Entitlements] Load',

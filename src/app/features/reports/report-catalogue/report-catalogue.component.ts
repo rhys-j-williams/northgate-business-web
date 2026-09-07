@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CnToastService } from '@meridian/canopy-ui';
+import { CnToastService } from '@northgate/canopy-ui';
 
 import { ReportDefinition, ReportRun } from '../../../core/models';
 import { AuthService } from '../../../core/services';

@@ -1,4 +1,4 @@
-# ADR 0004: Pin @meridian/canopy-ui at 3.5.0
+# ADR 0004: Pin @northgate/canopy-ui at 3.5.0
 
 Date: 2024-04-09. Status: accepted, under protest. Tickets: MBZ-2140, CNPY-1710.
 
@@ -6,7 +6,7 @@ Date: 2024-04-09. Status: accepted, under protest. Tickets: MBZ-2140, CNPY-1710.
 
 Canopy 3.6.0 (CNPY-1710) renamed the data table internals (`cn-data-table__table` became
 `cn-table__grid`, the row height token moved to `--cn-table-row-height`) and changed the dialog
-container padding. Meridian Business overrides those from the outside: `styles.scss` and roughly
+container padding. Northgate Business overrides those from the outside: `styles.scss` and roughly
 twenty component stylesheets use `::ng-deep` or `ViewEncapsulation.None` to reach into Canopy and,
 where we use Material directly, into `.mat-*` classes. The overrides were written in 2019-2021 when
 Canopy had no density mode and the business users complained about row height on the transactions
@@ -29,5 +29,5 @@ through and the density mode that Canopy 3.7 offers is adopted instead.
   replaces most of our overrides, and the dialog API changes). Doing it in one jump was tried on a
   branch in June 2024 and abandoned.
 - The Angular 16+ Canopy line (4.x) requires 3.7 first. So this pin is in the way of MBZ-2231 too.
-- The release pipeline's dependency gate asserts the exact string `"@meridian/canopy-ui": "3.5.0"`
+- The release pipeline's dependency gate asserts the exact string `"@northgate/canopy-ui": "3.5.0"`
   (TOOL-1290). Changing the pin without doing the work will make things pass and look worse.

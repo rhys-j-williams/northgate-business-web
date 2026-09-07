@@ -8,5 +8,5 @@ maintainers:
   - name: business-digital
     email: business-digital@example.com
 annotations:
-  meridian.bank/ticket-key: MBZ
-  meridian.bank/compliance-critical: "false"
+  northgate.bank/ticket-key: MBZ
+  northgate.bank/compliance-critical: "false"

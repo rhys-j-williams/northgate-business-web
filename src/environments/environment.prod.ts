@@ -5,9 +5,9 @@ export const environment = {
   name: 'prod',
   apiBase: '/api',
   idp: {
-    issuer: 'https://keystone.meridian.internal',
-    clientId: 'meridian-business-web',
-    redirectUri: 'https://business.meridian.example/auth/callback',
+    issuer: 'https://keystone.northgate.internal',
+    clientId: 'northgate-business-web',
+    redirectUri: 'https://business.northgate.example/auth/callback',
     scopes: 'openid profile email offline_access accounts.read payments.write entitlements.read'
   },
   useFixtures: false,
