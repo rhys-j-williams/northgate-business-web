@@ -1,6 +1,7 @@
 # ADR 0003: Keep TSLint through the Angular 12 to 14 step
 
-Date: 2022-05-16. Status: accepted, to be superseded by whoever does the Angular 16 work. Ticket: MBZ-1790.
+Date: 2022-05-16. Status: superseded by ADR 0005 (MBZ-2140, Angular 14 -> 15: TSLint and codelyzer removed,
+`ng lint` via angular-eslint). Ticket: MBZ-1790.
 
 ## Context
 

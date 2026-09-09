@@ -1,0 +1,159 @@
+# MBZ-2140 Angular 14 -> 15 deprecation / changed-pattern log (northgate-business-web)
+# Source: the per-step logs in this directory (A1-node16/, A2-rxjs7/, A3-angular-eslint14/, A4-canopy-3.7.2/,
+# B-canopy-4.0.0/, C-angular15/). One block per ordered step; every pattern that was rewritten is listed.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# A1  Node 14.21.3 -> 16.20.2 / npm 6.14.18 -> 8.19.4  (commit 6d574ef, MBZ-2231)
+# ---------------------------------------------------------------------------------------------------------------
+#   - .nvmrc, package.json engines, Dockerfile FROM node:16.20.2-bullseye-slim, Jenkinsfile agentLabel nodejs16-rhel8 /
+#     nodeVersion '16.20.2'; the CHROME_BIN override (/opt/google/chrome-109/chrome, rhel7 image) is removed because the
+#     nodejs16-rhel8 image ships Chrome 120 and the shared library default points at it.
+#   - package-lock.json v1 -> v2 (npm 8 "old lockfile" one-time fix-up, A1-node16/npm-install-lockfile.log). Angular 14
+#     resolutions kept; a fresh resolve was rejected by engine-strict (transitive node-releases@2.0.54/55 declares
+#     engines node>=18, which npm 8 enforces on transitive packages and npm 6 did not).
+#   - package.json "overrides": { "node-releases": "2.0.44" } + direct devDependency node-releases 2.0.6 -> 2.0.44
+#     (last release without an engines field). This is an engines/resolution override, NOT an audit override:
+#     node-releases has no advisory at any version. Disclosed for the GIS .npmrc/CODEOWNERS review under KAN-29.
+#   - .npmrc: engine-strict=true and save-exact=true kept; comment text updated to the Node 16 pin. legacy-peer-deps
+#     kept until A2.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# A2  RxJS 6.6.7 -> 7.5.7  (commit 4e8f9e0, MBZ-2044 pattern list)
+# ---------------------------------------------------------------------------------------------------------------
+#   - Observable#toPromise() (deprecated in 7, removed in 8) -> lastValueFrom(obs) in 49 call sites across 21 files;
+#     per-line list in A2-rxjs7/toPromise-migration.log. lastValueFrom (not firstValueFrom) was chosen everywhere
+#     because toPromise() resolved with the LAST emitted value; every call site is a single-shot HttpClient / of()
+#     stream so the two are equivalent, and lastValueFrom preserves the 6.x semantics exactly. Behaviour difference
+#     kept in mind: toPromise() resolved undefined on an empty completion, lastValueFrom rejects with EmptyError.
+#     No call site consumes an empty stream (all are HTTP responses or of(...)); no spec needed a change.
+#     Two of the 21 files are in the frozen legacy module (src/app/legacy/audit-log/legacy-audit-log.component.ts,
+#     src/app/legacy/statements/legacy-statements.component.ts, one call each): the same mechanical rewrite, no other
+#     edit, still excluded from lint (ignorePatterns). Recorded because ADR 0003 calls the module frozen.
+#   - `import { lastValueFrom } from 'rxjs'` added to each touched file; no `rxjs/operators` import had to move
+#     (the repo already imported operators from 'rxjs/operators', which remains valid in 7.5; the 'rxjs' root export
+#     of operators is not adopted here to keep the diff to the toPromise change).
+#   - No rxjs-compat, no `rxjs/Rx`, no `rxjs/internal/*` imports existed (baseline tslint import-blacklist).
+#   - Subscription / Subscriber typing: no changes needed (no `Subscription.add(...)` return-value use, no
+#     `subscribe(next, error, complete)` positional-argument form in src/; legacy module included).
+#   - .npmrc legacy-peer-deps=true REMOVED: npm install without it resolves with 0 ERESOLVE
+#     (A2-rxjs7/legacy-peer-deps-check.log). codelyzer 6.0.2 still nested its own @angular/core 9 peer as before;
+#     gone in A3.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# A3  TSLint 6.1.3 + codelyzer 6.0.2 -> angular-eslint 14.4.0 / eslint 8.57.1 / @typescript-eslint 5.43.0  (d00f527)
+# ---------------------------------------------------------------------------------------------------------------
+#   - tslint.json deleted; .eslintrc.json created by `ng g @angular-eslint/schematics:convert-tslint-to-eslint`.
+#     Rule-by-rule outcome (untranslatable, silently-dropped-and-hand-mapped, re-scoped) in
+#     A3-angular-eslint14/rule-conversion-notes.md. Nothing disabled silently; one gap: TSLint `deprecation`
+#     (warning) has no equivalent without eslint-plugin-deprecation (not in the approved set) - listed for review.
+#   - package.json scripts: "tslint", "tslint:fix" removed; "lint": "ng lint", "lint:fix": "ng lint --fix".
+#     Jenkinsfile lintCommand 'npm run tslint' -> 'npm run lint'. angular.json gains the @angular-eslint/builder:lint
+#     target and the schematics defaults block.
+#   - Code changes forced by the stricter ESLint equivalents (type annotations only, no behaviour change):
+#       6 explicit return types (3 closures; 3 NgRx selector factories typed MemoizedSelector<object, T>) in
+#       fixture-data.service.ts, telemetry.service.ts, ach.service.ts, shell.component.ts,
+#       approvals.reducer.spec.ts, approvals.selectors.ts, entitlements.selectors.ts.
+#   - Warning count 88 (tslint) -> 90 (eslint); every warning rule was already warning-severity in tslint.json.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# A4  @northgate/canopy-ui 3.5.0 -> 3.7.2  (commit 4cec227, MBZ-2210 hop 1; Angular 14 unchanged)
+# ---------------------------------------------------------------------------------------------------------------
+#   - Pin only (package.json + lockfile, 28 lines). Canopy 3.6.x token rename / table internals and 3.7.x density
+#     mode: business-web already consumed the public Canopy 3.7 surface (CnCoreModule.forRoot({ density: 'compact' })
+#     and --cn-* tokens), and the ADR 0004 fear (twenty `::ng-deep` overrides breaking on 3.6) did not materialise:
+#     the `::ng-deep` rules that reach into Canopy do so by BEM class name (`.cn-page-shell__nav-badge`,
+#     `.cn-page-shell__nav-link`, `.cn-expansion .mat-expansion-panel-header`, `.cn-checkbox__label`) and 3.6/3.7/4.0
+#     kept those names; the rest target Material `.mat-*` internals and are dealt with in C. Build, 32/32 tests, lint,
+#     0 new audit ids (A4-canopy-3.7.2/gate-summary.txt). `grep ::ng-deep src` gives 12 hits after C (develop: 15;
+#     both counts include the comment in styles.scss): eleven rules, six of them into Canopy `.cn-*` class names
+#     (two of those six also carry an MDC class) and five into MDC public classes/tokens only; moving the Canopy
+#     ones to tokens is follow-up, not this hop.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# B   @northgate/canopy-ui 3.7.2 -> 4.0.0  (commit 4aa0baa, MBZ-2210 hop 2; dependency tree only)
+# ---------------------------------------------------------------------------------------------------------------
+#   - Canopy 4.0.0 built from northgate-canopy-ui feature/CNPY-2140-angular-14-to-15 (PR #3) and published to the
+#     local Verdaccio (4873) only. Its peers are @angular/* ^15.2, @angular/material ^15.2, rxjs ^7.5, so
+#     package.json moves to the Angular 15.2 / Material 15.2 / CDK 15.2 set in the same commit. The source
+#     migration is the next commit (C); the pin alone does not compile against Angular 14 sources, so B's gates
+#     are C's gates.
+#   - @angular/flex-layout 14.0.0-beta.41 REMOVED (zero fx*/FlexLayoutModule usages in src/,
+#     00-baseline-14/flex-layout-inventory.log; it was a Canopy 3.x peer and blocked the Material 15 resolve).
+#   - Canopy 4.0.0 schematic `canopy-4-theme-mixin` (B-canopy-4.0.0/ng-update-canopy-migrate.log): "no Canopy
+#     typography overrides found, nothing to do" - business-web never overrode Canopy typography levels, so the
+#     Material-2014 -> Material-15 level rename (KAN-33 risk) does not touch this repository.
+#   - styles.scss theme entry stays `@use '@northgate/canopy-ui/themes' as canopy; @include canopy.theme();`
+#     The 4.0.0 `styles` entry forwards `../lib/tokens` / `../lib/themes`, which are not in the published package
+#     (verified by inspecting node_modules/@northgate/canopy-ui/); the `themes` entry is the documented public one.
+#
+# ---------------------------------------------------------------------------------------------------------------
+# C   Angular 14.2.12 -> 15.2.10, CLI 14.2.12 -> 15.2.11, Material/CDK 14.2.7 -> 15.2.9 (MDC), NgRx 14.3.3 -> 15.4.0,
+#     ngx-mask 14.3.3 -> 15.2.3, TypeScript 4.7.4 -> 4.9.5, zone.js 0.11.8 -> 0.12.0, angular-eslint 14.4.0 -> 15.2.1
+#     (commit 77d3553, MBZ-2140)
+# ---------------------------------------------------------------------------------------------------------------
+# ng update @angular/core@15 @angular/cli@15 @angular-eslint/schematics@15 (C-angular15/ng-update-core-cli.log):
+#   - @angular-eslint "Updates @angular-eslint to v15": package.json + angular.json (2 files). Versions re-pinned exact.
+#   - @angular/cli "Remove Browserslist configuration files that match the CLI default": no change (.browserslistrc
+#     differs from the default and is kept).
+#   - @angular/cli "Remove exported @angular/platform-server renderModule": no change (no SSR).
+#   - @angular/cli "Remove no longer needed require calls in Karma builder main file": src/test.ts loses the
+#     `declare const require` / `require.context('./', true, /\.spec\.ts$/)` block (12 lines); spec discovery is
+#     now done by @angular-devkit/build-angular:karma itself. TestBed.initTestEnvironment(...) unchanged.
+#   - @angular/cli "Update TypeScript compiler target and set useDefineForClassFields": tsconfig.json target
+#     es2020 -> ES2022, useDefineForClassFields: false (keeps TS 4.7 class-field initialisation order for the
+#     hand-rolled NgRx classes; ADR 0002 behaviour untouched). Side effect: Karma/istanbul branch count changes
+#     (fewer down-levelled branches), see REPORT.md 4 - lines coverage, the Jenkins gate metric, is unchanged.
+#   - @angular/cli "Remove options from angular.json no longer supported": no change.
+#   - @angular/core "relativeLinkResolution removed": no change (never set).
+#   - @angular/core "RouterLink contains RouterLinkWithHref": no change (no direct RouterLinkWithHref import).
+#   - Angular 15 also deprecates NgModule-less bootstrapping helpers nothing here uses; `@Component.providers`
+#     for `MatDialogRef`, `MAT_DIALOG_DATA` untouched.
+#
+# ng update @angular/material@15 (C-angular15/ng-update-material-migrate.log):
+#   - "Updates the Angular Material to v15": 20 files rewritten to import from `@angular/material/legacy-*`
+#     (the automatic step; every Material module in shared.module.ts, alerts.module.ts, users.module.ts and the 17
+#     components that inject MatDialog/MatDialogRef/MatSnackBar/MatPaginator/MatTableDataSource).
+#   - First attempt failed on peers (C-angular15/ng-update-material-ngrx.log: @angular/flex-layout ^14 cdk peer and
+#     Canopy 3.7.2 material ^14 peer). Resolved by B (flex-layout removed, Canopy 4.0.0 pinned), then re-run.
+#
+# ng generate @angular/material:mdc-migration --components all --directory src (C-angular15/ng-generate-mdc-migration.log):
+#   - `@angular/material/legacy-*` imports -> MDC modules again in the same 20 TS files (no legacy-* import remains;
+#     `grep -r "material/legacy" src/` is empty).
+#   - 18 SCSS files rewritten `.mat-<x>` -> `.mat-mdc-<x>` with the migrator's TODO comments where a legacy internal
+#     class has no MDC equivalent. Each TODO was then resolved by hand (REPORT.md 3.3): replaced with an MDC public
+#     class, an `--mdc-*` token, a Canopy public class (`.cn-checkbox__label`) or a template attribute
+#     (`subscriptSizing="dynamic"`, `matListItemTitle/Line/Meta`), or deleted when MDC owns that spacing.
+#     No migrator TODO comment remains in src/ (`grep -rn "TODO(mdc-migration)" src/` is empty).
+#   - Removed selectors (pre-MDC internals, no MDC equivalent, spacing now owned by MDC / Canopy density):
+#       .mat-tab-label, .mat-ink-bar, .mat-tab-group.mbz-tabs (dead: no mat-tab-group in templates),
+#       .mat-form-field-appearance-outline .mat-form-field-infix, .mat-form-field-appearance-outline
+#       .mat-form-field-wrapper, .mat-form-field-wrapper, .mat-form-field-outline-thick, .mat-dialog-container
+#       (padding), .mat-checkbox-label, .mat-checkbox-layout, .mat-checkbox-inner-container, .mat-slide-toggle-bar,
+#       mat-nav-list[dense] (attribute removed from entitlements-editor.component.html; KAN-34 - no dense/-2).
+#   - Replacements:
+#       .mat-tooltip font-size            -> .mat-mdc-tooltip { --mdc-plain-tooltip-supporting-text-size: 12px }
+#       .mat-slide-toggle-bar height      -> .mat-mdc-slide-toggle { --mdc-switch-track-height: 12px }
+#       .mat-icon-button 24px             -> .mat-mdc-icon-button { --mdc-icon-button-state-layer-size: 24px; ... }
+#       .mat-dialog-container radius      -> .mat-mdc-dialog-container { --mdc-dialog-container-shape: 6px }
+#       .mat-dialog-title/-content        -> .mat-mdc-dialog-title / .mat-mdc-dialog-content
+#       .mat-list-item 52px, dense        -> .mat-mdc-nav-list { --mdc-list-list-item-two-line-container-height: 52px }
+#                                            + .mat-mdc-list-item; template uses matListItemTitle/matListItemLine/
+#                                            matListItemMeta instead of mat-line / trailing mat-icon
+#       .mat-checkbox-label (2 files)     -> Canopy public .cn-checkbox__label (the checkbox is cn-checkbox)
+#       .mat-form-field-wrapper padding   -> subscriptSizing="dynamic" on the two payroll-line-editor mat-form-fields
+#       .mat-chip-list-wrapper            -> KEPT, scoped `cn-filter-chips .mat-chip-list-wrapper` only: Canopy 4.0.0
+#                                            ships cn-filter-chips on the legacy chip list (KAN-28); rule goes when
+#                                            Canopy moves it to MDC chips.
+#   - Missing icons cn:refresh, cn:chart, cn:person-add (console errors in visual/*/capture.log) are pre-existing on
+#     the Angular 14 / Canopy 3.5.0 baseline and are a Canopy icon-registry gap, not a deprecation here.
+#
+# Other C changes:
+#   - @ngrx/store, effects, store-devtools 14.3.3 -> 15.4.0 (ng update, no migrations emitted; hand-rolled reducers
+#     untouched, ADR 0002). ngx-mask 14.3.3 -> 15.2.3 (peer-driven; API unchanged for `mask=` usage).
+#   - TypeScript 4.7.4 -> 4.9.5 (Angular 15.2 range >=4.8.2 <5.0). zone.js 0.11.8 -> 0.12.0 (Angular 15 peer ~0.11.4 || ~0.12.0
+#     -> 0.12 is the newer of the two allowed lines; not 0.13, which is the Angular 16 line).
+#   - eslint 8.57.1 / @typescript-eslint 5.43.0 / eslint-plugin-* pins unchanged from A3; angular-eslint 15.2.1 reports the
+#     same 0 errors / 90 warnings as A3 (C-angular15/lint.log line 199; the 77d3553 commit message says 92, that figure
+#     counted two summary lines and is wrong - 90 is the number).
+#   - aot: false in development (MBZ-1345) kept; production build (AOT) is the template check, as before.
+#   - No Angular 16 API, no standalone bootstrap, no signals, no `inject()` migration: one major only.
