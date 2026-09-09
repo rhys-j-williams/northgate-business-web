@@ -40,7 +40,7 @@
     "@ngrx/effects": "14.3.3",
     "@ngrx/store": "14.3.3",
     "@ngrx/store-devtools": "14.3.3",
-    "@northgate/canopy-ui": "3.5.0",
+    "@northgate/canopy-ui": "3.7.2",
     "@northgate/domain-fixtures": "1.6.0",
     "lodash": "4.17.21",
     "moment": "2.29.4",
