@@ -1,0 +1,102 @@
+STATE  COMPONENT          CHECK                              DETAIL
+-----  ---------          -----                              ------
+PASS   repo               root file PORTS.md                 
+PASS   repo               root file README.md                
+PASS   repo               root file .gitignore               
+PASS   repo               repositories checked out           9/9 under /home/ubuntu/repos
+PASS   retail-web         no forbidden strings (worktree)    
+SKIP   retail-web         no forbidden strings (history)     --quick
+PASS   retail-web         no build output committed          
+PASS   retail-web         exact dependency versions          
+PASS   business-web       no forbidden strings (worktree)    
+SKIP   business-web       no forbidden strings (history)     --quick
+PASS   business-web       no build output committed          
+PASS   business-web       exact dependency versions          
+PASS   keystone-web       no forbidden strings (worktree)    
+SKIP   keystone-web       no forbidden strings (history)     --quick
+PASS   keystone-web       no build output committed          
+PASS   keystone-web       exact dependency versions          
+PASS   ledgerline-web     no forbidden strings (worktree)    
+SKIP   ledgerline-web     no forbidden strings (history)     --quick
+PASS   ledgerline-web     no build output committed          
+PASS   ledgerline-web     exact dependency versions          
+PASS   iris-widget        no forbidden strings (worktree)    
+SKIP   iris-widget        no forbidden strings (history)     --quick
+PASS   iris-widget        no build output committed          
+PASS   iris-widget        exact dependency versions          
+PASS   lantern-sdk        no forbidden strings (worktree)    
+SKIP   lantern-sdk        no forbidden strings (history)     --quick
+PASS   lantern-sdk        no build output committed          
+PASS   lantern-sdk        exact dependency versions          
+PASS   platform-services  no forbidden strings (worktree)    
+SKIP   platform-services  no forbidden strings (history)     --quick
+PASS   platform-services  no build output committed          
+PASS   platform-services  exact dependency versions          
+FAIL   mock-external      no forbidden strings (worktree)    run the script for the matches
+SKIP   mock-external      no forbidden strings (history)     --quick
+PASS   mock-external      no build output committed          
+PASS   mock-external      exact dependency versions          
+PASS   platform-tooling   no forbidden strings (worktree)    
+SKIP   platform-tooling   no forbidden strings (history)     --quick
+PASS   platform-tooling   no build output committed          
+PASS   platform-tooling   exact dependency versions          
+PASS   retail-web         package.json present               
+PASS   retail-web         .nvmrc present                     
+PASS   retail-web         lockfile committed                 
+PASS   retail-web         history depth                      345 >= 180
+PASS   retail-web         author spread                      17 authors
+PASS   retail-web         release tags                       v2024.09.2 
+SKIP   retail-web         install, test, build               --quick
+PASS   business-web       package.json present               
+PASS   business-web       .nvmrc present                     
+PASS   business-web       lockfile committed                 
+PASS   business-web       history depth                      360 >= 200
+PASS   business-web       author spread                      13 authors
+PASS   business-web       release tags                       v2025.03.1 v2026.08.0 
+SKIP   business-web       install, test, build               --quick
+PASS   keystone-web       package.json present               
+PASS   keystone-web       .nvmrc present                     
+PASS   keystone-web       lockfile committed                 
+PASS   keystone-web       history depth                      214 >= 140
+PASS   keystone-web       author spread                      12 authors
+PASS   keystone-web       release tags                       v4.11.3 
+SKIP   keystone-web       install, test, build               --quick
+PASS   ledgerline-web     package.json present               
+PASS   ledgerline-web     .nvmrc present                     
+PASS   ledgerline-web     lockfile committed                 
+PASS   ledgerline-web     history depth                      177 >= 120
+PASS   ledgerline-web     author spread                      13 authors
+PASS   ledgerline-web     release tags                       v2024.07.0 v2026.03.0 
+SKIP   ledgerline-web     install, test, build               --quick
+PASS   iris-widget        package.json present               
+PASS   iris-widget        .nvmrc present                     
+PASS   iris-widget        lockfile committed                 
+PASS   iris-widget        history depth                      78 >= 40
+PASS   iris-widget        author spread                      11 authors
+PASS   iris-widget        release tags                       v1.9.1 v1.9.4 
+SKIP   iris-widget        install, test, build               --quick
+PASS   lantern-sdk        package.json present               
+PASS   lantern-sdk        .nvmrc present                     
+PASS   lantern-sdk        lockfile committed                 
+PASS   lantern-sdk        history depth                      80 >= 30
+PASS   lantern-sdk        author spread                      7 authors
+PASS   lantern-sdk        release tags                       v2.0.0 v2.3.1 v2.4.1 
+SKIP   lantern-sdk        install, test, build               --quick
+PASS   lantern-sdk        partial Ivy output (LNTN-401)      ɵɵngDeclare* markers, no metadata.json
+PASS   platform-services  COVERAGE.md                        
+PASS   platform-services  copybooks                          
+SKIP   platform-services  domain-fixtures tests              --quick
+PASS   statements-api     no test framework (PLAT-2310)      
+PASS   exposure-calc      no test framework (PLAT-2310)      
+PASS   mock-external      estate-up.sh executable            
+PASS   mock-external      estate-down.sh executable          
+PASS   mock-external      smoke.sh executable                
+PASS   platform-tooling   northgateNodePipeline.groovy       
+PASS   platform-tooling   northgateJavaPipeline.groovy       
+SKIP   platform-tooling   groovy syntax                      groovyc unavailable
+PASS   platform-tooling   Jenkinsfile agent labels           
+SKIP   platform-tooling   helm lint                          helm unavailable
+
+pass 77, fail 1, skip 18
+failed: mock-external/no forbidden strings (worktree)
+VERIFY_EXIT=1

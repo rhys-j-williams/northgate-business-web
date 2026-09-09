@@ -1,0 +1,52 @@
+[estate-up] ESTATE_NO_DOCKER=1, not touching Docker
+[estate-up] mode: in-process   (workspace: /home/ubuntu/repos)
+
+[estate-up] == 1/4 registry ==
+[verdaccio-up] already up at http://localhost:4873
+
+[estate-up] == 2/4 internal packages ==
+[estate-up] ESTATE_SKIP_PUBLISH=1, skipping
+
+[estate-up] == 3/4 external mocks and infrastructure (in-process) ==
+[estate-up] previous in-process run found, stopping it first
+[start-all] keystone-idp-mock pid 65126 port 4400
+[start-all] bedrock-core-mock pid 65127 port 4600
+[start-all] aggregio-mock pid 65128 port 4601
+[start-all] tickerhaus-mock pid 65130 port 4602
+[start-all] triscore-mock pid 65135 port 4603
+[start-all] paylink-network-mock pid 65141 port 4604
+[start-all] vault-mock pid 65144 port 4605
+[start-all] splunk-hec-mock pid 65149 port 4606
+[start-all] lantern-collector-mock pid 65155 port 4607
+[start-all] semaphore-flags-mock pid 65166 port 4608
+[start-all] ldap-mock pid 65173 port 4609
+[start-all] detached, pids in /home/ubuntu/repos/northgate-mock-external/.estate/pids, logs in /home/ubuntu/repos/northgate-mock-external/.estate/logs
+
+[estate-up] == 4/4 platform services ==
+[estate-up] platform-services: scripts/run-local.sh start bedrock-adapter bff-retail bff-business
+
+[1mNorthgate Trust Bank - local estate (in-process)[0m
+component                    port    url                              status
+---------                    ----    ---                              ------
+verdaccio (registry)         4873    http://localhost:4873            up
+keystone-idp-mock            4400    http://localhost:4400            up
+bedrock-core-mock            4600    http://localhost:4600            up
+aggregio-mock                4601    http://localhost:4601            up
+tickerhaus-mock              4602    http://localhost:4602            up
+triscore-mock                4603    http://localhost:4603            up
+paylink-network-mock         4604    http://localhost:4604            up
+vault-mock                   4605    http://localhost:4605            up
+splunk-hec-mock              4606    http://localhost:4606            up
+lantern-collector-mock       4607    http://localhost:4607            up
+semaphore-flags-mock         4608    http://localhost:4608            up
+ldap-mock                    4609    http://localhost:4609            up
+redpanda (kafka)             9092    localhost:9092                   skipped (no Docker; Java services use profile local-inmem-kafka)
+redis                        6379    redis://localhost:6379           skipped (no Docker; services fall back to in-memory map)
+mq (ibm-mq | artemis)        1414/61616 http://localhost:8161 (artemis console) skipped (no Docker; Java services embed Artemis under profile local-artemis)
+bedrock-adapter              4516    http://localhost:4516            up
+bff-retail                   4500    http://localhost:4500            up
+bff-business                 4501    http://localhost:4501            up
+
+front ends (start them yourself, ng serve in each app): retail-web 4200, business-web 4201, keystone-web 4202, ledgerline-web 4203, canopy-showcase 4204, iris-widget 4205
+login: any fixture user (see http://localhost:4400/debug/users), password Passw0rd, MFA code 123456
+logs: /home/ubuntu/repos/northgate-mock-external/.estate/logs     stop: /home/ubuntu/repos/northgate-mock-external/estate-down.sh     check: /home/ubuntu/repos/northgate-mock-external/smoke.sh
