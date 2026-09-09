@@ -6,10 +6,11 @@
 #   docker build -t business-web:local --build-arg NPM_REGISTRY=http://host.docker.internal:4873 .
 #   docker run -p 4201:8080 business-web:local
 #
-# node:14 images are not on the GIS approved list any more (GIS-STD-021 rev 6). That is fine for a
-# laptop, and it is exactly why the pipeline goes through the shared Dockerfile and the rhel7 agent.
+# Public node:* images are not on the GIS approved list (GIS-STD-021 rev 6). That is fine for a
+# laptop, and it is exactly why the pipeline goes through the shared Dockerfile and the rhel8 agent.
+# Base follows .nvmrc (MBZ-2140: 16.20.2).
 
-FROM node:14.21.3-bullseye-slim AS build
+FROM node:16.20.2-bullseye-slim AS build
 ARG NPM_REGISTRY=http://localhost:4873
 ENV CI=true NG_CLI_ANALYTICS=false NODE_OPTIONS=--max-old-space-size=3072
 WORKDIR /workspace

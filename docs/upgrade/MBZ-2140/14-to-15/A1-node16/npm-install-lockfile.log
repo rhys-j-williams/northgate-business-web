@@ -1,0 +1,74 @@
+# Fresh resolve (rm package-lock.json; npm install) rejected by engine-strict: transitive node-releases@2.0.55 requires node>=18. Lockfile v1 upgraded in place with npm 8 instead (npm install on the committed lockfile), keeping the Angular 14 baseline resolutions.
+npm WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+npm WARN old lockfile Error: Integrity checksum failed when using sha512: wanted sha512-m7UNTbXRef0pBMd2PMYKpN6xE/AYY9tvVKNFE04nHPkNa6qk/4kg6eMccsiD0XVlhXSPpMYb4AldJz+awwmmHA== but got sha512-ey1fSK6HxPRlLXog1NK8SFHXuejDrgNFwpVTxiVCYaipyQfUYNDVN2vDWwcc89RotX4zvRkZSsGBdVJp/QJBjA==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24)
+npm WARN old lockfile  Could not fetch metadata for @northgate/canopy-ui@3.5.0 Error: Integrity checksum failed when using sha512: wanted sha512-m7UNTbXRef0pBMd2PMYKpN6xE/AYY9tvVKNFE04nHPkNa6qk/4kg6eMccsiD0XVlhXSPpMYb4AldJz+awwmmHA== but got sha512-ey1fSK6HxPRlLXog1NK8SFHXuejDrgNFwpVTxiVCYaipyQfUYNDVN2vDWwcc89RotX4zvRkZSsGBdVJp/QJBjA==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24) {
+npm WARN old lockfile   code: 'EINTEGRITY'
+npm WARN old lockfile }
+npm WARN old lockfile Error: Integrity checksum failed when using sha512: wanted sha512-gKBHGfj8Idy61MyEhKeYks4gPEFVYPw+QW6X//movHaFJRBqac/lB4LGh0CnasrVyM19K99IJuzWb3Ji0q0k0g== but got sha512-MVYFSNvvVCP0G/npVZcZ+KpCPN7/hwObB4LSoCa9PSJ5eaC0t6+IP6tsxKEPZzRpTjSS2wtcQL38FQaPDd892A==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24)
+npm WARN old lockfile  Could not fetch metadata for @northgate/domain-fixtures@1.6.0 Error: Integrity checksum failed when using sha512: wanted sha512-gKBHGfj8Idy61MyEhKeYks4gPEFVYPw+QW6X//movHaFJRBqac/lB4LGh0CnasrVyM19K99IJuzWb3Ji0q0k0g== but got sha512-MVYFSNvvVCP0G/npVZcZ+KpCPN7/hwObB4LSoCa9PSJ5eaC0t6+IP6tsxKEPZzRpTjSS2wtcQL38FQaPDd892A==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24) {
+npm WARN old lockfile   code: 'EINTEGRITY'
+npm WARN old lockfile }
+npm ERR! code EBADENGINE
+npm ERR! engine Unsupported engine
+npm ERR! engine Not compatible with your version of node/npm: node-releases@2.0.54
+npm ERR! notsup Not compatible with your version of node/npm: node-releases@2.0.54
+npm ERR! notsup Required: {"node":">=18"}
+npm ERR! notsup Actual:   {"npm":"8.19.4","node":"v16.20.2"}
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2026-09-09T21_54_57_636Z-debug-0.log
+
+# Second attempt: the committed lockfile itself nests browserslist > node-releases@2.0.54 (engines node>=18; npm 6
+# never enforced engines on transitive packages, npm 8 does). Kept engine-strict=true (MBZ-1877, KAN-29) and added
+# package.json "overrides": { "node-releases": "2.0.44" } (last release without an engines field, no advisory on
+# any node-releases version). Listed in REPORT.md / CAB_RECORD.md for the GIS .npmrc/CODEOWNERS review under KAN-29.
+npm ERR! code EOVERRIDE
+npm ERR! Override for node-releases@2.0.6 conflicts with direct dependency
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2026-09-09T21_55_58_802Z-debug-0.log
+# Third attempt: the repo already carried a direct devDependency node-releases@2.0.6 (MBZ-12 scaffold era pin); moved it to 2.0.44 so the override and the direct pin agree (EOVERRIDE otherwise).
+npm WARN old lockfile 
+npm WARN old lockfile The package-lock.json file was created with an old version of npm,
+npm WARN old lockfile so supplemental metadata must be fetched from the registry.
+npm WARN old lockfile 
+npm WARN old lockfile This is a one-time fix-up, please be patient...
+npm WARN old lockfile 
+npm WARN old lockfile Error: Integrity checksum failed when using sha512: wanted sha512-m7UNTbXRef0pBMd2PMYKpN6xE/AYY9tvVKNFE04nHPkNa6qk/4kg6eMccsiD0XVlhXSPpMYb4AldJz+awwmmHA== but got sha512-ey1fSK6HxPRlLXog1NK8SFHXuejDrgNFwpVTxiVCYaipyQfUYNDVN2vDWwcc89RotX4zvRkZSsGBdVJp/QJBjA==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24)
+npm WARN old lockfile  Could not fetch metadata for @northgate/canopy-ui@3.5.0 Error: Integrity checksum failed when using sha512: wanted sha512-m7UNTbXRef0pBMd2PMYKpN6xE/AYY9tvVKNFE04nHPkNa6qk/4kg6eMccsiD0XVlhXSPpMYb4AldJz+awwmmHA== but got sha512-ey1fSK6HxPRlLXog1NK8SFHXuejDrgNFwpVTxiVCYaipyQfUYNDVN2vDWwcc89RotX4zvRkZSsGBdVJp/QJBjA==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24) {
+npm WARN old lockfile   code: 'EINTEGRITY'
+npm WARN old lockfile }
+npm WARN old lockfile Error: Integrity checksum failed when using sha512: wanted sha512-gKBHGfj8Idy61MyEhKeYks4gPEFVYPw+QW6X//movHaFJRBqac/lB4LGh0CnasrVyM19K99IJuzWb3Ji0q0k0g== but got sha512-MVYFSNvvVCP0G/npVZcZ+KpCPN7/hwObB4LSoCa9PSJ5eaC0t6+IP6tsxKEPZzRpTjSS2wtcQL38FQaPDd892A==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24)
+npm WARN old lockfile  Could not fetch metadata for @northgate/domain-fixtures@1.6.0 Error: Integrity checksum failed when using sha512: wanted sha512-gKBHGfj8Idy61MyEhKeYks4gPEFVYPw+QW6X//movHaFJRBqac/lB4LGh0CnasrVyM19K99IJuzWb3Ji0q0k0g== but got sha512-MVYFSNvvVCP0G/npVZcZ+KpCPN7/hwObB4LSoCa9PSJ5eaC0t6+IP6tsxKEPZzRpTjSS2wtcQL38FQaPDd892A==.
+npm WARN old lockfile     at RegistryFetcher.manifest (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/pacote/lib/registry.js:152:35)
+npm WARN old lockfile     at async Array.<anonymous> (/home/ubuntu/.nvm/versions/node/v16.20.2/lib/node_modules/npm/node_modules/@npmcli/arborist/lib/arborist/build-ideal-tree.js:738:24) {
+npm WARN old lockfile   code: 'EINTEGRITY'
+npm WARN old lockfile }
+npm ERR! code EBADENGINE
+npm ERR! engine Unsupported engine
+npm ERR! engine Not compatible with your version of node/npm: node-releases@2.0.54
+npm ERR! notsup Not compatible with your version of node/npm: node-releases@2.0.54
+npm ERR! notsup Required: {"node":">=18"}
+npm ERR! notsup Actual:   {"npm":"8.19.4","node":"v16.20.2"}
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2026-09-09T21_56_20_053Z-debug-0.log
