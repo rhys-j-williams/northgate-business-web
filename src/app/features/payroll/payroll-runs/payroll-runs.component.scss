@@ -1,15 +1,15 @@
 // ViewEncapsulation.None, so these are global. Prefixed to be safe. MBZ-410.
 .mbz-payroll-table {
-  .mat-header-cell.mbz-num,
-  .mat-cell.mbz-num {
+  .mat-mdc-header-cell.mbz-num,
+  .mat-mdc-cell.mbz-num {
     text-align: right;
   }
 
-  .mat-row.mbz-clickable {
+  .mat-mdc-row.mbz-clickable {
     cursor: pointer;
   }
 
-  .mat-row.mbz-clickable:hover .mat-cell {
+  .mat-mdc-row.mbz-clickable:hover .mat-mdc-cell {
     background: var(--cn-color-surface-alt);
   }
 

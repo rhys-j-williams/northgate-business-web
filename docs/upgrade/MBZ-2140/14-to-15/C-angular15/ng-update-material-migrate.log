@@ -1,0 +1,34 @@
+Workspace extension with invalid name (_comment) found.
+Repository is not clean. Update changes will be mixed with pre-existing changes.
+Using package manager: npm
+Collecting installed dependencies...
+Found 47 dependencies.
+** Executing migrations of package '@angular/material' **
+
+▸ Updates the Angular Material to v15.
+Workspace extension with invalid name (_comment) found.
+    
+      ✓  Updated Angular Material to version 15
+    
+UPDATE src/app/shared/shared.module.ts (4641 bytes)
+UPDATE src/app/features/accounts/transaction-list/transaction-list.component.ts (3720 bytes)
+UPDATE src/app/features/reports/report-preview/report-preview.component.ts (2226 bytes)
+UPDATE src/app/features/approvals/approvals-queue/approvals-queue.component.ts (3601 bytes)
+UPDATE src/app/features/payroll/payroll-runs/payroll-runs.component.ts (2023 bytes)
+UPDATE src/app/features/ach/ach-template-editor/ach-template-editor.component.ts (4134 bytes)
+UPDATE src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.ts (1436 bytes)
+UPDATE src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.ts (939 bytes)
+UPDATE src/app/features/users/invite-user-dialog/invite-user-dialog.component.ts (1997 bytes)
+UPDATE src/app/features/wires/wire-detail/wire-detail.component.ts (4606 bytes)
+UPDATE src/app/features/approvals/approval-detail/approval-detail.component.ts (4438 bytes)
+UPDATE src/app/features/alerts/alerts.module.ts (801 bytes)
+UPDATE src/app/features/users/users.module.ts (1533 bytes)
+UPDATE src/app/layout/idle-warning/idle-warning.component.ts (1470 bytes)
+UPDATE src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.ts (1607 bytes)
+UPDATE src/app/features/ach/ach-templates/ach-templates.component.ts (2314 bytes)
+UPDATE src/app/features/users/user-list/user-list.component.ts (2586 bytes)
+UPDATE src/app/features/alerts/alert-list/alert-list.component.ts (2353 bytes)
+UPDATE src/app/layout/shell/shell.component.ts (4143 bytes)
+UPDATE src/app/features/accounts/transaction-detail-dialog/transaction-detail-dialog.component.ts (1788 bytes)
+  Migration completed (20 files modified).
+

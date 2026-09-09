@@ -18,13 +18,6 @@
   background: rgba(196, 64, 32, .06);
 }
 
-// Compact the form field inside table cells. Material's own padding is for standalone use.
-:host ::ng-deep .mbz-line-editor .mat-form-field-wrapper {
-  padding-bottom: 0;
-  margin: 0;
-}
-
-:host ::ng-deep .mbz-line-editor .mat-form-field-infix {
-  padding: 8px 0;
-  border-top-width: 6px;
-}
+// Form fields inside table cells: the reserved hint/error space is dropped via
+// `subscriptSizing="dynamic"` in the template; the field height itself follows the Canopy
+// compact density.

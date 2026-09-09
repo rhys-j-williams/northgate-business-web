@@ -1,0 +1,116 @@
+npm WARN config production Use `--omit=dev` instead.
+# npm audit report
+
+@angular/common  <=19.2.25
+Severity: high
+Depends on vulnerable versions of @angular/core
+Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angular HTTP Client - https://github.com/advisories/GHSA-58c5-g7wp-6w37
+@angular/common: Denial of Service (DoS) via OOM in Date Formatting (formatDate) - https://github.com/advisories/GHSA-48r7-hpm6-gfxm
+@angular/common: Weak 32-Bit Cache Key Hashing in `HttpTransferCache` Leading to Cross-Request Data Leakage and State Poisoning - https://github.com/advisories/GHSA-39pv-4j6c-2g6v
+@angular/common: Denial of Service (DoS) via OOM in Number Formatting (digitsInfo) - https://github.com/advisories/GHSA-p3vc-36g9-x9gr
+@angular/common: Information Leak via Default Caching of Credentialed Requests in HttpTransferCache - https://github.com/advisories/GHSA-q6f4-qqrg-jv6x
+Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning - https://github.com/advisories/GHSA-jhpw-976m-542j
+fix available via `npm audit fix --force`
+Will install @angular/platform-browser-dynamic@22.1.6, which is a breaking change
+node_modules/@angular/common
+  @angular/cdk  <=6.4.7 || 8.0.0-beta.0 - 17.3.10
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/cdk
+  @angular/forms  <=19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/forms
+    @angular/material  <=6.4.7 || 8.0.0-beta.0 - 17.3.10
+    Depends on vulnerable versions of @angular/animations
+    Depends on vulnerable versions of @angular/cdk
+    Depends on vulnerable versions of @angular/common
+    Depends on vulnerable versions of @angular/core
+    Depends on vulnerable versions of @angular/forms
+    Depends on vulnerable versions of @angular/platform-browser
+    node_modules/@angular/material
+  @angular/platform-browser  <=19.2.15
+  Depends on vulnerable versions of @angular/animations
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/platform-browser
+  @angular/platform-browser-dynamic  <=19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/compiler
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/platform-browser-dynamic
+  @angular/router  <=0.0.0-ROUTERPLACEHOLDER || 2.0.0-rc.0 - 19.2.15
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/platform-browser
+  node_modules/@angular/router
+  @northgate/canopy-ui  *
+  Depends on vulnerable versions of @angular/animations
+  Depends on vulnerable versions of @angular/cdk
+  Depends on vulnerable versions of @angular/common
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/forms
+  Depends on vulnerable versions of @angular/material
+  Depends on vulnerable versions of @angular/material-moment-adapter
+  Depends on vulnerable versions of @angular/router
+  node_modules/@northgate/canopy-ui
+
+@angular/compiler  <=19.2.25
+Severity: high
+Depends on vulnerable versions of @angular/core
+Angular has XSS Vulnerability via Unsanitized SVG Script Attributes - https://github.com/advisories/GHSA-jrmj-c5cx-3cw6
+Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attributes - https://github.com/advisories/GHSA-v4hv-rgfq-gp49
+@angular/compiler: Two-Way Property Binding Sanitization Bypass (XSS) - https://github.com/advisories/GHSA-58w9-8g37-x9v5
+Angular: Template and Attribute Namespace Sanitization Bypass (XSS) - https://github.com/advisories/GHSA-f3m7-gqxr-g87x
+Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes - https://github.com/advisories/GHSA-jj27-h5hq-8x99
+fix available via `npm audit fix --force`
+Will install @angular/compiler@22.1.6, which is a breaking change
+node_modules/@angular/compiler
+
+@angular/core  <=19.2.25
+Severity: high
+Angular i18n vulnerable to Cross-Site Scripting - https://github.com/advisories/GHSA-prjf-86w9-mfqv
+Angular has XSS Vulnerability via Unsanitized SVG Script Attributes - https://github.com/advisories/GHSA-jrmj-c5cx-3cw6
+Angular: Template and Attribute Namespace Sanitization Bypass (XSS) - https://github.com/advisories/GHSA-f3m7-gqxr-g87x
+@angular/core: Angular Template and Dynamic Component Namespace Bypass leading to Cross-Site Scripting (XSS) - https://github.com/advisories/GHSA-692r-grfm-v8x7
+Angular Client Hydration DOM Clobbering & Response-Cache Poisoning - https://github.com/advisories/GHSA-rgjc-h3x7-9mwg
+Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes - https://github.com/advisories/GHSA-jj27-h5hq-8x99
+fix available via `npm audit fix --force`
+Will install @angular/core@22.1.6, which is a breaking change
+node_modules/@angular/core
+  @angular/animations  <=18.2.14
+  Depends on vulnerable versions of @angular/core
+  node_modules/@angular/animations
+  @angular/material-moment-adapter  <=6.4.7 || 8.0.0-beta.0 - 17.3.10
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @angular/material
+  node_modules/@angular/material-moment-adapter
+  @ngrx/effects  <=18.1.1
+  Depends on vulnerable versions of @angular/core
+  Depends on vulnerable versions of @ngrx/store
+  node_modules/@ngrx/effects
+  @ngrx/store  1.5.0 - 2.0.0 || 2.1.1 - 18.1.1
+  Depends on vulnerable versions of @angular/core
+  node_modules/@ngrx/store
+    @ngrx/store-devtools  4.0.0 - 18.1.1
+    Depends on vulnerable versions of @ngrx/store
+    node_modules/@ngrx/store-devtools
+
+lodash  <=4.17.23
+Severity: high
+lodash vulnerable to Code Injection via `_.template` imports key names - https://github.com/advisories/GHSA-r5fr-rjxr-66jc
+lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit` - https://github.com/advisories/GHSA-f23m-r3pf-42rh
+Lodash has Prototype Pollution Vulnerability in `_.unset` and `_.omit` functions - https://github.com/advisories/GHSA-xxjr-mmjv-4gpg
+fix available via `npm audit fix --force`
+Will install lodash@4.18.1, which is outside the stated dependency range
+node_modules/lodash
+
+16 high severity vulnerabilities
+
+To address all issues possible (including breaking changes), run:
+  npm audit fix --force
+
+Some issues need review, and may require choosing
+a different dependency.

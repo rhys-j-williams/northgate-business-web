@@ -9,25 +9,25 @@
   font-size: 12px;
   font-variant-numeric: tabular-nums;
 
-  .mat-header-cell {
+  .mat-mdc-header-cell {
     white-space: nowrap;
     background: var(--cn-color-surface);
   }
 
-  .mat-cell {
+  .mat-mdc-cell {
     white-space: nowrap;
     max-width: 280px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
-  .mat-header-cell.mbz-num,
-  .mat-cell.mbz-num {
+  .mat-mdc-header-cell.mbz-num,
+  .mat-mdc-cell.mbz-num {
     text-align: right;
   }
 
   // Sticky header shadow, Material does not do this for us in 14.
-  .mat-header-row {
+  .mat-mdc-header-row {
     box-shadow: 0 1px 0 var(--cn-color-border);
   }
 }

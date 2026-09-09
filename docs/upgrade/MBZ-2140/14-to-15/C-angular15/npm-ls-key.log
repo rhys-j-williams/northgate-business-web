@@ -1,0 +1,77 @@
+northgate-business@2026.09.0 /home/ubuntu/repos/northgate-business-web
+├─┬ @angular-devkit/build-angular@15.2.11
+│ ├─┬ @angular-devkit/architect@0.1502.11
+│ │ └── rxjs@6.6.7
+│ ├─┬ @angular-devkit/build-webpack@0.1502.11
+│ │ └── rxjs@6.6.7
+│ ├─┬ @angular-devkit/core@15.2.11
+│ │ └── rxjs@6.6.7
+│ ├─┬ @ngtools/webpack@15.2.11
+│ │ └── typescript@4.9.5 deduped
+│ ├─┬ inquirer@8.2.4
+│ │ └── rxjs@7.8.2
+│ ├── rxjs@6.6.7
+│ └── typescript@4.9.5 deduped
+├─┬ @angular-eslint/builder@15.2.1
+│ └── typescript@4.9.5 deduped
+├─┬ @angular-eslint/eslint-plugin-template@15.2.1
+│ ├─┬ @angular-eslint/utils@15.2.1
+│ │ └── typescript@4.9.5 deduped
+│ └── typescript@4.9.5 deduped
+├─┬ @angular-eslint/eslint-plugin@15.2.1
+│ └── typescript@4.9.5 deduped
+├─┬ @angular-eslint/template-parser@15.2.1
+│ └── typescript@4.9.5 deduped
+├─┬ @angular/animations@15.2.10
+│ └── @angular/core@15.2.10 deduped
+├─┬ @angular/cdk@15.2.9
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/cli@15.2.11
+│ └─┬ @angular-devkit/schematics@15.2.11
+│   └── rxjs@6.6.7
+├─┬ @angular/common@15.2.10
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/compiler-cli@15.2.10
+│ └── typescript@4.9.5 deduped
+├─┬ @angular/compiler@15.2.10
+│ └── @angular/core@15.2.10 deduped
+├─┬ @angular/core@15.2.10
+│ ├── rxjs@7.5.7 deduped
+│ └── zone.js@0.12.0 deduped
+├─┬ @angular/forms@15.2.10
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/material-moment-adapter@15.2.9
+│ └── @angular/core@15.2.10 deduped
+├─┬ @angular/material@15.2.9
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/platform-browser-dynamic@15.2.10
+│ └── @angular/core@15.2.10 deduped
+├─┬ @angular/platform-browser@15.2.10
+│ └── @angular/core@15.2.10 deduped
+├─┬ @angular/router@15.2.10
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/effects@15.4.0
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/store-devtools@15.4.0
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/store@15.4.0
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @northgate/canopy-ui@4.0.0
+│ ├── @angular/core@15.2.10 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @typescript-eslint/eslint-plugin@5.43.0
+│ └─┬ tsutils@3.21.0
+│   └── typescript@4.9.5 deduped
+├─┬ ngx-mask@15.2.3
+│ └── @angular/core@15.2.10 deduped
+├── rxjs@7.5.7
+├── typescript@4.9.5
+└── zone.js@0.12.0
+

@@ -1,0 +1,66 @@
+Workspace extension with invalid name (_comment) found.
+Workspace extension with invalid name (_comment) found.
+    Limiting migration to: src
+    Migrating components:
+    autocomplete
+    form-field
+    input
+    option
+    optgroup
+    select
+    button
+    card
+    checkbox
+    chips
+    dialog
+    list
+    menu
+    paginator
+    progress-bar
+    progress-spinner
+    radio
+    slide-toggle
+    slider
+    snack-bar
+    table
+    tabs
+    tooltip
+    Migrating project: northgate-business
+    Successfully migrated the project.
+UPDATE src/app/layout/idle-warning/idle-warning.component.ts (1415 bytes)
+UPDATE src/app/features/accounts/transaction-detail-dialog/transaction-detail-dialog.component.ts (1733 bytes)
+UPDATE src/app/layout/shell/shell.component.scss (816 bytes)
+UPDATE src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.scss (1224 bytes)
+UPDATE src/app/features/accounts/transaction-list/transaction-list.component.scss (1713 bytes)
+UPDATE src/app/features/payroll/payroll-runs/payroll-runs.component.scss (496 bytes)
+UPDATE src/app/features/payroll/new-payroll-run/new-payroll-run.component.scss (817 bytes)
+UPDATE src/app/features/payroll/employee-list/employee-list.component.scss (1080 bytes)
+UPDATE src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.scss (822 bytes)
+UPDATE src/app/features/ach/nacha-upload/nacha-upload.component.scss (1001 bytes)
+UPDATE src/app/features/ach/ach-template-editor/ach-template-editor.component.scss (275 bytes)
+UPDATE src/app/features/wires/new-wire/new-wire.component.scss (387 bytes)
+UPDATE src/app/features/approvals/approvals-queue/approvals-queue.component.scss (1133 bytes)
+UPDATE src/app/features/users/entitlements-editor/entitlements-editor.component.scss (1261 bytes)
+UPDATE src/app/features/users/permission-matrix/permission-matrix.component.scss (1188 bytes)
+UPDATE src/app/features/users/limits-form/limits-form.component.scss (328 bytes)
+UPDATE src/app/features/reports/report-preview/report-preview.component.scss (714 bytes)
+UPDATE src/app/features/alerts/alert-card/alert-card.component.scss (712 bytes)
+UPDATE src/styles.scss (6609 bytes)
+UPDATE src/app/shared/shared.module.ts (4249 bytes)
+UPDATE src/app/features/accounts/transaction-list/transaction-list.component.ts (3611 bytes)
+UPDATE src/app/features/reports/report-preview/report-preview.component.ts (2162 bytes)
+UPDATE src/app/features/approvals/approvals-queue/approvals-queue.component.ts (3537 bytes)
+UPDATE src/app/features/ach/ach-template-editor/ach-template-editor.component.ts (4079 bytes)
+UPDATE src/app/features/approvals/approval-decision-dialog/approval-decision-dialog.component.ts (1381 bytes)
+UPDATE src/app/features/payroll/payroll-runs/payroll-runs.component.ts (1988 bytes)
+UPDATE src/app/features/alerts/alert-threshold-dialog/alert-threshold-dialog.component.ts (884 bytes)
+UPDATE src/app/features/alerts/alerts.module.ts (764 bytes)
+UPDATE src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.ts (1552 bytes)
+UPDATE src/app/features/users/invite-user-dialog/invite-user-dialog.component.ts (1968 bytes)
+UPDATE src/app/features/wires/wire-detail/wire-detail.component.ts (4580 bytes)
+UPDATE src/app/features/approvals/approval-detail/approval-detail.component.ts (4412 bytes)
+UPDATE src/app/features/users/users.module.ts (1503 bytes)
+UPDATE src/app/features/ach/ach-templates/ach-templates.component.ts (2288 bytes)
+UPDATE src/app/features/users/user-list/user-list.component.ts (2560 bytes)
+UPDATE src/app/features/alerts/alert-list/alert-list.component.ts (2327 bytes)
+UPDATE src/app/layout/shell/shell.component.ts (4117 bytes)

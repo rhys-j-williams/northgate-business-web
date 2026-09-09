@@ -1,0 +1,78 @@
+Workspace extension with invalid name (_comment) found.
+Repository is not clean. Update changes will be mixed with pre-existing changes.
+The installed Angular CLI version is outdated.
+Installing a temporary Angular CLI versioned 15.2.11 to perform the update.
+- Installing packages...
+✔ Packages successfully installed.
+Workspace extension with invalid name (_comment) found.
+Repository is not clean. Update changes will be mixed with pre-existing changes.
+Using package manager: npm
+Collecting installed dependencies...
+Found 48 dependencies.
+Fetching dependency metadata from registry...
+    Updating package.json with dependency @angular-devkit/build-angular @ "15.2.11" (was "14.2.12")...
+    Updating package.json with dependency @angular-eslint/builder @ "15.2.1" (was "14.4.0")...
+    Updating package.json with dependency @angular-eslint/eslint-plugin @ "15.2.1" (was "14.4.0")...
+    Updating package.json with dependency @angular-eslint/eslint-plugin-template @ "15.2.1" (was "14.4.0")...
+    Updating package.json with dependency @angular-eslint/schematics @ "15.2.1" (was "14.4.0")...
+    Updating package.json with dependency @angular-eslint/template-parser @ "15.2.1" (was "14.4.0")...
+    Updating package.json with dependency @angular/cli @ "15.2.11" (was "14.2.12")...
+    Updating package.json with dependency @angular/compiler-cli @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency typescript @ "4.9.5" (was "4.7.4")...
+    Updating package.json with dependency @angular/animations @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/common @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/compiler @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/core @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/forms @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/platform-browser @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/platform-browser-dynamic @ "15.2.10" (was "14.2.12")...
+    Updating package.json with dependency @angular/router @ "15.2.10" (was "14.2.12")...
+UPDATE package.json (2609 bytes)
+- Installing packages...
+✔ Packages successfully installed.
+** Executing migrations of package '@angular-eslint/schematics' **
+
+▸ Updates @angular-eslint to v15.
+UPDATE package.json (2613 bytes)
+UPDATE angular.json (5917 bytes)
+- Installing packages (npm)...
+✔ Packages installed successfully.
+  Migration completed (2 files modified).
+
+** Executing migrations of package '@angular/cli' **
+
+▸ Remove Browserslist configuration files that matches the Angular CLI default configuration.
+  Migration completed (No changes made).
+
+▸ Remove exported `@angular/platform-server` `renderModule` method.
+  The `renderModule` method is now exported by the Angular CLI.
+  Migration completed (No changes made).
+
+▸ Remove no longer needed require calls in Karma builder main file.
+Workspace extension with invalid name (_comment) found.
+UPDATE src/test.ts (459 bytes)
+  Migration completed (1 file modified).
+
+▸ Update TypeScript compiler `target` and set `useDefineForClassFields`.
+  These changes are for IDE purposes as TypeScript compiler options `target` and `useDefineForClassFields` are set to `ES2022` and `false` respectively by the Angular CLI.
+  To control ECMA version and features use the Browerslist configuration.
+Workspace extension with invalid name (_comment) found.
+UPDATE tsconfig.json (1160 bytes)
+  Migration completed (1 file modified).
+
+▸ Remove options from 'angular.json' that are no longer supported by the official builders.
+Workspace extension with invalid name (_comment) found.
+  Migration completed (No changes made).
+
+** Executing migrations of package '@angular/core' **
+
+▸ In Angular version 15, the deprecated `relativeLinkResolution` config parameter of the Router is removed.
+  This migration removes all `relativeLinkResolution` fields from the Router config objects.
+Workspace extension with invalid name (_comment) found.
+  Migration completed (No changes made).
+
+▸ Since Angular v15, the `RouterLink` contains the logic of the `RouterLinkWithHref` directive.
+  This migration replaces all `RouterLinkWithHref` references with `RouterLink`.
+Workspace extension with invalid name (_comment) found.
+  Migration completed (No changes made).
+

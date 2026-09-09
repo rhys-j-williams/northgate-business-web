@@ -21,11 +21,13 @@
   }
 }
 
-// mat-icon-button is 40px tall in Material 14 which blows out the dl row. Shrink it.
-:host ::ng-deep .mbz-alert-card__edit.mat-icon-button {
+// mat-icon-button is 48px tall in Material 15 (MDC) which blows out the dl row. Shrink it.
+:host ::ng-deep .mbz-alert-card__edit.mat-mdc-icon-button {
+  --mdc-icon-button-state-layer-size: 24px;
   width: 24px;
   height: 24px;
   line-height: 24px;
+  padding: 0;
 
   .mat-icon {
     width: 16px;
@@ -34,6 +36,6 @@
   }
 }
 
-:host ::ng-deep .mat-slide-toggle-bar {
-  height: 12px;
+:host ::ng-deep .mat-mdc-slide-toggle {
+  --mdc-switch-track-height: 12px;
 }

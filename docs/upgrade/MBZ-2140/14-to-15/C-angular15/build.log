@@ -1,0 +1,38 @@
+
+> northgate-business@2026.09.0 build
+> ng build
+
+Workspace extension with invalid name (_comment) found.
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
+- Copying assets...
+✔ Copying assets complete.
+- Generating index html...
+✔ Index html generation complete.
+
+Initial Chunk Files           | Names                               |  Raw Size | Estimated Transfer Size
+main.417f7d6e93798c28.js      | main                                |   1.82 MB |               371.40 kB
+styles.e90de2f338a3b2e9.css   | styles                              | 332.46 kB |                20.42 kB
+polyfills.bb0fe9f17e92a39a.js | polyfills                           |  33.13 kB |                10.69 kB
+runtime.b713fd70d8dab8cc.js   | runtime                             |   3.45 kB |                 1.63 kB
+
+| Initial Total                       |   2.19 MB |               404.13 kB
+
+Lazy Chunk Files              | Names                               |  Raw Size | Estimated Transfer Size
+769.3446d7976440b9ea.js       | features-ach-ach-module             |  51.30 kB |                12.45 kB
+651.d07c994f767ad9eb.js       | features-accounts-accounts-module   |  32.94 kB |                 8.08 kB
+728.ce68ae9fadf6fe7e.js       | features-wires-wires-module         |  31.46 kB |                 7.86 kB
+23.1453e5805517c292.js        | features-payroll-payroll-module     |  30.24 kB |                 7.59 kB
+143.c52cd66c97f2c61e.js       | features-users-users-module         |  26.92 kB |                 6.93 kB
+808.cb3128a0a08d312e.js       | features-approvals-approvals-module |  22.62 kB |                 5.87 kB
+801.50167d915a8710f0.js       | features-reports-reports-module     |  15.27 kB |                 4.53 kB
+744.72c4205baa9309c6.js       | features-alerts-alerts-module       |   8.89 kB |                 2.83 kB
+common.e6c959158e030fbd.js    | common                              |   6.54 kB |                 2.31 kB
+
+Build at: 2026-09-09T22:35:50.872Z - Hash: 403044974a3e8f97 - Time: 15968ms
+
+Warning: /home/ubuntu/repos/northgate-business-web/src/app/core/services/fixture-data.service.ts depends on '@northgate/domain-fixtures'. CommonJS or AMD dependencies can cause optimization bailouts.
+For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
+
+

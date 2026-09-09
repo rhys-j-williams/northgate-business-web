@@ -47,7 +47,7 @@
 }
 
 // Canopy's checkbox label wraps at 200px. We need the whole name. MBZ-1712, still open.
-:host ::ng-deep .cn-checkbox .mat-checkbox-label {
+:host ::ng-deep .cn-checkbox .cn-checkbox__label {
   max-width: none;
   white-space: nowrap;
 }
