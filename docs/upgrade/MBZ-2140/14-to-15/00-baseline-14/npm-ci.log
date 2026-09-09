@@ -1,0 +1,10 @@
+npm WARN prepare removing existing node_modules/ before installation
+
+> nice-napi@1.0.2 install /home/ubuntu/repos/northgate-business-web/node_modules/nice-napi
+> node-gyp-build
+
+
+> esbuild@0.15.5 postinstall /home/ubuntu/repos/northgate-business-web/node_modules/esbuild
+> node install.js
+
+added 980 packages in 10.063s

@@ -1,0 +1,6 @@
+# Lantern usage check (business-web does not consume @northgate/lantern-sdk)
+$ grep -rniE "lantern|lumenview" --include=*.ts --include=*.html --include=*.json --include=*.scss --include=*.md --exclude-dir=node_modules --exclude-dir=docs . | grep -v package-lock
+(no matches)
+$ grep -c lantern package-lock.json
+0
+Result: no Lantern SDK dependency, import or reference. Lantern 14->15 hop is out of scope for this repository.

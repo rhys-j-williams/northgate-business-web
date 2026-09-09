@@ -1,0 +1,55 @@
+
+> northgate-business@2026.9.0 test /home/ubuntu/repos/northgate-business-web
+> ng test --watch=false --browsers=ChromeHeadlessCI --code-coverage
+
+Workspace extension with invalid name (_comment) found.
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+09 09 2026 21:46:00.581:INFO [karma-server]: Karma v6.4.1 server started at http://localhost:9877/
+09 09 2026 21:46:00.585:INFO [launcher]: Launching browsers ChromeHeadlessCI with concurrency unlimited
+09 09 2026 21:46:00.598:INFO [launcher]: Starting browser ChromeHeadless
+09 09 2026 21:46:01.192:INFO [Chrome Headless 137.0.0.0 (Linux 0.0.0)]: Connected on socket nUJSfuM-wDwQZFiVAAAA with id 9309920
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 0 of 32 SUCCESS (0 secs / 0 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 1 of 32 SUCCESS (0 secs / 0.797 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 2 of 32 SUCCESS (0 secs / 1.151 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 3 of 32 SUCCESS (0 secs / 1.411 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 4 of 32 SUCCESS (0 secs / 1.498 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 5 of 32 SUCCESS (0 secs / 1.498 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 6 of 32 SUCCESS (0 secs / 1.502 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 7 of 32 SUCCESS (0 secs / 1.503 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 8 of 32 SUCCESS (0 secs / 1.504 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 9 of 32 SUCCESS (0 secs / 1.504 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 10 of 32 SUCCESS (0 secs / 1.505 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 11 of 32 SUCCESS (0 secs / 1.506 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 12 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 13 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 14 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 15 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 16 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 17 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 18 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 19 of 32 SUCCESS (0 secs / 1.507 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 20 of 32 SUCCESS (0 secs / 1.508 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 21 of 32 SUCCESS (0 secs / 1.509 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 22 of 32 SUCCESS (0 secs / 1.509 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 23 of 32 SUCCESS (0 secs / 1.51 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 24 of 32 SUCCESS (0 secs / 1.51 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 25 of 32 SUCCESS (0 secs / 1.51 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 26 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 27 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 28 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 29 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 30 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 31 of 32 SUCCESS (0 secs / 1.512 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 32 of 32 SUCCESS (0 secs / 1.513 secs)
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 32 of 32 SUCCESS (0.023 secs / 1.513 secs)
+TOTAL: 32 SUCCESS
+
+=============================== Coverage summary ===============================
+Statements   : 21% ( 460/2190 )
+Branches     : 37.82% ( 626/1655 )
+Functions    : 8.88% ( 67/754 )
+Lines        : 22.13% ( 435/1965 )
+================================================================================
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.
