@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, lastValueFrom } from 'rxjs';
 import { CnNavItem } from '@northgate/canopy-ui';
 
 import { environment } from '../../../environments/environment';
@@ -96,7 +96,7 @@ export class ShellComponent implements OnInit, OnDestroy {
       disableClose: true,
       width: '400px'
     });
-    ref.afterClosed().toPromise().then(stay => {
+    lastValueFrom(ref.afterClosed()).then(stay => {
       if (stay) {
         this.idle.touch();
       } else if (stay === false) {

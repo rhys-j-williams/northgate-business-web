@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
@@ -54,8 +55,8 @@ export class UserListComponent implements OnInit {
   }
 
   invite(): void {
-    this.dialog.open<InviteUserDialogComponent, void, BusinessUser | undefined>(InviteUserDialogComponent, { width: '520px' })
-      .afterClosed().toPromise().then(user => {
+    lastValueFrom(this.dialog.open<InviteUserDialogComponent, void, BusinessUser | undefined>(InviteUserDialogComponent, { width: '520px' })
+      .afterClosed()).then(user => {
         if (user) {
           this.users = _.sortBy([...this.users, user], 'displayName');
           this.toast.success(`Invitation sent to ${user.email}`);

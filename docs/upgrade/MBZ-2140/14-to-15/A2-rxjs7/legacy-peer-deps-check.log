@@ -1,0 +1,11 @@
+# npm ls peer/invalid markers after rxjs 7.5.7 (legacy-peer-deps still on)
+# exit: 0
+
+# fresh resolve without legacy-peer-deps (npm install --package-lock-only into a temp copy)
+
+up to date in 10s
+
+added 17 packages, removed 16 packages, and changed 3 packages in 2s
+# Result: removed legacy-peer-deps=true from .npmrc; `npm install` re-hoisted ajv/json-schema-traverse/postcss-selector-parser
+# duplicates (same versions, different nesting) and reported no ERESOLVE. codelyzer 6.0.2 still nests its own @angular/core 9
+# peer (as the Node 14 lockfile already did); it goes away in A3. Gates below run against this tree.

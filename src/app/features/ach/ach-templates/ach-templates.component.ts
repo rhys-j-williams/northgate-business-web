@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Payee } from '@northgate/domain-fixtures';
@@ -28,7 +29,7 @@ export class AchTemplatesComponent implements OnInit {
     this.canEdit = this.auth.hasPermission('payments:initiate');
     // Payees come straight from the fixture service; there is no payee endpoint on the BFF yet
     // (MBZ-1877) so this screen is fixture only even when useFixtures is off. Known.
-    Promise.all([this.ach.getTemplates(), this.fixtures.getPayees().toPromise()])
+    Promise.all([this.ach.getTemplates(), lastValueFrom(this.fixtures.getPayees())])
       .then(([templates, payees]) => {
         this.templates = _.orderBy(templates, ['updatedAt'], ['desc']);
         this.payees = payees;
@@ -43,8 +44,8 @@ export class AchTemplatesComponent implements OnInit {
 
   edit(template: AchTemplate | null): void {
     const data: TemplateEditorData = { template, payees: this.payees, organisationId: this.auth.snapshot.organisationId };
-    this.dialog.open<AchTemplateEditorComponent, TemplateEditorData, AchTemplate | undefined>(AchTemplateEditorComponent, { data, width: '720px', disableClose: true })
-      .afterClosed().toPromise().then(saved => {
+    lastValueFrom(this.dialog.open<AchTemplateEditorComponent, TemplateEditorData, AchTemplate | undefined>(AchTemplateEditorComponent, { data, width: '720px', disableClose: true })
+      .afterClosed()).then(saved => {
         if (saved) {
           this.templates = _.orderBy([saved, ...this.templates.filter(t => t.templateId !== saved.templateId)], ['updatedAt'], ['desc']);
         }

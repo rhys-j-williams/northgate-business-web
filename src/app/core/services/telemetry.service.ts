@@ -4,7 +4,7 @@
  */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Subject, timer } from 'rxjs';
+import { Subject, timer, lastValueFrom } from 'rxjs';
 import { buffer, filter } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -65,8 +65,8 @@ export class TelemetryService {
       sourcetype: 'northgate:business-web',
       event: { ...e, correlationId: this.correlationId, app: 'business-web', env: environment.name }
     }));
-    this.http.post(environment.telemetry.endpoint, body, {
+    lastValueFrom(this.http.post(environment.telemetry.endpoint, body, {
       headers: { Authorization: 'Splunk CHANGEME-hec-token' }
-    }).toPromise().catch(() => { /* telemetry never breaks the app */ });
+    })).catch(() => { /* telemetry never breaks the app */ });
   }
 }

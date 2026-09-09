@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, Input, OnChanges } from '@angular/core';
 import * as moment from 'moment';
 
@@ -24,7 +25,7 @@ export class LegacyStatementsComponent implements OnChanges {
   ngOnChanges() {
     if (!this.accountId) { return; }
     this.loading = true;
-    this.data.getStatements(this.accountId).toPromise().then(list => {
+    lastValueFrom(this.data.getStatements(this.accountId)).then(list => {
       this.statements = list;
       this.years = list.map(s => moment(s.periodEnd).year()).filter((y, i, arr) => arr.indexOf(y) === i).sort((a, b) => b - a);
       if (this.years.indexOf(this.selectedYear) < 0 && this.years.length) {

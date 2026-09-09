@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -22,16 +23,16 @@ export class UsersService {
 
   getUsers(): Promise<BusinessUser[]> {
     const source$ = this.gateway.organisationUsers();
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getUser(userId: string): Promise<BusinessUser> {
     const source$ = environment.useFixtures ? this.fixtures.getUser(userId) : this.http.get<BusinessUser>(`${environment.apiBase}/users/${userId}`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   invite(invite: Pick<BusinessUser, 'displayName' | 'email' | 'role'>): Promise<BusinessUser> {
     const source$ = environment.useFixtures ? this.fixtures.inviteUser(invite) : this.http.post<BusinessUser>(`${environment.apiBase}/users/invites`, invite);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 }

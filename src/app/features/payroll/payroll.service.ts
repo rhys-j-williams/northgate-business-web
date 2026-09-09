@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
@@ -27,7 +28,7 @@ export class PayrollService {
     const source$ = environment.useFixtures
       ? this.fixtures.getEmployees()
       : this.http.get<PayrollEmployee[]>(`${environment.apiBase}/payroll/employees`);
-    return source$.toPromise().then(employees => {
+    return lastValueFrom(source$).then(employees => {
       this.employees = _.sortBy(employees, 'name');
       return this.employees;
     });
@@ -37,21 +38,21 @@ export class PayrollService {
     const source$ = environment.useFixtures
       ? this.fixtures.getPayrollRuns()
       : this.http.get<PayrollRun[]>(`${environment.apiBase}/payroll/runs`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getRun(runId: string): Promise<PayrollRun> {
     const source$ = environment.useFixtures
       ? this.fixtures.getPayrollRun(runId)
       : this.http.get<PayrollRun>(`${environment.apiBase}/payroll/runs/${runId}`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   submit(run: PayrollRun): Promise<PayrollRun> {
     const source$ = environment.useFixtures
       ? this.fixtures.submitPayrollRun(run)
       : this.http.post<PayrollRun>(`${environment.apiBase}/payroll/runs`, run);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   earliestPayDate(): moment.Moment {

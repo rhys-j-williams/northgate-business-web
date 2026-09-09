@@ -1,0 +1,3 @@
+# GHSA ids in this step's full audit that are NOT in 00-baseline-14 (full or production)
+# production-only view: NEW vs baseline production
+# counts: baseline full 63 ids, this step full 63 ids; baseline prod 17, this step prod 17

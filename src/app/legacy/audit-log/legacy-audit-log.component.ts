@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, Input, OnInit } from '@angular/core';
 import * as moment from 'moment';
 import * as _ from 'lodash';
@@ -56,7 +57,7 @@ export class LegacyAuditLogComponent implements OnInit {
   constructor(private data: FixtureDataService) {}
 
   ngOnInit() {
-    this.data.getAuditEvents().toPromise().then(events => {
+    lastValueFrom(this.data.getAuditEvents()).then(events => {
       this.events = this.actor ? events.filter(e => e.actor === this.actor) : events;
       this.loading = false;
       this.apply();

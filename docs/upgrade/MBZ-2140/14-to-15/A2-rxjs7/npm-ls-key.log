@@ -1,0 +1,75 @@
+northgate-business@2026.09.0 /home/ubuntu/repos/northgate-business-web
+├─┬ @angular-devkit/build-angular@14.2.12
+│ ├─┬ @angular-devkit/architect@0.1402.12
+│ │ └── rxjs@6.6.7
+│ ├─┬ @angular-devkit/build-webpack@0.1402.12
+│ │ └── rxjs@6.6.7
+│ ├─┬ @angular-devkit/core@14.2.12
+│ │ └── rxjs@6.6.7
+│ ├─┬ @ngtools/webpack@14.2.12
+│ │ └── typescript@4.7.4 deduped
+│ ├─┬ inquirer@8.2.4
+│ │ └── rxjs@7.8.2
+│ ├── rxjs@6.6.7
+│ └── typescript@4.7.4 deduped
+├─┬ @angular/animations@14.2.12
+│ └── @angular/core@14.2.12 deduped
+├─┬ @angular/cdk@14.2.7
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/cli@14.2.12
+│ └─┬ @angular-devkit/schematics@14.2.12
+│   └── rxjs@6.6.7
+├─┬ @angular/common@14.2.12
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/compiler-cli@14.2.12
+│ └── typescript@4.7.4 deduped
+├─┬ @angular/compiler@14.2.12
+│ └── @angular/core@14.2.12 deduped
+├─┬ @angular/core@14.2.12
+│ ├── rxjs@7.5.7 deduped
+│ └── zone.js@0.11.8 deduped
+├─┬ @angular/flex-layout@14.0.0-beta.41
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/forms@14.2.12
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/material-moment-adapter@14.2.7
+│ └── @angular/core@14.2.12 deduped
+├─┬ @angular/material@14.2.7
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @angular/platform-browser-dynamic@14.2.12
+│ └── @angular/core@14.2.12 deduped
+├─┬ @angular/platform-browser@14.2.12
+│ └── @angular/core@14.2.12 deduped
+├─┬ @angular/router@14.2.12
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/effects@14.3.3
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/store-devtools@14.3.3
+│ └── rxjs@7.5.7 deduped
+├─┬ @ngrx/store@14.3.3
+│ ├── @angular/core@14.2.12 deduped
+│ └── rxjs@7.5.7 deduped
+├── @northgate/canopy-ui@3.5.0
+├─┬ codelyzer@6.0.2
+│ ├─┬ @angular/core@9.0.0
+│ │ ├── rxjs@6.6.7 deduped
+│ │ └── zone.js@0.10.3 deduped
+│ ├── rxjs@6.6.7
+│ └── zone.js@0.10.3
+├─┬ ngx-mask@14.3.3
+│ └── @angular/core@14.2.12 deduped
+├── rxjs@7.5.7
+├─┬ tslint@6.1.3
+│ ├─┬ tsutils@2.29.0
+│ │ └── typescript@4.7.4 deduped
+│ └── typescript@4.7.4 deduped
+├── typescript@4.7.4
+└── zone.js@0.11.8
+

@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
@@ -20,24 +21,24 @@ export class WiresService {
 
   getWires(): Promise<Wire[]> {
     const source$ = environment.useFixtures ? this.fixtures.getWires() : this.http.get<Wire[]>(`${environment.apiBase}/wires`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getWire(wireId: string): Promise<Wire> {
     const source$ = environment.useFixtures ? this.fixtures.getWire(wireId) : this.http.get<Wire>(`${environment.apiBase}/wires/${wireId}`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getBeneficiaries(): Promise<WireBeneficiary[]> {
     const source$ = environment.useFixtures ? this.fixtures.getBeneficiaries() : this.http.get<WireBeneficiary[]>(`${environment.apiBase}/wires/beneficiaries`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   initiate(draft: Partial<Wire>): Promise<Wire> {
     const source$ = environment.useFixtures
       ? this.fixtures.initiateWire(draft, this.auth.snapshot.handle)
       : this.http.post<Wire>(`${environment.apiBase}/wires`, draft);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   /** Same day if before the Fedwire cutoff and the flag is on, otherwise next business day. */

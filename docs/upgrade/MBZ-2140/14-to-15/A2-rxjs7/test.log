@@ -1,0 +1,55 @@
+
+> northgate-business@2026.09.0 test
+> ng test --watch=false --browsers=ChromeHeadlessCI --code-coverage
+
+Workspace extension with invalid name (_comment) found.
+- Generating browser application bundles (phase: setup)...
+✔ Browser application bundle generation complete.
+09 09 2026 22:04:57.374:INFO [karma-server]: Karma v6.4.1 server started at http://localhost:9877/
+09 09 2026 22:04:57.376:INFO [launcher]: Launching browsers ChromeHeadlessCI with concurrency unlimited
+09 09 2026 22:04:57.390:INFO [launcher]: Starting browser ChromeHeadless
+09 09 2026 22:04:57.946:INFO [Chrome Headless 137.0.0.0 (Linux 0.0.0)]: Connected on socket WJqqt86FKdA6KuwMAAAA with id 69204980
+Chrome Headless 137.0.0.0 (Linux 0.0.0): Executed 0 of 32 SUCCESS (0 secs / 0 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 1 of 32 SUCCESS (0 secs / 0.838 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 2 of 32 SUCCESS (0 secs / 1.099 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 3 of 32 SUCCESS (0 secs / 1.297 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 4 of 32 SUCCESS (0 secs / 1.47 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 5 of 32 SUCCESS (0 secs / 1.474 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 6 of 32 SUCCESS (0 secs / 1.476 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 7 of 32 SUCCESS (0 secs / 1.483 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 8 of 32 SUCCESS (0 secs / 1.483 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 9 of 32 SUCCESS (0 secs / 1.484 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 10 of 32 SUCCESS (0 secs / 1.487 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 11 of 32 SUCCESS (0 secs / 1.488 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 12 of 32 SUCCESS (0 secs / 1.489 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 13 of 32 SUCCESS (0 secs / 1.489 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 14 of 32 SUCCESS (0 secs / 1.489 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 15 of 32 SUCCESS (0 secs / 1.489 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 16 of 32 SUCCESS (0 secs / 1.49 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 17 of 32 SUCCESS (0 secs / 1.491 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 18 of 32 SUCCESS (0 secs / 1.491 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 19 of 32 SUCCESS (0 secs / 1.492 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 20 of 32 SUCCESS (0 secs / 1.492 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 21 of 32 SUCCESS (0 secs / 1.493 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 22 of 32 SUCCESS (0 secs / 1.493 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 23 of 32 SUCCESS (0 secs / 1.493 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 24 of 32 SUCCESS (0 secs / 1.494 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 25 of 32 SUCCESS (0 secs / 1.494 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 26 of 32 SUCCESS (0 secs / 1.494 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 27 of 32 SUCCESS (0 secs / 1.499 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 28 of 32 SUCCESS (0 secs / 1.499 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 29 of 32 SUCCESS (0 secs / 1.5 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 30 of 32 SUCCESS (0 secs / 1.5 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 31 of 32 SUCCESS (0 secs / 1.5 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 32 of 32 SUCCESS (0 secs / 1.502 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux 0.0.0): Executed 32 of 32 SUCCESS (0.019 secs / 1.502 secs)
+TOTAL: 32 SUCCESS
+
+=============================== Coverage summary ===============================
+Statements   : 21% ( 460/2190 )
+Branches     : 37.82% ( 626/1655 )
+Functions    : 8.88% ( 67/754 )
+Lines        : 22.13% ( 435/1965 )
+================================================================================
+✔ Browser application bundle generation complete.
+✔ Browser application bundle generation complete.

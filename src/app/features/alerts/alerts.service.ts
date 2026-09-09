@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,11 +13,11 @@ export class AlertsService {
 
   getAlerts(): Promise<BusinessAlert[]> {
     const source$ = environment.useFixtures ? this.fixtures.getAlerts() : this.http.get<BusinessAlert[]>(`${environment.apiBase}/alerts`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   save(alert: BusinessAlert): Promise<BusinessAlert> {
     const source$ = environment.useFixtures ? this.fixtures.saveAlert(alert) : this.http.put<BusinessAlert>(`${environment.apiBase}/alerts/${alert.alertId}`, alert);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 }
