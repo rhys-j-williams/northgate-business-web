@@ -292,7 +292,9 @@ theme. 2.19 MB is 0.81 MB under the 3 MB initial warning budget; the budget line
 ## 7. Behaviour and public surface
 
 - No route, service contract, BFF path or feature flag changed. `environment.useFixtures` still `true`.
-- Hand-rolled NgRx state (ADR 0002): untouched apart from three selector-factory return-type annotations (A3).
+- Hand-rolled NgRx state (ADR 0002): untouched apart from three selector-factory return-type annotations (A3) and
+  one return-type annotation on a helper arrow function inside `approvals.reducer.spec.ts` (same lint rule; no
+  assertion changed).
 - Legacy module (`src/app/legacy/**`): two one-line `toPromise` -> `lastValueFrom` rewrites (A2); still CRLF file
   untouched; still excluded from lint.
 - Visual: MDC defaults as listed in `visual/README.md`; no business-side visual tuning applied (KAN-31).

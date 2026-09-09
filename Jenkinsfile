@@ -24,8 +24,8 @@ northgateNodePipeline(
         NG_CLI_ANALYTICS: 'false'
     ],
     timeoutMinutes: 45,
-    // TSLint exits 2 on warnings if any rule is set to "warning" severity and --force is absent.
-    // The shared library treats non-zero lint as a failure so the package script must stay clean.
+    // ng lint (angular-eslint) exits 0 on warnings and 1 on errors; the shared library treats
+    // non-zero lint as a failure so `npm run lint` must stay error-free.
     sonarProjectKey:   'northgate-business-web',
     checkmarxPreset:   'northgate-angular-legacy'
 )
