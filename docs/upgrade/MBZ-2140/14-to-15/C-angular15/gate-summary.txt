@@ -1,0 +1,15 @@
+node-npm-version: exit 0
+ng-version: exit 0
+npm-ls-depth0: exit 0
+npm-ls-key: exit 0
+build: exit 0
+test: exit 0
+coverage-summary: exit 0
+lint(lint): exit 0
+npm-audit: exit 1
+npm-audit-json: exit 1
+npm-audit-production: exit 1
+npm-audit-production-json: exit 1
+audit-new-ids-vs-baseline(3): exit 3
+forbidden-strings: exit 0
+done

@@ -1,0 +1,200 @@
+
+> northgate-business@2026.09.0 tslint
+> tslint -c tslint.json -p tsconfig.json 'src/**/*.ts'
+
+The 'deprecation' rule threw an error in '/home/ubuntu/repos/northgate-business-web/src/app/core/services/auth.service.ts':
+TypeError: message.trim is not a function
+    at Function.Rule.FAILURE_STRING (/home/ubuntu/repos/northgate-business-web/node_modules/tslint/lib/rules/deprecationRule.js:31:81)
+    at cb (/home/ubuntu/repos/northgate-business-web/node_modules/tslint/lib/rules/deprecationRule.js:58:53)
+    at visitNode (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30663:24)
+    at Object.forEachChild (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30899:24)
+    at cb (/home/ubuntu/repos/northgate-business-web/node_modules/tslint/lib/rules/deprecationRule.js:70:23)
+    at visitNode (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30663:24)
+    at Object.forEachChild (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30788:21)
+    at cb (/home/ubuntu/repos/northgate-business-web/node_modules/tslint/lib/rules/deprecationRule.js:70:23)
+    at visitNodes (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30672:30)
+    at Object.forEachChild (/home/ubuntu/repos/northgate-business-web/node_modules/typescript/lib/typescript.js:30958:24)
+/home/ubuntu/repos/northgate-business-web/src/app/core/guards/permission.guard.ts:24:5
+WARNING: 24:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/interceptors/error.interceptor.ts:32:11
+WARNING: 32:11   no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/services/auth.service.ts:102:7
+WARNING: 102:7   no-floating-promises                   Promises must be handled appropriately
+WARNING: 138:21  no-any                                 Type declaration of 'any' loses type-safety. Consider replacing it with a more precise type.
+WARNING: 163:7   no-floating-promises                   Promises must be handled appropriately
+WARNING: 166:5   no-floating-promises                   Promises must be handled appropriately
+WARNING: 192:21  no-any                                 Type declaration of 'any' loses type-safety. Consider replacing it with a more precise type.
+WARNING: 242:5   prefer-for-of                          Expected a 'for-of' loop instead of a 'for' loop with this simple iteration
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/services/session-idle.service.ts:50:9
+WARNING: 50:9    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html:13:37
+WARNING: 13:37   template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 16:23   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts:57:5
+WARNING: 57:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts:23:18
+WARNING: 23:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 44:7    no-floating-promises                   Promises must be handled appropriately
+WARNING: 74:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 79:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.html:35:10
+WARNING: 35:10   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.ts:27:5
+WARNING: 27:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batches/ach-batches.component.ts:46:5
+WARNING: 46:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 57:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 61:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.html:19:12
+WARNING: 19:12   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-templates/ach-templates.component.html:9:11
+WARNING: 9:11    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-templates/ach-templates.component.ts:31:5
+WARNING: 31:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 46:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts:24:18
+WARNING: 24:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 49:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 106:5   no-floating-promises                   Promises must be handled appropriately
+WARNING: 113:9   no-floating-promises                   Promises must be handled appropriately
+WARNING: 126:5   no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/alerts/alert-list/alert-list.component.html:9:20
+WARNING: 9:20    template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 14:20   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/alerts/alert-list/alert-list.component.ts:23:5
+WARNING: 23:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 42:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 54:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approval-detail/approval-detail.component.ts:93:5
+WARNING: 93:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.html:3:12
+WARNING: 3:12    template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 6:12    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.html:40:13
+WARNING: 40:13   template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 41:13   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.ts:23:18
+WARNING: 23:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 67:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/employee-list/employee-list.component.html:13:6
+WARNING: 13:6    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.ts:26:18
+WARNING: 26:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 62:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 124:5   no-floating-promises                   Promises must be handled appropriately
+WARNING: 135:5   no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.html:11:8
+WARNING: 11:8    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.html:24:12
+WARNING: 24:12   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.ts:29:5
+WARNING: 29:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.ts:18:18
+WARNING: 18:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 37:33   no-any                                 Type declaration of 'any' loses type-safety. Consider replacing it with a more precise type.
+WARNING: 40:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 51:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 55:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-catalogue/report-catalogue.component.html:7:12
+WARNING: 7:12    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-catalogue/report-catalogue.component.ts:42:5
+WARNING: 42:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-parameters/report-parameters.component.html:5:17
+WARNING: 5:17    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-parameters/report-parameters.component.ts:49:5
+WARNING: 49:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 52:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-preview/report-preview.component.html:3:18
+WARNING: 3:18    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-preview/report-preview.component.ts:19:18
+WARNING: 19:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.html:9:6
+WARNING: 9:6     template-click-events-have-key-events  click must be accompanied by either keyup, keydown or keypress event for accessibility
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.ts:24:18
+WARNING: 24:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/permission-matrix/permission-matrix.component.html:13:8
+WARNING: 13:8    template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-detail/user-detail.component.html:27:18
+WARNING: 27:18   template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 34:12   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-detail/user-detail.component.ts:37:5
+WARNING: 37:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-list/user-list.component.ts:41:5
+WARNING: 41:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 53:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 57:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.ts:33:5
+WARNING: 33:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.html:8:6
+WARNING: 8:6     template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/new-wire/new-wire.component.ts:56:5
+WARNING: 56:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 126:9   no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-detail/wire-detail.component.html:36:12
+WARNING: 36:12   template-use-track-by-function         Missing trackBy function in ngFor directive
+WARNING: 43:12   template-use-track-by-function         Missing trackBy function in ngFor directive
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-detail/wire-detail.component.ts:92:5
+WARNING: 92:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 106:5   no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-list/wire-list.component.ts:39:5
+WARNING: 39:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 75:5    no-floating-promises                   Promises must be handled appropriately
+WARNING: 79:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/auth-callback/auth-callback.component.ts:30:7
+WARNING: 30:7    no-floating-promises                   Promises must be handled appropriately
+WARNING: 38:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/shell/shell.component.ts:25:18
+WARNING: 25:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+WARNING: 99:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/signed-out/signed-out.component.ts:21:5
+WARNING: 21:5    no-floating-promises                   Promises must be handled appropriately
+
+/home/ubuntu/repos/northgate-business-web/src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.ts:28:18
+WARNING: 28:18   use-component-view-encapsulation       Using ViewEncapsulation.None makes your styles global, which may have an unintended effect
+

@@ -1,33 +1,31 @@
 #!/usr/bin/env groovy
 // Northgate Business (business-web). Owner @northgate/business-digital.
 //
-// Yes, nodejs14-rhel7. See platform-tooling/jenkins-shared-library/README.md, the paragraph that
-// starts "The nodejs14-rhel7 situation". MBZ-2231 is the upgrade ticket; it has been re-parented
-// three times. Do not change the label to nodejs16-rhel8 to "see if it works" - it does not,
-// engine-strict in .npmrc fails npm ci on the first line, and the last person who tried it
-// (2024-02) broke the release/2024.03 train build for a day.
+// nodejs16-rhel8 since MBZ-2140 / MBZ-2231 (Node 14 agent retirement, KAN-29). The label, the
+// engines pin in package.json, .nvmrc and the npm 8 lockfile move together; engine-strict in .npmrc
+// means a mismatch fails npm ci on the first line, so do not change one without the others.
+// See platform-tooling/jenkins-shared-library/README.md, "Build agents".
 @Library('northgate-pipeline@v3') _
 
 northgateNodePipeline(
-    agentLabel:        'nodejs14-rhel7',
-    nodeVersion:       '14.21.3',
+    agentLabel:        'nodejs16-rhel8',
+    nodeVersion:       '16.20.2',
     appName:           'business-web',
     helmChart:         'platform-tooling/helm/business-web',
     dockerfile:        'platform-tooling/docker/angular/Dockerfile',
     coverageThreshold: 20,
-    lintCommand:       'npm run tslint',
+    lintCommand:       'npm run lint',
     testCommand:       'npm test',
     buildCommand:      'npm run build',
     coverageSummary:   'coverage/northgate-business/coverage-summary.json',
-    // Karma on the rhel7 image needs the bundled Chrome 109; the library's default points at 120.
+    // CHROME_BIN comes from the nodejs16-rhel8 agent image (Chrome 120) via the shared library
+    // default; no per-repo override as on the retired rhel7 image.
     env: [
-        CHROME_BIN: '/opt/google/chrome-109/chrome',
         NG_CLI_ANALYTICS: 'false'
     ],
-    // Twenty minutes is normal on this agent. Do not lower.
     timeoutMinutes: 45,
-    // TSLint exits 2 on warnings if any rule is set to "warning" severity and --force is absent.
-    // The shared library treats non-zero lint as a failure so the package script must stay clean.
+    // ng lint (angular-eslint) exits 0 on warnings and 1 on errors; the shared library treats
+    // non-zero lint as a failure so `npm run lint` must stay error-free.
     sonarProjectKey:   'northgate-business-web',
     checkmarxPreset:   'northgate-angular-legacy'
 )

@@ -3,24 +3,24 @@
 .mbz-approvals-table {
   width: 100%;
 
-  .mat-header-cell.mbz-num,
-  .mat-cell.mbz-num {
+  .mat-mdc-header-cell.mbz-num,
+  .mat-mdc-cell.mbz-num {
     text-align: right;
   }
 
-  .mat-row.mbz-row--actionable {
+  .mat-mdc-row.mbz-row--actionable {
     cursor: pointer;
 
-    .mat-cell:first-child {
+    .mat-mdc-cell:first-child {
       box-shadow: inset 3px 0 0 var(--cn-color-brand);
     }
   }
 
-  .mat-row:hover .mat-cell {
+  .mat-mdc-row:hover .mat-mdc-cell {
     background: var(--cn-color-surface-alt);
   }
 
-  .mat-cell mbz-status-badge {
+  .mat-mdc-cell mbz-status-badge {
     margin-left: 8px;
   }
 }
@@ -52,6 +52,6 @@
   }
 }
 
-.mbz-approvals-card .mat-paginator {
+.mbz-approvals-card .mat-mdc-paginator {
   border-top: 1px solid var(--cn-color-border);
 }

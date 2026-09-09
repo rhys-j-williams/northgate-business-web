@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '../../../environments/environment';
@@ -36,7 +36,7 @@ export class ReportsService {
     const source$ = environment.useFixtures
       ? this.fixtures.runReport(reportId, parameters, this.auth.snapshot.handle)
       : this.http.post<ReportResult>(`${environment.apiBase}/reports/${reportId}/runs`, { parameters });
-    return source$.pipe(map(result => ({ ...result, rows: result.rows || [] }))).toPromise();
+    return lastValueFrom(source$.pipe(map(result => ({ ...result, rows: result.rows || [] }))));
   }
 
   export(result: ReportResult): void {

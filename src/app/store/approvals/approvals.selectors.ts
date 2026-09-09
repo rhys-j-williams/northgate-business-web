@@ -1,5 +1,6 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 
+import { ApprovalRequest } from '../../core/models';
 import { ApprovalsState } from './approvals.reducer';
 
 export const selectApprovalsState = createFeatureSelector<ApprovalsState>('approvals');
@@ -22,5 +23,5 @@ export const selectFilteredApprovals = createSelector(selectAllApprovals, select
 export const selectSelectedApproval = createSelector(selectApprovalsState,
   s => s.selectedId ? s.items.find(i => i.approvalId === s.selectedId) || null : null);
 
-export const selectApprovalForSubject = (subjectId: string) =>
+export const selectApprovalForSubject = (subjectId: string): MemoizedSelector<object, ApprovalRequest | null> =>
   createSelector(selectAllApprovals, items => items.find(i => i.subjectId === subjectId) || null);

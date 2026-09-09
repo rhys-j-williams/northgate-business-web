@@ -207,7 +207,7 @@ describe('approvalsReducer', () => {
       request({ approvalId: 'APR-DONE', status: 'approved', expiresAt: '2024-03-01T00:00:00.000Z' })
     );
     const after = approvalsReducer(state, A.expireStale({ now: NOW }));
-    const byId = (id: string) => after.items.find(i => i.approvalId === id).status;
+    const byId = (id: string): ApprovalRequest['status'] => after.items.find(i => i.approvalId === id).status;
     expect(byId('APR-STALE')).toBe('expired');
     expect(byId('APR-FRESH')).toBe('pending');
     expect(byId('APR-DONE')).toBe('approved');

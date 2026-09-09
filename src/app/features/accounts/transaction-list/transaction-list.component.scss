@@ -16,7 +16,7 @@
 }
 
 .mbz-transaction-table {
-  &.mat-table {
+  &.mat-mdc-table {
     background: var(--cn-color-surface);
     border: 1px solid var(--cn-color-border);
     border-radius: 4px;
@@ -24,7 +24,7 @@
   }
 
   // Sticky header needs an opaque background or the rows scroll through it.
-  .mat-header-row .mat-header-cell {
+  .mat-mdc-header-row .mat-mdc-header-cell {
     background: var(--cn-color-surface-alt);
   }
 
@@ -35,12 +35,12 @@
   &__row {
     cursor: pointer;
 
-    &--pending .mat-cell {
+    &--pending .mat-mdc-cell {
       font-style: italic;
       color: var(--cn-color-text-muted);
     }
 
-    &--expanded .mat-cell {
+    &--expanded .mat-mdc-cell {
       border-bottom-color: transparent;
     }
   }
@@ -48,7 +48,7 @@
   &__detail-row {
     height: 0 !important;
 
-    .mat-cell {
+    .mat-mdc-cell {
       padding: 0 12px;
       border-bottom-width: 0;
     }
@@ -78,6 +78,6 @@
 
 // The dialog panel class set from the component. Material puts the padding on the container,
 // which we override globally, so this only sets width behaviour.
-.mbz-transaction-dialog .mat-dialog-container {
+.mbz-transaction-dialog .mat-mdc-dialog-container {
   max-height: 85vh;
 }

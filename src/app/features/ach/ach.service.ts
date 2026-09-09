@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
@@ -22,22 +23,22 @@ export class AchService {
 
   getBatches(): Promise<AchBatch[]> {
     const source$ = environment.useFixtures ? this.fixtures.getAchBatches() : this.http.get<AchBatch[]>(`${environment.apiBase}/ach/batches`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getBatch(batchId: string): Promise<AchBatch> {
     const source$ = environment.useFixtures ? this.fixtures.getAchBatch(batchId) : this.http.get<AchBatch>(`${environment.apiBase}/ach/batches/${batchId}`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   getTemplates(): Promise<AchTemplate[]> {
     const source$ = environment.useFixtures ? this.fixtures.getAchTemplates() : this.http.get<AchTemplate[]>(`${environment.apiBase}/ach/templates`);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   saveTemplate(template: AchTemplate): Promise<AchTemplate> {
     const source$ = environment.useFixtures ? this.fixtures.saveAchTemplate(template) : this.http.put<AchTemplate>(`${environment.apiBase}/ach/templates/${template.templateId || 'new'}`, template);
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   /** Read the file as text. NACHA is ASCII; anything else is a wrong file. */
@@ -75,7 +76,7 @@ export class AchService {
     const source$ = environment.useFixtures
       ? this.fixtures.addAchBatch(batch)
       : this.http.post<AchBatch>(`${environment.apiBase}/ach/batches`, { batch, content });
-    return source$.toPromise();
+    return lastValueFrom(source$);
   }
 
   // Not a real hash. Duplicate detection on the BFF uses SHA-256; this is a display value only.
@@ -83,10 +84,10 @@ export class AchService {
   private cheapHash(content: string): string {
     let h = 0;
     for (let i = 0; i < content.length; i++) {
-      // tslint:disable-next-line:no-bitwise
+      // eslint-disable-next-line no-bitwise
       h = ((h << 5) - h + content.charCodeAt(i)) | 0;
     }
-    // tslint:disable-next-line:no-bitwise
+    // eslint-disable-next-line no-bitwise
     return (h >>> 0).toString(16).padStart(8, '0');
   }
 }

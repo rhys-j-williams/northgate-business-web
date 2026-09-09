@@ -1,0 +1,41 @@
+northgate estate smoke, mode=unknown, 2026-09-09T22:49:26Z
+
+[0] mock health sweep
+  PASS  health keystone-idp-mock
+  PASS  health bedrock-core-mock
+  PASS  health aggregio-mock
+  PASS  health tickerhaus-mock
+  PASS  health triscore-mock
+  PASS  health paylink-network-mock
+  PASS  health vault-mock
+  PASS  health splunk-hec-mock
+  PASS  health lantern-collector-mock
+  PASS  health semaphore-flags-mock
+  PASS  health ldap-mock
+  PASS  health verdaccio
+
+[1] keystone login (authorization code + PKCE, fixture user, MFA 123456)
+  PASS  keystone PKCE login as ravi.halloran, ID token verified via JWKS (ok CUS-100003 amr=pwd,otp,mfa)
+
+[2] bff-retail accounts with Bedrock backed balances
+  PASS  bff-retail returned 2 accounts, balance of ACC-221833965 matches Bedrock (-772983 minor)
+
+[3] beacon: three ACCT.EVENTS for CUS-100003 -> console channel adapter, ordered, within 10s
+  SKIP  beacon ordered dispatch -- beacon-notifications not answering on 4510 (not started, or failed; see .estate/logs/beacon-notifications.log)
+
+[4] documents-service statement PDF
+  SKIP  documents statement pdf -- documents-service not answering on 4518 (not started, or failed; see .estate/logs/documents-service.log)
+
+[5] lantern event lands in the collector
+  PASS  lantern track event smoke-1788994167381547293 stored (collector count=1)
+  PASS  lantern.min.js served (7693 bytes)
+
+[6] splunk correlation search for the accounts request (smoke-1788994166-27472)
+  PASS  splunk HEC accepts a token-authenticated event
+  PASS  splunk trace smoke-1788994166-27472 spans [bedrock-adapter,bedrock-core-mock,bff-retail]
+
+smoke summary: 18 passed, 0 failed, 2 skipped
+skipped (not failures; services absent from this checkout or not started):
+  - beacon ordered dispatch: beacon-notifications not answering on 4510 (not started, or failed; see .estate/logs/beacon-notifications.log)
+  - documents statement pdf: documents-service not answering on 4518 (not started, or failed; see .estate/logs/documents-service.log)
+SMOKE_EXIT=0

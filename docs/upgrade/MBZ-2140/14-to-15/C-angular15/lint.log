@@ -1,0 +1,202 @@
+
+> northgate-business@2026.09.0 lint
+> ng lint
+
+Workspace extension with invalid name (_comment) found.
+
+Linting "northgate-business"...
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/guards/permission.guard.ts
+  24:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/interceptors/error.interceptor.ts
+  32:11  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/services/auth.service.ts
+  102:7   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  138:21  warning  Unexpected any. Specify a different type                                                                                                                            @typescript-eslint/no-explicit-any
+  163:7   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  166:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  192:21  warning  Unexpected any. Specify a different type                                                                                                                            @typescript-eslint/no-explicit-any
+  242:5   warning  Expected a `for-of` loop instead of a `for` loop with this simple iteration                                                                                         @typescript-eslint/prefer-for-of
+
+/home/ubuntu/repos/northgate-business-web/src/app/core/services/session-idle.service.ts
+  50:9  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.html
+  13:38  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  16:24  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/accounts-overview/accounts-overview.component.ts
+  57:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/accounts/transaction-list/transaction-list.component.ts
+  23:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+  44:7   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  74:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  79:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.html
+  35:11  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batch-detail/ach-batch-detail.component.ts
+  27:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-batches/ach-batches.component.ts
+  46:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  57:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  61:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-template-editor/ach-template-editor.component.html
+  19:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-templates/ach-templates.component.html
+  9:12  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/ach-templates/ach-templates.component.ts
+  32:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  47:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/nacha-upload/nacha-upload.component.ts
+   24:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+   49:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  106:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  113:9   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  126:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/ach/nacha-validation-report/nacha-validation-report.component.html
+  36:17  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/alerts/alert-list/alert-list.component.html
+   9:21  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  14:21  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/alerts/alert-list/alert-list.component.ts
+  24:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  43:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  55:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approval-detail/approval-detail.component.ts
+  93:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approval-filter-bar/approval-filter-bar.component.html
+  3:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  6:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.html
+  40:14  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  41:14  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/approvals/approvals-queue/approvals-queue.component.ts
+  23:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+  67:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/employee-list/employee-list.component.html
+  13:7  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/new-payroll-run/new-payroll-run.component.ts
+   26:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+   62:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  124:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  135:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-line-editor/payroll-line-editor.component.html
+  11:9  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.html
+  24:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-run-detail/payroll-run-detail.component.ts
+  29:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/payroll/payroll-runs/payroll-runs.component.ts
+  18:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+  37:33  warning  Unexpected any. Specify a different type                                                                                                                            @typescript-eslint/no-explicit-any
+  40:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  51:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  55:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-catalogue/report-catalogue.component.html
+  7:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-catalogue/report-catalogue.component.ts
+  42:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-parameters/report-parameters.component.html
+  5:18  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-parameters/report-parameters.component.ts
+  49:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  52:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-preview/report-preview.component.html
+  3:19  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/reports/report-preview/report-preview.component.ts
+  19:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect  @angular-eslint/use-component-view-encapsulation
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.html
+  9:7  warning  click must be accompanied by either keyup, keydown or keypress event for accessibility  @angular-eslint/template/click-events-have-key-events
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/entitlements-editor/entitlements-editor.component.ts
+  24:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect  @angular-eslint/use-component-view-encapsulation
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/permission-matrix/permission-matrix.component.html
+  13:9  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-detail/user-detail.component.html
+  27:19  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  34:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-detail/user-detail.component.ts
+  37:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/users/user-list/user-list.component.ts
+  42:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  54:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  58:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/beneficiary-list/beneficiary-list.component.ts
+  33:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/beneficiary-picker/beneficiary-picker.component.html
+  8:7  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/new-wire/new-wire.component.ts
+   56:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  126:9  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-detail/wire-detail.component.html
+  36:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+  43:13  warning  Missing trackBy function in ngFor directive  @angular-eslint/template/use-track-by-function
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-detail/wire-detail.component.ts
+   92:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  106:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/features/wires/wire-list/wire-list.component.ts
+  39:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  75:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  79:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/auth-callback/auth-callback.component.ts
+  30:7  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+  38:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/shell/shell.component.ts
+  25:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect                                                                        @angular-eslint/use-component-view-encapsulation
+  99:5   warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/layout/signed-out/signed-out.component.ts
+  21:5  warning  Promises must be awaited, end with a call to .catch, end with a call to .then with a rejection handler or be explicitly marked as ignored with the `void` operator  @typescript-eslint/no-floating-promises
+
+/home/ubuntu/repos/northgate-business-web/src/app/shared/components/confirm-action-dialog/confirm-action-dialog.component.ts
+  28:36  warning  Using `ViewEncapsulation.None` makes your styles global, which may have an unintended effect  @angular-eslint/use-component-view-encapsulation
+
+/home/ubuntu/repos/northgate-business-web/src/app/store/entitlements/entitlements.actions.ts
+  16:3  warning  'ToggleDualApproval' is already declared in the upper scope on line 57 column 14  @typescript-eslint/no-shadow
+
+✖ 90 problems (0 errors, 90 warnings)
+
+Lint warnings found in the listed files.
+

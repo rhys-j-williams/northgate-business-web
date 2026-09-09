@@ -1,0 +1,32 @@
+northgate-business@2026.9.0 /home/ubuntu/repos/northgate-business-web
+├─┬ @angular-devkit/build-angular@14.2.12
+│ ├─┬ @angular-devkit/architect@0.1402.12
+│ │ └── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+│ ├─┬ @angular-devkit/build-webpack@0.1402.12
+│ │ └── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+│ ├─┬ @angular-devkit/core@14.2.12
+│ │ └── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+│ ├─┬ inquirer@8.2.4
+│ │ └── rxjs@7.8.2 
+│ └── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+├─┬ @angular/cli@14.2.12
+│ └─┬ @angular-devkit/schematics@14.2.12
+│   └── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+├── UNMET PEER DEPENDENCY @angular/core@14.2.12 
+├── @northgate/canopy-ui@3.5.0 
+├─┬ codelyzer@6.0.2
+│ ├── @angular/core@9.0.0 
+│ ├── UNMET PEER DEPENDENCY rxjs@6.6.7  deduped
+│ └── zone.js@0.10.3 
+├── UNMET PEER DEPENDENCY rxjs@6.6.7 
+├── typescript@4.7.4 
+└── zone.js@0.11.8 
+
+npm ERR! peer dep missing: @angular/core@>=2.3.1 <13.0.0 || ^12.0.0-next || ^12.1.0-next || ^12.2.0-next, required by codelyzer@6.0.2
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0
+npm ERR! peer dep missing: rxjs@^7.5.0, required by @northgate/canopy-ui@3.5.0

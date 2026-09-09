@@ -1,0 +1,46 @@
+# after: Angular 15.2.10 / Canopy 4.0.0 / Material 15 MDC 2026-09-09T22:41:35.728Z
+accounts: http://127.0.0.1:4201/accounts -> business-web--accounts.png title="Northgate Business" h1="Pinnacle Ridge Surveying"
+ach: http://127.0.0.1:4201/ach -> business-web--ach.png title="Northgate Business" h1="ACH origination"
+wires: http://127.0.0.1:4201/wires -> business-web--wires.png title="Northgate Business" h1="Wires"
+approvals: http://127.0.0.1:4201/approvals -> business-web--approvals.png title="Northgate Business" h1="Approvals"
+payroll: http://127.0.0.1:4201/payroll -> business-web--payroll.png title="Northgate Business" h1="Payroll"
+reports: http://127.0.0.1:4201/reports -> business-web--reports.png title="Northgate Business" h1="Reports"
+users: http://127.0.0.1:4201/users -> business-web--users.png title="Northgate Business" h1="Users"
+alerts: http://127.0.0.1:4201/alerts -> business-web--alerts.png title="Northgate Business" h1="Alerts"
+new-wire: http://127.0.0.1:4201/wires/new -> business-web--new-wire.png title="Northgate Business" h1="New domestic wire"
+new-payroll-run: http://127.0.0.1:4201/payroll/new -> business-web--new-payroll-run.png title="Northgate Business" h1="New payroll run"
+approval-detail: SKIP (no approval detail link found)
+console errors: 
+  ERROR Error: Error retrieving icon cn:refresh! Unable to find icon with the name "refresh"
+    at Object.error (http://127.0.0.1:4201/vendor.js:153163:40)
+    at ConsumerObserver.error (http://127.0.0.1:4201/vendor.js:37216:25)
+    at SafeSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at SafeSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at OperatorSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._next (http://127.0.0.1:4201/vendor.js:38166:21)
+    at OperatorSubscriber.next (http://127.0.0.1:4201/vendor.js:37146:12)
+    at OperatorSubscriber.onFinalize (http://127.0.0.1:4201/vendor.js:37777:24)
+    at OperatorSubscriber.unsubscribe (http://127.0.0.1:4201/vendor.js:38195:82)
+  ERROR Error: Error retrieving icon cn:chart! Unable to find icon with the name "chart"
+    at Object.error (http://127.0.0.1:4201/vendor.js:153163:40)
+    at ConsumerObserver.error (http://127.0.0.1:4201/vendor.js:37216:25)
+    at SafeSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at SafeSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at OperatorSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._next (http://127.0.0.1:4201/vendor.js:38166:21)
+    at OperatorSubscriber.next (http://127.0.0.1:4201/vendor.js:37146:12)
+    at OperatorSubscriber.onFinalize (http://127.0.0.1:4201/vendor.js:37777:24)
+    at OperatorSubscriber.unsubscribe (http://127.0.0.1:4201/vendor.js:38195:82)
+  ERROR Error: Error retrieving icon cn:person-add! Unable to find icon with the name "person-add"
+    at Object.error (http://127.0.0.1:4201/vendor.js:153163:40)
+    at ConsumerObserver.error (http://127.0.0.1:4201/vendor.js:37216:25)
+    at SafeSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at SafeSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._error (http://127.0.0.1:4201/vendor.js:37177:24)
+    at OperatorSubscriber.error (http://127.0.0.1:4201/vendor.js:37154:12)
+    at OperatorSubscriber._next (http://127.0.0.1:4201/vendor.js:38166:21)
+    at OperatorSubscriber.next (http://127.0.0.1:4201/vendor.js:37146:12)
+    at OperatorSubscriber.onFinalize (http://127.0.0.1:4201/vendor.js:37777:24)
+    at OperatorSubscriber.unsubscribe (http://127.0.0.1:4201/vendor.js:38195:82)

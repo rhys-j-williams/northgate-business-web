@@ -5,15 +5,15 @@
 <div class="mbz-entitlements">
   <cn-card [padded]="false" class="mbz-entitlements__list">
     <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
-    <mat-nav-list dense>
+    <mat-nav-list>
       <a mat-list-item *ngFor="let e of entitlements$ | async; trackBy: trackById"
          [class.mbz-entitlements__row--selected]="(selected$ | async)?.entitlementId === e.entitlementId"
          [class.mbz-entitlements__row--dirty]="(dirtyIds$ | async)?.indexOf(e.entitlementId) >= 0"
          (click)="select(e)">
         <span matListItemTitle>{{ e.userHandle }} <span class="mbz-muted" *ngIf="isSelf(e)">(you)</span></span>
         <span matListItemLine class="mbz-muted">{{ e.role }}</span>
-        <mat-icon *ngIf="(savingIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:refresh" class="mbz-spin"></mat-icon>
-        <mat-icon *ngIf="(dirtyIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:edit"></mat-icon>
+        <mat-icon matListItemMeta *ngIf="(savingIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:refresh" class="mbz-spin"></mat-icon>
+        <mat-icon matListItemMeta *ngIf="(dirtyIds$ | async)?.indexOf(e.entitlementId) >= 0" svgIcon="cn:edit"></mat-icon>
       </a>
     </mat-nav-list>
   </cn-card>

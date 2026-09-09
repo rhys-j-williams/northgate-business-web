@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Entitlement } from '@northgate/domain-fixtures';
 
@@ -39,7 +39,7 @@ export class UserDetailComponent implements OnInit {
         this.user = user;
         this.entitlement$ = this.store.select(selectAllEntitlements).pipe(map(all => all.find(e => e.entitlementId === user.entitlementId)));
         // Audit is fixture only; see legacy/audit-log. MBZ-1877 covers the BFF endpoint.
-        return this.fixtures.getAuditEvents(500).toPromise();
+        return lastValueFrom(this.fixtures.getAuditEvents(500));
       })
       .then(events => this.recentActivity = events.filter(e => e.actor === this.user.handle).slice(0, 10))
       .catch(err => this.error = err && err.message ? err.message : 'User not found')

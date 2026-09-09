@@ -33,7 +33,7 @@
     color: var(--cn-color-text-muted);
   }
 
-  .mat-progress-bar {
+  .mat-mdc-progress-bar {
     margin-top: 12px;
   }
 }
@@ -41,7 +41,7 @@
 .mbz-upload-options {
   margin-top: 16px;
 
-  cn-select .mat-form-field {
+  cn-select .mat-mdc-form-field {
     width: 100%;
   }
 }

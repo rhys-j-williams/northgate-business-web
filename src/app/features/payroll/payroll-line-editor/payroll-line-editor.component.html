@@ -14,12 +14,12 @@
         <div class="mbz-muted">****{{ row.employee.payee.accountNumberLastFour }}</div>
       </td>
       <td>
-        <mat-form-field appearance="outline" class="mbz-line-editor__memo">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="mbz-line-editor__memo">
           <input matInput [ngModel]="row.line.memo" (ngModelChange)="setMemo(row, $event)" maxlength="10" aria-label="Memo">
         </mat-form-field>
       </td>
       <td class="mbz-num">
-        <mat-form-field appearance="outline" class="mbz-line-editor__amount">
+        <mat-form-field appearance="outline" subscriptSizing="dynamic" class="mbz-line-editor__amount">
           <cn-currency-input [ngModel]="row.line.amountMinor / 100" (ngModelChange)="setAmount(row, $event === null ? null : $event * 100)" [min]="0"></cn-currency-input>
           <mat-hint *ngIf="row.overridden">default {{ row.employee.defaultAmountMinor | mbzMoney }}</mat-hint>
           <mat-hint *ngIf="overLimit(row)" class="mbz-line-editor__warn">over your per transaction limit</mat-hint>

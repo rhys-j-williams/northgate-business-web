@@ -44,11 +44,8 @@
   font-weight: 600;
 }
 
-// cn-checkbox leaves Material's 16px inline margin on the label even when there is no label.
-:host ::ng-deep .mbz-matrix .mat-checkbox-layout .mat-checkbox-label {
+// The matrix cells carry no label text; hide Canopy's label slot so the control centres in the
+// cell. Canopy 4 sizes the MDC state layer to the box (18px) so there is no inner margin to reset.
+:host ::ng-deep .mbz-matrix .cn-checkbox__label {
   display: none;
-}
-
-:host ::ng-deep .mbz-matrix .mat-checkbox-inner-container {
-  margin: 0;
 }

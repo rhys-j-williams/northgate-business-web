@@ -1,4 +1,4 @@
-/* tslint:disable:max-line-length */
+/* eslint-disable max-len */
 /**
  * In process data source for Northgate Business.
  *
@@ -723,7 +723,7 @@ export class FixtureDataService {
   private reportRows(definition: ReportDefinition, parameters: Record<string, string>): Array<Record<string, unknown>> {
     const from = parameters.from ? moment(parameters.from) : this.asOf.clone().subtract(30, 'days');
     const to = parameters.to ? moment(parameters.to).endOf('day') : this.asOf.clone().endOf('day');
-    const inRange = (iso: string) => moment(iso).isBetween(from, to, undefined, '[]');
+    const inRange = (iso: string): boolean => moment(iso).isBetween(from, to, undefined, '[]');
     switch (definition.kind) {
       case 'transactions': {
         const ids = this.organisation.accounts.map(a => a.accountId);

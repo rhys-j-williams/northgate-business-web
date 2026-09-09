@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable, Subscription, lastValueFrom } from 'rxjs';
 import { map } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -89,8 +89,8 @@ export class WireDetailComponent implements OnInit, OnDestroy {
   }
 
   private confirm(data: object, decision: 'approved' | 'rejected'): void {
-    this.dialog.open(ConfirmActionDialogComponent, { data, width: '480px' })
-      .afterClosed().toPromise().then((result: ConfirmActionResult | undefined) => {
+    lastValueFrom(this.dialog.open(ConfirmActionDialogComponent, { data, width: '480px' })
+      .afterClosed()).then((result: ConfirmActionResult | undefined) => {
         if (result && result.confirmed && this.approval) {
           this.store.dispatch(decide({
             approvalId: this.approval.approvalId,

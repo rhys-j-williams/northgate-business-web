@@ -1,0 +1,12 @@
+Workspace extension with invalid name (_comment) found.
+Repository is not clean. Update changes will be mixed with pre-existing changes.
+Using package manager: npm
+Collecting installed dependencies...
+Found 47 dependencies.
+** Executing migrations of package '@northgate/canopy-ui' **
+
+▸ Canopy 4.0.0 (CNPY-2140): rewrites 3.x Material 2014 typography level names ($display-4 ..
+  $input) in consumer canopy.theme() typography overrides to the Material 15 names.
+    canopy-4-theme-mixin: no Canopy typography overrides found, nothing to do.
+  Migration completed (No changes made).
+

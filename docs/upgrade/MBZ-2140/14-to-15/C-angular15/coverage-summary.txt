@@ -1,0 +1,5 @@
+lines       22.13% (435/1965)
+statements  21.86% (484/2214)
+functions   8.71% (67/769)
+branches    12.91% (127/983)
+jenkins coverageThreshold 20 (lines): PASS

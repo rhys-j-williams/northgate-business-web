@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CnToastService } from '@northgate/canopy-ui';
@@ -39,8 +40,8 @@ export class AlertListComponent implements OnInit {
   }
 
   editThreshold(alert: BusinessAlert): void {
-    this.dialog.open<AlertThresholdDialogComponent, BusinessAlert, number | undefined>(AlertThresholdDialogComponent, { data: alert, width: '420px' })
-      .afterClosed().toPromise().then(thresholdMinor => {
+    lastValueFrom(this.dialog.open<AlertThresholdDialogComponent, BusinessAlert, number | undefined>(AlertThresholdDialogComponent, { data: alert, width: '420px' })
+      .afterClosed()).then(thresholdMinor => {
         if (thresholdMinor !== undefined) {
           this.persist({ ...alert, thresholdMinor });
         }

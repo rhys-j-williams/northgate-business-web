@@ -1,4 +1,4 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector, MemoizedSelector } from '@ngrx/store';
 import { Entitlement } from '@northgate/domain-fixtures';
 
 import { EntitlementsState } from './entitlements.reducer';
@@ -27,10 +27,10 @@ export const selectSelectedIsDirty = createSelector(selectEntitlementsState,
 
 export const selectSavingIds = createSelector(selectEntitlementsState, s => Object.keys(s.saving));
 
-export const selectEntitlementError = (entitlementId: string) =>
+export const selectEntitlementError = (entitlementId: string): MemoizedSelector<object, string | null> =>
   createSelector(selectEntitlementsState, s => s.errors[entitlementId] || null);
 
-export const selectEntitlementByHandle = (handle: string) =>
+export const selectEntitlementByHandle = (handle: string): MemoizedSelector<object, Entitlement | null> =>
   createSelector(selectAllEntitlements, all => all.find(e => e.userHandle === handle) || null);
 
 export const selectApproverCount = createSelector(selectSavedEntitlements,

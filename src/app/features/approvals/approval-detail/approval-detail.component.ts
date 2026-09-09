@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subscription, lastValueFrom } from 'rxjs';
 import * as moment from 'moment';
 
 import { ApprovalRequest } from '../../../core/models';
@@ -90,8 +90,8 @@ export class ApprovalDetailComponent implements OnInit, OnDestroy {
     }
     const preview = applyDecision(this.approval, { approverHandle: this.me, decision, decidedAt: moment().toISOString() });
     const data: DecisionDialogData = { approval: this.approval, decision, isFinal: preview.status === 'approved' };
-    this.dialog.open<ApprovalDecisionDialogComponent, DecisionDialogData, DecisionDialogResult | undefined>(ApprovalDecisionDialogComponent, { data, width: '480px' })
-      .afterClosed().toPromise().then(result => {
+    lastValueFrom(this.dialog.open<ApprovalDecisionDialogComponent, DecisionDialogData, DecisionDialogResult | undefined>(ApprovalDecisionDialogComponent, { data, width: '480px' })
+      .afterClosed()).then(result => {
         if (result) {
           this.store.dispatch(A.decide({
             approvalId: this.approvalId,

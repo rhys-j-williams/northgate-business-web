@@ -1,0 +1,14 @@
+Workspace extension with invalid name (_comment) found.
+Repository is not clean. Update changes will be mixed with pre-existing changes.
+Using package manager: npm
+Collecting installed dependencies...
+Found 48 dependencies.
+Fetching dependency metadata from registry...
+                  Package "@angular/flex-layout" has an incompatible peer dependency to "@angular/cdk" (requires "^14.0.0", would install "15.2.9").
+                  Package "@northgate/canopy-ui" has an incompatible peer dependency to "@angular/material" (requires "^14.0.0", would install "15.2.9").
+                  Package "@northgate/canopy-ui" has an incompatible peer dependency to "@angular/material-moment-adapter" (requires "^14.0.0", would install "15.2.9").
+✖ Migration failed: Incompatible peer dependencies found.
+Peer dependency warnings when installing dependencies means that those dependencies might not work correctly together.
+You can use the '--force' option to ignore incompatible peer dependencies and instead address these warnings later.
+  See "/tmp/ng-JGHQhQ/angular-errors.log" for further details.
+

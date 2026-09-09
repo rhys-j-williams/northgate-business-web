@@ -1,3 +1,4 @@
+import { lastValueFrom } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
 import { CnDialogService } from '@northgate/canopy-ui';
@@ -19,11 +20,11 @@ export class StepUpGuard implements CanActivate {
     if (this.auth.stepUpIsFresh()) {
       return true;
     }
-    const proceed = await this.dialog.confirm({
+    const proceed = await lastValueFrom(this.dialog.confirm({
       title: 'Verify it is you',
       message: 'Payments need a recent security check. You will be asked to sign in again.',
       confirmLabel: 'Continue'
-    }).toPromise();
+    }));
     if (proceed) {
       await this.auth.login(window.location.pathname);
     }

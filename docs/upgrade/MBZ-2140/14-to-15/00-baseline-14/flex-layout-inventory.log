@@ -1,0 +1,13 @@
+# @angular/flex-layout inventory (baseline, Angular 14.2.12, @angular/flex-layout 14.0.0-beta.41 in package.json)
+$ grep -rnE "fxLayout|fxFlex|fxHide|fxShow|fxLayoutGap|fxLayoutAlign|FlexLayoutModule|@angular/flex-layout" src/
+(no matches: zero template directives, zero module imports in src/)
+
+$ grep -rn "flex-layout" package.json angular.json tsconfig*.json
+package.json:31:    "@angular/flex-layout": "14.0.0-beta.41",
+
+$ npm ls @angular/flex-layout (who depends on it)
+northgate-business@2026.9.0 /home/ubuntu/repos/northgate-business-web
+└── @angular/flex-layout@14.0.0-beta.41 
+
+
+Result: @angular/flex-layout is a direct package.json dependency and a Canopy 3.x peer only; nothing in src/ uses it.

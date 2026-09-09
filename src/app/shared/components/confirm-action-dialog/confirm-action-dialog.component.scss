@@ -1,43 +1,32 @@
-// Encapsulation is off so these reach the Material dialog container. The padding override is
-// the same one Canopy applies to cn-dialog-shell; we are not inside a cn-dialog-shell here.
-.cn-dialog-panel .mat-dialog-container,
-.mat-dialog-container {
-  padding: 20px 24px 16px;
-  border-radius: 6px;
+// Encapsulation is off so this reaches the Material dialog container. MDC puts the padding on
+// title/content/actions, so only the shape is ours; we are not inside a cn-dialog-shell here.
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 6px;
 }
 
 .mbz-confirm-action {
   min-width: 380px;
 
-  .mat-dialog-title {
+  .mat-mdc-dialog-title {
     font-size: 18px;
     font-weight: 600;
     margin-bottom: 8px;
   }
 
-  .mat-dialog-content {
+  .mat-mdc-dialog-content {
     padding-top: 4px;
   }
 
   &__comment {
     width: 100%;
     margin-top: 8px;
-
-    .mat-form-field-wrapper {
-      padding-bottom: 8px;
-    }
-
-    // Material's outline gap renders 1px off against the Canopy border colour. Old complaint.
-    .mat-form-field-outline-thick {
-      color: var(--cn-color-border-strong, #4a5568);
-    }
   }
 
-  &--destructive .mat-dialog-title {
+  &--destructive .mat-mdc-dialog-title {
     color: #8a1f11;
   }
 
-  .mat-dialog-actions {
+  .mat-mdc-dialog-actions {
     padding: 8px 0 0;
     min-height: 0;
   }

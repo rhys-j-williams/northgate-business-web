@@ -4,7 +4,7 @@
  * branch staff use (MBZ-1466).
  */
 import { Injectable, NgZone } from '@angular/core';
-import { fromEvent, merge, Observable, Subject, Subscription, timer } from 'rxjs';
+import { fromEvent, merge, Observable, Subject, Subscription, timer, lastValueFrom } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -47,7 +47,7 @@ export class SessionIdleService {
           const remaining = environment.idleTimeoutMinutes - environment.idleWarnMinutes;
           this.warn$.next(remaining);
         });
-        timer((environment.idleTimeoutMinutes - environment.idleWarnMinutes) * 60 * 1000).toPromise().then(() => {
+        lastValueFrom(timer((environment.idleTimeoutMinutes - environment.idleWarnMinutes) * 60 * 1000)).then(() => {
           if (moment().diff(this.lastActivity, 'minutes') >= environment.idleTimeoutMinutes) {
             this.zone.run(() => this.timeout$.next());
           }

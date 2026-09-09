@@ -1,4 +1,4 @@
-// Global. mat-nav-list overrides below reach into Material's list internals (MBZ-780).
+// Global. mat-nav-list styling below uses the MDC host classes and list tokens only (MBZ-780).
 .mbz-entitlements {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -11,19 +11,17 @@
 }
 
 .mbz-entitlements__list {
-  .mat-nav-list {
+  .mat-mdc-nav-list {
+    --mdc-list-list-item-two-line-container-height: 52px;
     padding-top: 0;
     max-height: calc(100vh - 220px);
     overflow: auto;
   }
 
-  .mat-list-item {
+  .mat-mdc-list-item {
     height: 52px;
+    padding: 0 12px;
     border-bottom: 1px solid var(--cn-color-border);
-
-    .mat-list-item-content {
-      padding: 0 12px;
-    }
 
     .mat-icon {
       margin-left: auto;
@@ -37,8 +35,7 @@
     background: rgba(18, 53, 79, .08);
     box-shadow: inset 3px 0 0 var(--cn-color-brand);
   }
-
-  .mbz-entitlements__row--dirty .mat-list-text {
+  .mbz-entitlements__row--dirty {
     font-style: italic;
   }
 }

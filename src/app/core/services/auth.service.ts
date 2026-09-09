@@ -12,7 +12,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, lastValueFrom } from 'rxjs';
 import { catchError, map, shareReplay, tap } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -88,7 +88,7 @@ export class AuthService {
         return false;
       }
       this.tokens = tokens;
-      await this.loadUserInfo().toPromise();
+      await lastValueFrom(this.loadUserInfo());
       return true;
     } catch (e) {
       this.telemetry.error('auth.restore', e);
@@ -102,7 +102,7 @@ export class AuthService {
       this.router.navigateByUrl(returnUrl);
       return;
     }
-    const discovery = await this.discover().toPromise();
+    const discovery = await lastValueFrom(this.discover());
     const verifier = this.randomString(64);
     const state = this.randomString(24);
     sessionStorage.setItem(VERIFIER_KEY, verifier);
@@ -127,7 +127,7 @@ export class AuthService {
       throw new Error('state mismatch');
     }
     const verifier = sessionStorage.getItem(VERIFIER_KEY);
-    const discovery = await this.discover().toPromise();
+    const discovery = await lastValueFrom(this.discover());
     const body = new HttpParams()
       .set('grant_type', 'authorization_code')
       .set('client_id', environment.idp.clientId)
@@ -135,7 +135,7 @@ export class AuthService {
       .set('code_verifier', verifier || '')
       .set('redirect_uri', environment.idp.redirectUri);
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
-    const response: any = await this.http.post(discovery.token_endpoint, body.toString(), { headers }).toPromise();
+    const response: any = await lastValueFrom(this.http.post(discovery.token_endpoint, body.toString(), { headers }));
     this.tokens = {
       accessToken: response.access_token,
       idToken: response.id_token,
@@ -147,7 +147,7 @@ export class AuthService {
     sessionStorage.setItem('mbz.tokens', JSON.stringify({ ...this.tokens, refreshToken: undefined }));
     sessionStorage.removeItem(VERIFIER_KEY);
     sessionStorage.removeItem(STATE_KEY);
-    await this.loadUserInfo().toPromise();
+    await lastValueFrom(this.loadUserInfo());
     const returnUrl = sessionStorage.getItem(RETURN_URL_KEY) || '/';
     sessionStorage.removeItem(RETURN_URL_KEY);
     return returnUrl;
@@ -163,7 +163,7 @@ export class AuthService {
       this.router.navigateByUrl('/signed-out');
       return;
     }
-    this.discover().toPromise().then(d => {
+    lastValueFrom(this.discover()).then(d => {
       const params = new HttpParams()
         .set('id_token_hint', idToken || '')
         .set('post_logout_redirect_uri', `${window.location.origin}/`);
@@ -187,11 +187,11 @@ export class AuthService {
   private loadUserInfo(): Observable<SessionUser> {
     return this.discover().pipe(
       map(d => d.userinfo_endpoint),
-      // nested toPromise inside a pipe; this pre dates the interceptors and nobody has cleaned it up
+      // nested lastValueFrom inside a pipe; this pre dates the interceptors and nobody has cleaned it up
       tap(async endpoint => {
-        const info: any = await this.http.get(endpoint, {
+        const info: any = await lastValueFrom(this.http.get(endpoint, {
           headers: new HttpHeaders({ Authorization: `Bearer ${this.tokens.accessToken}` })
-        }).toPromise();
+        }));
         this.user$.next({
           sub: info.sub,
           handle: info.preferred_username || info.email,
@@ -210,10 +210,10 @@ export class AuthService {
   }
 
   private async signInWithFixtures(): Promise<void> {
-    const organisation = await this.fixtures.getOrganisation().toPromise();
-    const users = await this.fixtures.getUsers().toPromise();
+    const organisation = await lastValueFrom(this.fixtures.getOrganisation());
+    const users = await lastValueFrom(this.fixtures.getUsers());
     const admin = users.find(u => u.role === 'administrator') || users[0];
-    const entitlements = await this.fixtures.getEntitlements().toPromise();
+    const entitlements = await lastValueFrom(this.fixtures.getEntitlements());
     const entitlement = entitlements.find(e => e.entitlementId === admin.entitlementId);
     this.user$.next({
       sub: admin.userId,

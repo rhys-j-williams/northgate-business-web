@@ -1,6 +1,8 @@
 # ADR 0004: Pin @northgate/canopy-ui at 3.5.0
 
-Date: 2024-04-09. Status: accepted, under protest. Tickets: MBZ-2140, CNPY-1710.
+Date: 2024-04-09. Status: accepted, under protest; updated by ADR 0005 (MBZ-2140: the pin is now exactly `4.0.0`,
+moved 3.5.0 -> 3.7.2 -> 4.0.0 one hop at a time; the "Canopy is a black box" rule below stands). Tickets: MBZ-2140,
+CNPY-1710.
 
 ## Context
 
