@@ -5,7 +5,9 @@
   "cli": {
     "packageManager": "npm",
     "analytics": false,
-    "defaultCollection": "@schematics/angular"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -161,6 +163,15 @@
               "src/app/legacy/testing/**",
               "src/app/core/services/fixture-data.service.ts",
               "src/environments/**"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }

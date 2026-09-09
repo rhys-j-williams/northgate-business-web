@@ -1,0 +1,21 @@
+Workspace extension with invalid name (_comment) found.
+- Determining package manager...
+ℹ Using package manager: npm
+- Loading package information from registry...
+✔ Package information loaded.
+- Installing packages...
+✔ Packages successfully installed.
+    
+    All @angular-eslint dependencies have been successfully installed 🎉
+    
+    Please see https://github.com/angular-eslint/angular-eslint for how to add ESLint configuration to your project.
+    
+    We detected that you have a single project in your workspace and no existing linter wired up, so we are configuring ESLint for you automatically.
+    
+    Please see https://github.com/angular-eslint/angular-eslint for more information.
+    
+CREATE .eslintrc.json (984 bytes)
+UPDATE package.json (2665 bytes)
+UPDATE angular.json (5713 bytes)
+- Installing packages (npm)...
+✔ Packages installed successfully.

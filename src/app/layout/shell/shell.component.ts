@@ -68,7 +68,7 @@ export class ShellComponent implements OnInit, OnDestroy {
     if (!user) {
       return [];
     }
-    const can = (p: string) => user.permissions.indexOf(p) >= 0;
+    const can = (p: string): boolean => user.permissions.indexOf(p) >= 0;
     const items: CnNavItem[] = [
       { id: 'accounts', label: 'Accounts', icon: 'cn:account', link: '/accounts' }
     ];

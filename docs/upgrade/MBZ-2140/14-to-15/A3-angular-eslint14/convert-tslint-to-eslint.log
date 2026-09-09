@@ -1,0 +1,32 @@
+Workspace extension with invalid name (_comment) found.
+    
+    WARNING: Within "tslint.json", the following 1 rule(s) did not have known converters in https://github.com/typescript-eslint/tslint-to-eslint-config
+    
+      - ban
+    
+    You will need to decide on how to handle the above manually, but everything else has been handled for you automatically.
+    
+    
+    INFO: To most closely match your tslint.json, the `latest` version of the following eslint plugin(s) have been installed:
+    
+      - eslint-plugin-import
+      - eslint-plugin-jsdoc
+      - eslint-plugin-prefer-arrow
+    
+    Please note, you may wish to pin these to a specific version number in your package.json, rather than leaving it open to `latest`.
+    
+DELETE tslint.json
+CREATE .eslintrc.json (3534 bytes)
+UPDATE angular.json (5785 bytes)
+UPDATE package.json (2735 bytes)
+- Installing packages (npm)...
+npm ERR! engine Unsupported engine
+npm ERR! engine Not compatible with your version of node/npm: eslint-plugin-jsdoc@64.3.8
+npm ERR! notsup Not compatible with your version of node/npm: eslint-plugin-jsdoc@64.3.8
+npm ERR! notsup Required: {"node":"^22.22.2 || >=24.15.0"}
+npm ERR! notsup Actual:   {"npm":"8.19.4","node":"v16.20.2"}
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/ubuntu/.npm/_logs/2026-09-09T22_08_25_204Z-debug-0.log
+✖ Package install failed, see above.
+The Schematic workflow failed. See above.

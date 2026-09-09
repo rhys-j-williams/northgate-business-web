@@ -14,7 +14,7 @@ northgateNodePipeline(
     helmChart:         'platform-tooling/helm/business-web',
     dockerfile:        'platform-tooling/docker/angular/Dockerfile',
     coverageThreshold: 20,
-    lintCommand:       'npm run tslint',
+    lintCommand:       'npm run lint',
     testCommand:       'npm test',
     buildCommand:      'npm run build',
     coverageSummary:   'coverage/northgate-business/coverage-summary.json',

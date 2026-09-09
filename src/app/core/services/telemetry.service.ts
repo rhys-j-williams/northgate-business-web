@@ -54,7 +54,7 @@ export class TelemetryService {
     const message = error instanceof Error ? error.message : typeof error === 'string' ? error : 'unknown';
     this.queue$.next({ name, at: moment().toISOString(), level: 'error', data: { message } });
     if (!environment.production) {
-      // tslint:disable-next-line:no-console
+      // eslint-disable-next-line no-console
       console.warn(`[telemetry] ${name}`, error);
     }
   }

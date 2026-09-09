@@ -84,10 +84,10 @@ export class AchService {
   private cheapHash(content: string): string {
     let h = 0;
     for (let i = 0; i < content.length; i++) {
-      // tslint:disable-next-line:no-bitwise
+      // eslint-disable-next-line no-bitwise
       h = ((h << 5) - h + content.charCodeAt(i)) | 0;
     }
-    // tslint:disable-next-line:no-bitwise
+    // eslint-disable-next-line no-bitwise
     return (h >>> 0).toString(16).padStart(8, '0');
   }
 }
